@@ -1,8 +1,10 @@
 import React from 'react';
-import { Button } from "antd";
+import NavBar from '../component/nav-bar';
 
 function Index() {
-    return (<Button type={'primary'}>Hello</Button>);
+    return (
+        <NavBar/>
+    );
 }
 
 export default Index;
