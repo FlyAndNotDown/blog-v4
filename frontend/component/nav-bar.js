@@ -51,15 +51,15 @@ function NavBar() {
                 lg={{ span: 22, offset: 1 }} xl={{ span: 22, offset: 1 }} xxl={{ span: 22, offset: 1 }}>
                 <Row id={'container'} style={style.container}>
                     <Col id={'logo-col'}
-                         xs={{ span: 12, offset: 0 }} sm={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }}
-                         lg={{ span: 12, offset: 0 }} xl={{ span: 12, offset: 0 }} xxl={{ span: 12, offset: 0 }}>
+                         xs={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }}
+                         lg={{ span: 4, offset: 0 }} xl={{ span: 4, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
                         <Row id={'logo'} style={style.logo}>
                             <a href={Constant.indexRoute} style={style.logoLink}>{Constant.logoText}</a>
                         </Row>
                     </Col>
                     <Col id={'nav-col'}
-                         xs={{ span: 12, offset: 0 }} sm={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }}
-                         lg={{ span: 12, offset: 0 }} xl={{ span: 12, offset: 0 }} xxl={{ span: 12, offset: 0 }}>
+                         xs={{ span: 20, offset: 0 }} sm={{ span: 20, offset: 0 }} md={{ span: 20, offset: 0 }}
+                         lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
                         <Row id={'nav'} style={style.nav}>
                             <a href={Constant.archivesRoute} style={style.navLink}>{Constant.archivesLinkText}</a>
                             <a href={Constant.tagsRoute} style={style.navLink}>{Constant.tagsLinkText}</a>
