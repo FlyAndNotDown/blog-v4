@@ -1,4 +1,5 @@
 export default {
-    navBar: '#55efc4',
+    navBar: '#4fc08d',
+    navBarText: '#ffffff',
     test: '#ff0000'
 };
