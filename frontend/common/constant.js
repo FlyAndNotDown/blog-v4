@@ -1,10 +1,11 @@
 export default {
     // Route
+    indexRoute: '/index',
     archivesRoute: '/archives',
     tagsRoute: '/tags',
     messagesRoute: '/messages',
     worksRoute: '/works',
-    friendsRoute: '/fiends',
+    friendsRoute: '/friends',
     aboutRoute: '/about',
     loginRoute: '/user/login',
 

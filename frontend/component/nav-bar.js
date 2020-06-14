@@ -3,7 +3,9 @@ import Color from '../common/style/color';
 import Align from '../common/style/align';
 import { Button, Row, Col } from 'antd';
 import Constant from '../common/constant';
+import Logger from '../common/utils/logger';
 import '../common/style/global.css';
+import Router from '../common/utils/router';
 
 const style = {
     navBar: {
@@ -23,6 +25,9 @@ const style = {
         lineHeight: Align.navBarHeight,
         float: 'right'
     },
+    logoLink: {
+        color: Color.navBarText
+    },
     navLink: {
         fontSize: '15px',
         color: Color.navBarText,
@@ -35,7 +40,8 @@ const style = {
 
 function NavBar() {
     const onLoginBtnClicked = (e) => {
-        
+        Logger.printDebug('btn', 'login btn clicked');
+        Router.jumpTo(Constant.loginRoute);
     };
 
     return (
@@ -48,7 +54,7 @@ function NavBar() {
                          xs={{ span: 12, offset: 0 }} sm={{ span: 12, offset: 0 }} md={{ span: 12, offset: 0 }}
                          lg={{ span: 12, offset: 0 }} xl={{ span: 12, offset: 0 }} xxl={{ span: 12, offset: 0 }}>
                         <Row id={'logo'} style={style.logo}>
-                            {Constant.logoText}
+                            <a href={Constant.indexRoute} style={style.logoLink}>{Constant.logoText}</a>
                         </Row>
                     </Col>
                     <Col id={'nav-col'}
