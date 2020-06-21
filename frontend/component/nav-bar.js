@@ -1,5 +1,6 @@
 import React from 'react';
 import Color from '../common/style/color';
+import Font from '../common/style/font';
 import Align from '../common/style/align';
 import { Button, Row, Col } from 'antd';
 import Constant from '../common/constant';
@@ -7,38 +8,38 @@ import Logger from '../common/utils/logger';
 import '../common/style/global.css';
 import Router from '../common/utils/router';
 
-const style = {
-    navBar: {
-        height: Align.navBarHeight,
-        backgroundColor: Color.navBar
-    },
-    container: {
-        height: '100%'
-    },
-    logo: {
-        lineHeight: Align.navBarHeight,
-        fontSize: '25px',
-        color: Color.navBarText,
-        float: 'left'
-    },
-    nav: {
-        lineHeight: Align.navBarHeight,
-        float: 'right'
-    },
-    logoLink: {
-        color: Color.navBarText
-    },
-    navLink: {
-        fontSize: '15px',
-        color: Color.navBarText,
-        marginLeft: '4px'
-    },
-    loginBtnSpan: {
-        marginLeft: '4px'
-    }
-};
-
 function NavBar() {
+    const style = {
+        navBar: {
+            height: Align.navBarHeight,
+            backgroundColor: Color.navBar
+        },
+        container: {
+            height: '100%'
+        },
+        logo: {
+            lineHeight: Align.navBarHeight,
+            fontSize: Font.fontSize.navBarLogo,
+            color: Color.navBarText,
+            float: 'left'
+        },
+        nav: {
+            lineHeight: Align.navBarHeight,
+            float: 'right'
+        },
+        logoLink: {
+            color: Color.navBarText
+        },
+        navLink: {
+            fontSize: Font.fontSize.navBarLink,
+            color: Color.navBarText,
+            marginLeft: '4px'
+        },
+        loginBtnSpan: {
+            marginLeft: '4px'
+        }
+    };
+
     const onLoginBtnClicked = (e) => {
         Logger.printDebug('btn', 'login btn clicked');
         Router.jumpTo(Constant.loginRoute);

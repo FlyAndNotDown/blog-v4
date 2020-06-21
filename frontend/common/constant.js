@@ -17,5 +17,8 @@ export default {
     worksLinkText: '作品',
     friendsLinkText: '友链',
     aboutLinkText: '关于',
-    loginBtnText: '登录'
+    loginBtnText: '登录',
+
+    // static resource
+    indexBannerImgPath: '/img/index-bg.png'
 };
