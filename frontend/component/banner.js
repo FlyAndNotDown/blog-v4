@@ -20,6 +20,7 @@ export default function Banner(props) {
             width: '100%',
             height: '70%',
             zIndex: -1,
+            backgroundSize: 'cover',
             backgroundImage: `url(${props.background})`
         },
         sloganContainer: {
