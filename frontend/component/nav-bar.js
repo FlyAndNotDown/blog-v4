@@ -46,30 +46,30 @@ function NavBar() {
     };
 
     return (
-        <Row id={'nav-bar'} style={style.navBar}>
-            <Col id={'container-col'}
+        <Row style={style.navBar}>
+            <Col
                 xs={{ span: 22, offset: 1 }} sm={{ span: 22, offset: 1 }} md={{ span: 22, offset: 1 }}
                 lg={{ span: 22, offset: 1 }} xl={{ span: 22, offset: 1 }} xxl={{ span: 22, offset: 1 }}>
-                <Row id={'container'} style={style.container}>
-                    <Col id={'logo-col'}
+                <Row style={style.container}>
+                    <Col
                          xs={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }}
                          lg={{ span: 4, offset: 0 }} xl={{ span: 4, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
                         <Row id={'logo'} style={style.logo}>
                             <a href={Constant.indexRoute} style={style.logoLink}>{Constant.logoText}</a>
                         </Row>
                     </Col>
-                    <Col id={'nav-col'}
+                    <Col
                          xs={{ span: 20, offset: 0 }} sm={{ span: 20, offset: 0 }} md={{ span: 20, offset: 0 }}
                          lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
-                        <Row id={'nav'} style={style.nav}>
+                        <Row style={style.nav}>
                             <a href={Constant.archivesRoute} style={style.navLink}>{Constant.archivesLinkText}</a>
                             <a href={Constant.tagsRoute} style={style.navLink}>{Constant.tagsLinkText}</a>
                             <a href={Constant.messagesRoute} style={style.navLink}>{Constant.messageLinkText}</a>
                             <a href={Constant.worksRoute} style={style.navLink}>{Constant.worksLinkText}</a>
                             <a href={Constant.friendsRoute} style={style.navLink}>{Constant.friendsLinkText}</a>
                             <a href={Constant.aboutRoute} style={style.navLink}>{Constant.aboutLinkText}</a>
-                            <span id={'login-btn-span'} style={style.loginBtnSpan}>
-                                <Button id={'login-btn'}
+                            <span style={style.loginBtnSpan}>
+                                <Button
                                     type={'primary'} shape={'round'} onClick={onLoginBtnClicked}>
                                     {Constant.loginBtnText}
                                 </Button>

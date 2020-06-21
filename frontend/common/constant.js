@@ -20,5 +20,9 @@ export default {
     loginBtnText: '登录',
 
     // static resource
-    indexBannerImgPath: '/img/index-bg.png'
+    indexBannerImgPath: '/img/index-bg.png',
+
+    // slogan
+    indexSlogan: '离开世界前，一切都是过程',
+    indexSubSlogan: 'Before your death, everything in process'
 };

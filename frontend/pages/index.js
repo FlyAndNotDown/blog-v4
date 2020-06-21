@@ -7,7 +7,10 @@ export default function() {
     return (
         <div>
             <NavBar/>
-            <Banner background={Constant.indexBannerImgPath}/>
+            <Banner
+                background={Constant.indexBannerImgPath}
+                slogan={Constant.indexSlogan}
+                subSlogan={Constant.indexSubSlogan}/>
         </div>
     );
 }
