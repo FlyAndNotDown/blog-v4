@@ -66,7 +66,7 @@
 
 "@ant-design/icons@^4.2.1":
   version "4.2.1"
-  resolved "https://registry.npm.taobao.org/@ant-design/icons/download/@ant-design/icons-4.2.1.tgz?cache=0&sync_timestamp=1590820682141&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40ant-design%2Ficons%2Fdownload%2F%40ant-design%2Ficons-4.2.1.tgz#6f3ea5d98ab782072e4e9cbb70f25e4403ae1a6b"
+  resolved "https://registry.npm.taobao.org/@ant-design/icons/download/@ant-design/icons-4.2.1.tgz#6f3ea5d98ab782072e4e9cbb70f25e4403ae1a6b"
   integrity sha1-bz6l2Yq3ggcuTpy7cPJeRAOuGms=
   dependencies:
     "@ant-design/colors" "^3.1.0"

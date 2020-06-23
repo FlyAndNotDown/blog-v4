@@ -18,6 +18,7 @@ export default {
     friendsLinkText: '友链',
     aboutLinkText: '关于',
     loginBtnText: '登录',
+    navBarDropdownText: 'Menu',
 
     // static resource
     indexBannerImgPath: '/img/index-bg.png',

@@ -4,7 +4,7 @@ import Color from '../common/style/color';
 import Font from '../common/style/font';
 import Obj from '../common/utils/obj';
 
-export default function Banner(props) {
+export default function(props) {
     Logger.printDebug('props', `background: ${props.background}`);
     Logger.printDebug('props', `slogan: ${props.slogan}`);
     Logger.printDebug('props', `subSlogan: ${props.subSlogan}`);
@@ -18,7 +18,7 @@ export default function Banner(props) {
             top: 0,
             left: 0,
             width: '100%',
-            height: '70%',
+            height: '60%',
             zIndex: -1,
             backgroundSize: 'cover',
             backgroundImage: `url(${props.background})`

@@ -2,13 +2,14 @@ import React from 'react';
 import Color from '../common/style/color';
 import Font from '../common/style/font';
 import Align from '../common/style/align';
-import { Button, Row, Col } from 'antd';
+import { Button, Row, Col, Dropdown, Menu } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 import Constant from '../common/constant';
 import Logger from '../common/utils/logger';
 import '../common/style/global.css';
 import Router from '../common/utils/router';
 
-function NavBar() {
+export default function() {
     const style = {
         navBar: {
             height: Align.navBarHeight,
@@ -37,6 +38,9 @@ function NavBar() {
         },
         loginBtnSpan: {
             marginLeft: '4px'
+        },
+        navBarDropdownItem: {
+            margin: '3px 5px'
         }
     };
 
@@ -44,6 +48,32 @@ function NavBar() {
         Logger.printDebug('btn', 'login btn clicked');
         Router.jumpTo(Constant.loginRoute);
     };
+
+    const navBarDropdownMenu = (
+        <Menu>
+            <Menu.Item style={style.navBarDropdownItem}>
+                <a href={Constant.loginRoute}>{Constant.loginBtnText}</a>
+            </Menu.Item>
+            <Menu.Item style={style.navBarDropdownItem}>
+                <a href={Constant.archivesRoute}>{Constant.archivesLinkText}</a>
+            </Menu.Item>
+            <Menu.Item style={style.navBarDropdownItem}>
+                <a href={Constant.tagsRoute}>{Constant.tagsLinkText}</a>
+            </Menu.Item>
+            <Menu.Item style={style.navBarDropdownItem}>
+                <a href={Constant.messagesRoute}>{Constant.messageLinkText}</a>
+            </Menu.Item>
+            <Menu.Item style={style.navBarDropdownItem}>
+                <a href={Constant.worksRoute}>{Constant.worksLinkText}</a>
+            </Menu.Item>
+            <Menu.Item style={style.navBarDropdownItem}>
+                <a href={Constant.friendsRoute}>{Constant.friendsLinkText}</a>
+            </Menu.Item>
+            <Menu.Item style={style.navBarDropdownItem}>
+                <a href={Constant.aboutRoute}>{Constant.aboutLinkText}</a>
+            </Menu.Item>
+        </Menu>
+    );
 
     return (
         <Row style={style.navBar}>
@@ -59,7 +89,7 @@ function NavBar() {
                         </Row>
                     </Col>
                     <Col
-                         xs={{ span: 20, offset: 0 }} sm={{ span: 20, offset: 0 }} md={{ span: 20, offset: 0 }}
+                         xs={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 0 }} md={{ span: 20, offset: 0 }}
                          lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
                         <Row style={style.nav}>
                             <a href={Constant.archivesRoute} style={style.navLink}>{Constant.archivesLinkText}</a>
@@ -76,10 +106,17 @@ function NavBar() {
                             </span>
                         </Row>
                     </Col>
+                    <Col
+                        xs={{ span: 20, offset: 0 }} sm={{ span: 20, offset: 0 }} md={{ span: 0, offset: 0 }}
+                        lg={{ span: 0, offset: 0 }} xl={{ span: 0, offset: 0 }} xxl={{ span: 0, offset: 0 }}>
+                        <Row style={style.nav}>
+                            <Dropdown overlay={navBarDropdownMenu}>
+                                <a style={style.navLink}>{Constant.navBarDropdownText} <DownOutlined/></a>
+                            </Dropdown>
+                        </Row>
+                    </Col>
                 </Row>
             </Col>
         </Row>
     );
 }
-
-export default NavBar;
