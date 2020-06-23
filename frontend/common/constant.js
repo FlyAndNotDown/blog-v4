@@ -1,29 +1,61 @@
-export default {
-    // Route
-    indexRoute: '/index',
-    archivesRoute: '/archives',
-    tagsRoute: '/tags',
-    messagesRoute: '/messages',
-    worksRoute: '/works',
-    friendsRoute: '/friends',
-    aboutRoute: '/about',
-    loginRoute: '/user/login',
+const route = {
+    index: '/',
+    archive: '/archive',
+    tag: '/tag',
+    message: '/message',
+    work: '/work',
+    friend: '/friend',
+    about: '/about',
+    post: '/post',
+    login: '/user/login'
+};
 
-    // Nav
-    logoText: 'Kindem',
-    archivesLinkText: '归档',
-    tagsLinkText: '标签',
-    messageLinkText: '留言',
-    worksLinkText: '作品',
-    friendsLinkText: '友链',
-    aboutLinkText: '关于',
-    loginBtnText: '登录',
-    navBarDropdownText: 'Menu',
+const text = {
+    logo: 'Kindem',
+    archive: '归档',
+    tag: '标签',
+    message: '留言',
+    work: '作品',
+    friend: '友链',
+    about: '关于',
+    login: '登录',
+    menu: 'Menu',
 
-    // static resource
-    indexBannerImgPath: '/img/index-bg.png',
-
-    // slogan
     indexSlogan: '离开世界前，一切都是过程',
     indexSubSlogan: 'Before your death, everything in process'
+};
+
+const resource = {
+    indexBannerImg: '/img/index-bg.png'
+};
+
+export default {
+    route: route,
+    text: text,
+    resource: resource,
+    other: {
+        navLink: [{
+            name: text.archive,
+            to: route.archive,
+        }, {
+            name: text.tag,
+            to: route.tag
+        }, {
+            name: text.message,
+            to: route.message
+        }, {
+            name: text.work,
+            to: route.work
+        }, {
+            name: text.friend,
+            to: route.friend
+        }, {
+            name: text.about,
+            to: route.about
+        }],
+        navBtn: [{
+            name: text.login,
+            to: route.login
+        }]
+    }
 };

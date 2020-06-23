@@ -8,9 +8,9 @@ export default function() {
         <div>
             <NavBar/>
             <Banner
-                background={Constant.indexBannerImgPath}
-                slogan={Constant.indexSlogan}
-                subSlogan={Constant.indexSubSlogan}/>
+                background={Constant.resource.indexBannerImg}
+                slogan={Constant.text.indexSlogan}
+                subSlogan={Constant.text.indexSubSlogan}/>
         </div>
     );
 }

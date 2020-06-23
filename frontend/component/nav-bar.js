@@ -36,7 +36,7 @@ export default function() {
             color: Color.navBarText,
             marginLeft: '4px'
         },
-        loginBtnSpan: {
+       navBtnSpan: {
             marginLeft: '4px'
         },
         navBarDropdownItem: {
@@ -44,34 +44,28 @@ export default function() {
         }
     };
 
-    const onLoginBtnClicked = (e) => {
-        Logger.printDebug('btn', 'login btn clicked');
-        Router.jumpTo(Constant.loginRoute);
-    };
-
     const navBarDropdownMenu = (
         <Menu>
-            <Menu.Item style={style.navBarDropdownItem}>
-                <a href={Constant.loginRoute}>{Constant.loginBtnText}</a>
-            </Menu.Item>
-            <Menu.Item style={style.navBarDropdownItem}>
-                <a href={Constant.archivesRoute}>{Constant.archivesLinkText}</a>
-            </Menu.Item>
-            <Menu.Item style={style.navBarDropdownItem}>
-                <a href={Constant.tagsRoute}>{Constant.tagsLinkText}</a>
-            </Menu.Item>
-            <Menu.Item style={style.navBarDropdownItem}>
-                <a href={Constant.messagesRoute}>{Constant.messageLinkText}</a>
-            </Menu.Item>
-            <Menu.Item style={style.navBarDropdownItem}>
-                <a href={Constant.worksRoute}>{Constant.worksLinkText}</a>
-            </Menu.Item>
-            <Menu.Item style={style.navBarDropdownItem}>
-                <a href={Constant.friendsRoute}>{Constant.friendsLinkText}</a>
-            </Menu.Item>
-            <Menu.Item style={style.navBarDropdownItem}>
-                <a href={Constant.aboutRoute}>{Constant.aboutLinkText}</a>
-            </Menu.Item>
+            {Constant.other.navBtn.map((btn, key) => {
+                Logger.printDebug('map', `create nav btn ${key}-${btn.name}`);
+                return (
+                    <Menu.Item
+                        key={key}
+                        style={style.navBarDropdownItem}>
+                        <a href={btn.to}>{btn.name}</a>
+                    </Menu.Item>
+                );
+            })}
+            {Constant.other.navLink.map((link, key) => {
+                Logger.printDebug('map', `create btn link ${key}-${link.name}`);
+                return (
+                    <Menu.Item
+                        key={key}
+                        style={style.navBarDropdownItem}>
+                        <a href={link.to}>{link.name}</a>
+                    </Menu.Item>
+                );
+            })}
         </Menu>
     );
 
@@ -85,24 +79,35 @@ export default function() {
                          xs={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }}
                          lg={{ span: 4, offset: 0 }} xl={{ span: 4, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
                         <Row id={'logo'} style={style.logo}>
-                            <a href={Constant.indexRoute} style={style.logoLink}>{Constant.logoText}</a>
+                            <a href={Constant.route.index} style={style.logoLink}>{Constant.text.logo}</a>
                         </Row>
                     </Col>
                     <Col
                          xs={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 0 }} md={{ span: 20, offset: 0 }}
                          lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
                         <Row style={style.nav}>
-                            <a href={Constant.archivesRoute} style={style.navLink}>{Constant.archivesLinkText}</a>
-                            <a href={Constant.tagsRoute} style={style.navLink}>{Constant.tagsLinkText}</a>
-                            <a href={Constant.messagesRoute} style={style.navLink}>{Constant.messageLinkText}</a>
-                            <a href={Constant.worksRoute} style={style.navLink}>{Constant.worksLinkText}</a>
-                            <a href={Constant.friendsRoute} style={style.navLink}>{Constant.friendsLinkText}</a>
-                            <a href={Constant.aboutRoute} style={style.navLink}>{Constant.aboutLinkText}</a>
-                            <span style={style.loginBtnSpan}>
-                                <Button
-                                    type={'primary'} shape={'round'} onClick={onLoginBtnClicked}>
-                                    {Constant.loginBtnText}
-                                </Button>
+                            {Constant.other.navLink.map((link, key) => {
+                                Logger.printDebug('map', `create nav link ${key}-${link.name}`);
+                                return (
+                                    <a key={key} href={link.to} style={style.navLink}>{link.name}</a>
+                                );
+                            })}
+                            <span style={style.navBtnSpan}>
+                                {Constant.other.navBtn.map((btn, key) => {
+                                    Logger.printDebug('map', `create nav btn ${key}-${btn.name}`);
+                                    return (
+                                        <Button
+                                            key={key}
+                                            type={'primary'}
+                                            shape={'round'}
+                                            onClick={(e) => {
+                                                Logger.printDebug('btn', `btn ${btn.name} clicked`);
+                                                Router.jumpTo(btn.to);
+                                            }}>
+                                            {btn.name}
+                                        </Button>
+                                    );
+                                })}
                             </span>
                         </Row>
                     </Col>
@@ -111,7 +116,7 @@ export default function() {
                         lg={{ span: 0, offset: 0 }} xl={{ span: 0, offset: 0 }} xxl={{ span: 0, offset: 0 }}>
                         <Row style={style.nav}>
                             <Dropdown overlay={navBarDropdownMenu}>
-                                <a style={style.navLink}>{Constant.navBarDropdownText} <DownOutlined/></a>
+                                <a style={style.navLink}>{Constant.text.menu} <DownOutlined/></a>
                             </Dropdown>
                         </Row>
                     </Col>
