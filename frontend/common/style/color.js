@@ -4,5 +4,7 @@ export default {
 
     bannerSlogan: '#ffffff',
 
-    test: '#ff0000'
+    test: '#ff0000',
+    test2: '#00ff00',
+    test3: '#0000ff'
 };
