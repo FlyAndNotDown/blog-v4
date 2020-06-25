@@ -1,6 +1,7 @@
 import React from 'react';
 import Logger from '../../common/utils/logger';
 import Obj from '../../common/utils/obj';
+import Color from '../../common/style/color';
 
 export default function(props) {
     Logger.printDebug('props', `offset: ${props.offset}`);
@@ -9,6 +10,7 @@ export default function(props) {
 
     const style = {
         bodyAfterBanner: {
+            backgroundColor: Color.body,
             position: 'absolute',
             top: offset,
             width: '100%',
