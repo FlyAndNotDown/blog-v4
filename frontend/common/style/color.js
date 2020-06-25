@@ -7,6 +7,7 @@ export default {
     bannerSlogan: '#ffffff',
 
     postItemTitleText: '#000000',
+    postItemTitleTextHover: '#1890ff',
     postItemShadow: '#dddddd',
 
     test: '#ff0000',
