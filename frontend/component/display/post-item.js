@@ -6,6 +6,7 @@ import Font from '../../common/style/font';
 import Color from '../../common/style/color';
 
 export default function(props) {
+    const [hover, setHover] = useState(false);
     const [titleHover, setTitleHover] = useState(false);
 
     Logger.printDebug('props', `id: ${props.id}`);
@@ -23,10 +24,17 @@ export default function(props) {
     const style = {
         postItem: {
             margin: '10px',
-            backgroundColor: '#ffffff',
+            backgroundColor: Color.postItemBackground,
             padding: '25px',
+            borderRadius: '12px',
             boxShadow: `0px 5px 3px ${Color.postItemShadow}`,
-            borderRadius: '12px'
+        },
+        postItemHover: {
+            margin: '10px',
+            backgroundColor: Color.postItemBackground,
+            padding: '25px',
+            borderRadius: '12px',
+            boxShadow: `0px 6px 3px ${Color.postItemShadow}`,
         },
         titleRow: {
             fontSize: Font.fontSize.postItemTitle,
@@ -54,6 +62,16 @@ export default function(props) {
         }
     };
 
+    const onMouseEnter = () => {
+        Logger.printDebug('callback', 'mouse enter');
+        setHover(true);
+    };
+
+    const onMouseLeave = () => {
+        Logger.printDebug('callback', 'mouse leave');
+        setHover(false);
+    };
+
     const onMouseEnterTitle = () => {
         Logger.printDebug('callback', 'mouse enter title');
         setTitleHover(true);
@@ -65,7 +83,10 @@ export default function(props) {
     };
 
     return (
-        <div style={style.postItem}>
+        <div
+            style={hover ? style.postItemHover : style.postItem}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}>
             <div
                 style={style.titleRow}
                 onMouseEnter={onMouseEnterTitle}
