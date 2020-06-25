@@ -1,14 +1,17 @@
 import React from 'react';
-import Logger from '../common/utils/logger';
-import Color from '../common/style/color';
-import Font from '../common/style/font';
-import Obj from '../common/utils/obj';
+import Logger from '../../common/utils/logger';
+import Color from '../../common/style/color';
+import Font from '../../common/style/font';
+import Obj from '../../common/utils/obj';
 
 export default function(props) {
+    Logger.printDebug('props', `height: ${props.height}`);
     Logger.printDebug('props', `background: ${props.background}`);
     Logger.printDebug('props', `slogan: ${props.slogan}`);
     Logger.printDebug('props', `subSlogan: ${props.subSlogan}`);
 
+    const height = Obj.get(props.height, '60%');
+    const background = Obj.get(props.background, '');
     const slogan = Obj.get(props.slogan, '');
     const subSlogan = Obj.get(props.subSlogan, '');
 
@@ -18,10 +21,10 @@ export default function(props) {
             top: 0,
             left: 0,
             width: '100%',
-            height: '60%',
+            height: height,
             zIndex: -1,
             backgroundSize: 'cover',
-            backgroundImage: `url(${props.background})`
+            backgroundImage: `url(${background})`
         },
         sloganContainer: {
             position: 'relative',

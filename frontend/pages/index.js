@@ -1,9 +1,10 @@
 import React from 'react';
 import Constant from '../common/constant';
 import Color from '../common/style/color';
-import NavBar from '../component/nav-bar';
-import Banner from '../component/banner';
-import BodyAfterBanner from '../component/body-after-banner';
+import Align from '../common/style/align';
+import NavBar from '../component/nav/nav-bar';
+import Banner from '../component/display/banner';
+import BodyAfterBanner from '../component/container/body-after-banner';
 import { Col, Row } from 'antd';
 
 export default function() {
@@ -11,10 +12,11 @@ export default function() {
         <div>
             <NavBar/>
             <Banner
+                height={Align.bannerHeight}
                 background={Constant.resource.indexBannerImg}
                 slogan={Constant.text.indexSlogan}
                 subSlogan={Constant.text.indexSubSlogan}/>
-            <BodyAfterBanner>
+            <BodyAfterBanner offset={Align.bannerHeight}>
                 <Row>
                     <Col
                         style={{ backgroundColor: Color.test }}

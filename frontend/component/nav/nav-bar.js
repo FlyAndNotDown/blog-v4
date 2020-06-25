@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import Color from '../common/style/color';
-import Font from '../common/style/font';
-import Align from '../common/style/align';
+import Color from '../../common/style/color';
+import Font from '../../common/style/font';
+import Align from '../../common/style/align';
 import { Button, Row, Col, Dropdown, Menu, Affix } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import Constant from '../common/constant';
-import Logger from '../common/utils/logger';
-import '../common/style/global.css';
-import Router from '../common/utils/router';
+import Constant from '../../common/constant';
+import Logger from '../../common/utils/logger';
+import Router from '../../common/utils/router';
+import '../../common/style/global.css';
 
 export default function() {
     const [navBarAffixed, setNavBarAffixed] = useState(false);
