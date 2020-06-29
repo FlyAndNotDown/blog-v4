@@ -6,9 +6,6 @@ import Font from '../../common/style/font';
 import Color from '../../common/style/color';
 
 export default function(props) {
-    const [hover, setHover] = useState(false);
-    const [titleHover, setTitleHover] = useState(false);
-
     Logger.printDebug('props', `id: ${props.id}`);
     Logger.printDebug('props', `title: ${props.title}`);
     Logger.printDebug('props', `description: ${props.description}`);
@@ -20,6 +17,16 @@ export default function(props) {
     const description = Obj.get(props.description, '');
     const time = Obj.get(props.time, '');
     const tags = Obj.get(props.tags, []);
+
+    const defaultTagHovers = (() => {
+        const result = [];
+        tags.forEach(() => result.push(false));
+        return result;
+    })();
+
+    const [hover, setHover] = useState(false);
+    const [titleHover, setTitleHover] = useState(false);
+    const [tagHovers, setTagHovers] = useState(defaultTagHovers);
 
     const style = {
         postItem: {
@@ -59,6 +66,12 @@ export default function(props) {
         },
         tagSpan: {
             float: 'right',
+        },
+        tagLink: {
+            color: Color.postItemTagText
+        },
+        tagLinkHover: {
+            color: Color.postItemTagTextHover
         }
     };
 
@@ -105,7 +118,37 @@ export default function(props) {
                     {time}
                 </div>
                 <div style={style.tagSpan}>
-                    {tags.map((tag, key) => <span key={key}>{`#${tag} `}</span>)}
+                    {tags.map((tag, key) => {
+                        const onMouseEnterTag = () => {
+                            Logger.printDebug('callback', `mouse enter tag ${tag}`);
+                            setTagHovers(tagHoversOld => {
+                                const result = [];
+                                tagHoversOld.forEach(
+                                    (tagHover, index) => result.push(index === key ? true : tagHover));
+                                return result;
+                            });
+                        };
+
+                        const onMouseLeaveTag = () => {
+                            Logger.printDebug('callback', `mouse leave tag ${tag}`);
+                            setTagHovers(tagHoversOld => {
+                                const result = [];
+                                tagHoversOld.forEach(
+                                    (tagHover, index) => result.push(index === key ? false : tagHover));
+                                return result;
+                            });
+                        };
+
+                        return (
+                            <a
+                                key={key}
+                                onMouseEnter={onMouseEnterTag}
+                                onMouseLeave={onMouseLeaveTag}
+                                style={tagHovers[key] ? style.tagLinkHover : style.tagLink}>
+                                {`#${tag} `}
+                            </a>
+                        );
+                    })}
                 </div>
             </div>
         </div>
