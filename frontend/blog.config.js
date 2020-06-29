@@ -1,4 +1,7 @@
 export default {
     // Debug Mode
-    debugMode: true
+    debugMode: true,
+
+    // Mock Data
+    useMockData: true
 };

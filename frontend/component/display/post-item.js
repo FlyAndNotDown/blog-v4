@@ -30,14 +30,14 @@ export default function(props) {
 
     const style = {
         postItem: {
-            margin: '10px',
+            margin: '25px 5px',
             backgroundColor: Color.postItemBackground,
             padding: '25px',
             borderRadius: '12px',
             boxShadow: `0px 5px 3px ${Color.postItemShadow}`,
         },
         postItemHover: {
-            margin: '10px',
+            margin: '25px 5px',
             backgroundColor: Color.postItemBackground,
             padding: '25px',
             borderRadius: '12px',
