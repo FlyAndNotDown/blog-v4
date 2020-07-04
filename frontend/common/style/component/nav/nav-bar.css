@@ -1,0 +1,42 @@
+.nav-bar {
+    height: 64px
+}
+
+.affixed {
+    background-color: #171f26;
+}
+
+.nav-bar-container {
+    height: 100%;
+}
+
+.nav-bar-logo {
+    line-height: 64px;
+    font-size: 25px;
+    color: #ffffff;
+    float: left;
+}
+
+.nav-bar-nav {
+    line-height: 64px;
+    float: right;
+}
+
+.nav-bar-logo-link {
+    color: #ffffff;
+}
+
+.nav-bar-nav-link {
+    font-size: 15px;
+    color: #ffffff;
+    margin-left: 4px;
+}
+
+.nav-bar-btn-span {
+    margin-left: 4px;
+}
+
+.nav-bar-dropdown-item {
+    margin: 3px 5px;
+}
+
