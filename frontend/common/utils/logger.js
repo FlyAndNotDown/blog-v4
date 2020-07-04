@@ -1,21 +1,18 @@
-import Config from '../../blog.config';
+import { BlogConfig } from '../../blog.config';
 
-export default {
-    printDebug: printDebug,
-    printProduct: printProduct
-};
-
-function printDebug(tag, info) {
-    if (!Config.debugMode) {
-        return;
+export class Logger {
+    static printDebug(tag, info) {
+        if (!BlogConfig.debugMode) {
+            return;
+        }
+        Logger.printWithFormat(tag, info);
     }
-    printWithFormat(tag, info);
-}
 
-function printProduct(tag, info) {
-    printWithFormat(tag, info);
-}
+    static printProduct(tag, info) {
+        Logger.printWithFormat(tag, info);
+    }
 
-function printWithFormat(tag, info) {
-    console.log(`[${tag}]`, info);
+    static printWithFormat(tag, info) {
+        console.log(`[${tag}]`, info);
+    }
 }

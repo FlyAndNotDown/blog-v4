@@ -1,8 +1,10 @@
 import React from 'react';
-import NavBar from '../component/nav/nav-bar';
+import { NavBar } from '../component/nav/nav-bar';
 
-export default function() {
+function Tag() {
     return (
         <NavBar/>
     );
 }
+
+export default Tag;

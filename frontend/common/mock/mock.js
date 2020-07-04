@@ -1,5 +1,5 @@
 import indexMockData from './data/index';
 
-export default {
+export const MockData = {
     index: indexMockData
 };

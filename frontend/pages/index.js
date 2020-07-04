@@ -1,16 +1,15 @@
 import React from 'react';
 import Constant from '../common/constant';
-import NavBar from '../component/nav/nav-bar';
-import Banner from '../component/display/banner';
-import PostItem from '../component/display/post-item';
-import BodyAfterBanner from '../component/container/body-after-banner';
-import Obj from '../common/utils/obj';
-import MockData from '../common/mock/mock';
-import BlogConfig from '../blog.config';
+import { NavBar } from '../component/nav/nav-bar';
+import { Banner } from '../component/display/banner';
+import { PostItem } from '../component/display/post-item';
+import { BodyAfterBanner } from '../component/container/body-after-banner';
+import { MockData } from '../common/mock/mock';
+import { BlogConfig } from '../blog.config';
 import { Col, Row } from 'antd';
 
 function Index(props) {
-    const posts = Obj.get(props.posts, []);
+    const posts = props.posts || [];
 
     return (
         <div>

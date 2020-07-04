@@ -1,7 +1,5 @@
-export default {
-    jumpTo: jumpTo
-};
-
-function jumpTo(url) {
-    window.location.href = url;
+export class Router {
+    static jumpTo(url) {
+        window.location.href = url;
+    }
 }

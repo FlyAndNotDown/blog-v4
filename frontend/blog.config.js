@@ -1,4 +1,4 @@
-export default {
+export const BlogConfig = {
     // Debug Mode
     debugMode: true,
 

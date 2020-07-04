@@ -2,18 +2,17 @@ import React, { useState } from 'react';
 import { Button, Row, Col, Dropdown, Menu, Affix } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import Constant from '../../common/constant';
-import Logger from '../../common/utils/logger';
-import Router from '../../common/utils/router';
+import { Logger } from '../../common/utils/logger';
+import { Router } from '../../common/utils/router';
 import '../../common/style/global.css';
 import '../../common/style/component/nav/nav-bar.css';
 
-export default function() {
+export function NavBar() {
     const [navBarAffixed, setNavBarAffixed] = useState(false);
 
     const navBarDropdownMenu = (
         <Menu>
             {Constant.other.navBtn.map((btn, key) => {
-                Logger.printDebug('map', `create nav btn ${key}-${btn.name}`);
                 return (
                     <Menu.Item
                         key={key}
@@ -23,7 +22,6 @@ export default function() {
                 );
             })}
             {Constant.other.navLink.map((link, key) => {
-                Logger.printDebug('map', `create btn link ${key}-${link.name}`);
                 return (
                     <Menu.Item
                         key={key}
@@ -59,14 +57,12 @@ export default function() {
                             lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
                             <Row className={'nav-bar-nav'}>
                                 {Constant.other.navLink.map((link, key) => {
-                                    Logger.printDebug('map', `create nav link ${key}-${link.name}`);
                                     return (
                                         <a key={key} href={link.to} className={'nav-bar-nav-link'}>{link.name}</a>
                                     );
                                 })}
                                 <span className={'nav-bar-btn-span'}>
                                 {Constant.other.navBtn.map((btn, key) => {
-                                    Logger.printDebug('map', `create nav btn ${key}-${btn.name}`);
                                     return (
                                         <Button
                                             key={key}

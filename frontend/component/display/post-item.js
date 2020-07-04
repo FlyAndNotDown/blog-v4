@@ -1,20 +1,12 @@
-import Logger from '../../common/utils/logger';
-import Obj from '../../common/utils/obj';
 import Constant from '../../common/constant';
 import '../../common/style/component/display/post-item.css';
 
-export default function(props) {
-    Logger.printDebug('props', `id: ${props.id}`);
-    Logger.printDebug('props', `title: ${props.title}`);
-    Logger.printDebug('props', `description: ${props.description}`);
-    Logger.printDebug('props', `time: ${props.time}`);
-    Logger.printDebug('props', `tags: ${props.tags}`);
-
-    const id = Obj.get(props.id, '0');
-    const title = Obj.get(props.title, '');
-    const description = Obj.get(props.description, '');
-    const time = Obj.get(props.time, '');
-    const tags = Obj.get(props.tags, []);
+export function PostItem(props) {
+    const id = props.id || 0;
+    const title = props.title || '';
+    const description = props.description || '';
+    const time = props.time || '';
+    const tags = props.tags || [];
 
     return (
         <div className={'post-item'}>
