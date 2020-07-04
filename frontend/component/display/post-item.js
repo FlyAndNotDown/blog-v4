@@ -1,4 +1,4 @@
-import Constant from '../../common/constant';
+import { Constant } from '../../common/constant';
 import '../../common/style/component/display/post-item.css';
 
 export function PostItem(props) {

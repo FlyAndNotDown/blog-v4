@@ -1,3 +1,9 @@
+/**
+ * MockDataSource
+ * @description source of mock data
+ * @author John Kindem
+ * @since 2020-7-4
+ */
 export default {
     posts: [{
         title: 'MacOS 搭建 OpenGL 开发环境',

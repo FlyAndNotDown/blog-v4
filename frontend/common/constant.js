@@ -29,7 +29,13 @@ const resource = {
     indexBannerImg: '/img/index-bg.png'
 };
 
-export default {
+/**
+ * Constant
+ * @description global constant definition
+ * @author John Kindem
+ * @since 2020-7-4
+ */
+export const Constant = {
     route: route,
     text: text,
     resource: resource,

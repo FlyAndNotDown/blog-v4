@@ -1,5 +1,5 @@
 import React from 'react';
-import Constant from '../common/constant';
+import { Constant } from '../common/constant';
 import { NavBar } from '../component/nav/nav-bar';
 import { Banner } from '../component/display/banner';
 import { PostItem } from '../component/display/post-item';

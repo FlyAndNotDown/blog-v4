@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Row, Col, Dropdown, Menu, Affix } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import Constant from '../../common/constant';
+import { Constant } from '../../common/constant';
 import { Logger } from '../../common/utils/logger';
 import { Router } from '../../common/utils/router';
 import '../../common/style/global.css';
