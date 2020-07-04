@@ -22,11 +22,14 @@ const text = {
     menu: 'Menu',
 
     indexSlogan: '离开世界前，一切都是过程',
-    indexSubSlogan: 'Before your death, everything in process'
+    indexSubSlogan: 'Before your death, everything in process',
+
+    briefAvatarImgAlt: 'avatar'
 };
 
 const resource = {
-    indexBannerImg: '/img/index-bg.png'
+    indexBannerImg: '/img/index-bg.png',
+    avatarImg: '/img/avatar.jpg'
 };
 
 /**
