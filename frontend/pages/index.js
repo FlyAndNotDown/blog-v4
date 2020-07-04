@@ -1,6 +1,5 @@
 import React from 'react';
 import Constant from '../common/constant';
-import Align from '../common/style/align';
 import NavBar from '../component/nav/nav-bar';
 import Banner from '../component/display/banner';
 import PostItem from '../component/display/post-item';
@@ -17,11 +16,10 @@ function Index(props) {
         <div>
             <NavBar/>
             <Banner
-                height={Align.bannerHeight}
                 background={Constant.resource.indexBannerImg}
                 slogan={Constant.text.indexSlogan}
                 subSlogan={Constant.text.indexSubSlogan}/>
-            <BodyAfterBanner offset={Align.bannerHeight}>
+            <BodyAfterBanner>
                 <Row>
                     <Col
                         xs={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 0 }} md={{ span: 0, offset: 0 }}

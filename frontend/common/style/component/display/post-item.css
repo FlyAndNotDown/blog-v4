@@ -1,0 +1,46 @@
+.post-item {
+    margin: 25px 5px;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 3px #dddddd;
+}
+
+.post-item:hover {
+    margin: 25px 5px;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 3px #dddddd;
+}
+
+.post-item-title-row {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.post-item-title-link {
+    color: #000000;
+}
+
+.post-item-description-row {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.post-item-other-row {
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.post-item-time-span {
+    float: left;
+}
+
+.post-item-tag-span {
+    float: right;
+}
+
+.post-item-tag-link {
+    color: rgba(0, 0, 0, 0.65);
+}

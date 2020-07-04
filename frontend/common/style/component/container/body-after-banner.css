@@ -1,0 +1,7 @@
+.body-after-banner {
+    background-color: #f0f2f5;
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    min-height: 1000px;
+}

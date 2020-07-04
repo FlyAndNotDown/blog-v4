@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
 import Logger from '../../common/utils/logger';
 import Obj from '../../common/utils/obj';
 import Constant from '../../common/constant';
-import Font from '../../common/style/font';
-import Color from '../../common/style/color';
+import '../../common/style/component/display/post-item.css';
 
 export default function(props) {
     Logger.printDebug('props', `id: ${props.id}`);
@@ -18,137 +16,30 @@ export default function(props) {
     const time = Obj.get(props.time, '');
     const tags = Obj.get(props.tags, []);
 
-    const defaultTagHovers = (() => {
-        const result = [];
-        tags.forEach(() => result.push(false));
-        return result;
-    })();
-
-    const [hover, setHover] = useState(false);
-    const [titleHover, setTitleHover] = useState(false);
-    const [tagHovers, setTagHovers] = useState(defaultTagHovers);
-
-    const style = {
-        postItem: {
-            margin: '25px 5px',
-            backgroundColor: Color.postItemBackground,
-            padding: '25px',
-            borderRadius: '12px',
-            boxShadow: `0px 5px 3px ${Color.postItemShadow}`,
-        },
-        postItemHover: {
-            margin: '25px 5px',
-            backgroundColor: Color.postItemBackground,
-            padding: '25px',
-            borderRadius: '12px',
-            boxShadow: `0px 6px 3px ${Color.postItemShadow}`,
-        },
-        titleRow: {
-            fontSize: Font.fontSize.postItemTitle,
-            marginBottom: '5px'
-        },
-        titleLink: {
-            color: Color.postItemTitleText
-        },
-        titleLinkHover: {
-            color: Color.postItemTitleTextHover
-        },
-        descriptionRow: {
-            fontSize: Font.fontSize.postItemDescription,
-            marginBottom: '10px'
-        },
-        otherRow: {
-            fontSize: Font.fontSize.postItemOther,
-            marginBottom: '30px'
-        },
-        timeSpan: {
-            float: 'left',
-        },
-        tagSpan: {
-            float: 'right',
-        },
-        tagLink: {
-            color: Color.postItemTagText
-        },
-        tagLinkHover: {
-            color: Color.postItemTagTextHover
-        }
-    };
-
-    const onMouseEnter = () => {
-        Logger.printDebug('callback', 'mouse enter');
-        setHover(true);
-    };
-
-    const onMouseLeave = () => {
-        Logger.printDebug('callback', 'mouse leave');
-        setHover(false);
-    };
-
-    const onMouseEnterTitle = () => {
-        Logger.printDebug('callback', 'mouse enter title');
-        setTitleHover(true);
-    };
-
-    const onMouseLeaveTitle = () => {
-        Logger.printDebug('callback', 'mouse leave title');
-        setTitleHover(false);
-    };
-
     return (
-        <div
-            style={hover ? style.postItemHover : style.postItem}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}>
-            <div
-                style={style.titleRow}
-                onMouseEnter={onMouseEnterTitle}
-                onMouseLeave={onMouseLeaveTitle}>
+        <div className={'post-item'}>
+            <div className={'post-item-title-row'}>
                 <a
                     href={`${Constant.route.post}/${id}`}
-                    style={titleHover ? style.titleLinkHover : style.titleLink}>
+                    className={'post-item-title-link'}>
                     {title}
                 </a>
             </div>
-            <div style={style.descriptionRow}>
+            <div className={'post-item-description-row'}>
                 {description}
             </div>
-            <div style={style.otherRow}>
-                <div style={style.timeSpan}>
+            <div className={'post-item-other-row'}>
+                <div className={'post-item-time-span'}>
                     {time}
                 </div>
-                <div style={style.tagSpan}>
-                    {tags.map((tag, key) => {
-                        const onMouseEnterTag = () => {
-                            Logger.printDebug('callback', `mouse enter tag ${tag}`);
-                            setTagHovers(tagHoversOld => {
-                                const result = [];
-                                tagHoversOld.forEach(
-                                    (tagHover, index) => result.push(index === key ? true : tagHover));
-                                return result;
-                            });
-                        };
-
-                        const onMouseLeaveTag = () => {
-                            Logger.printDebug('callback', `mouse leave tag ${tag}`);
-                            setTagHovers(tagHoversOld => {
-                                const result = [];
-                                tagHoversOld.forEach(
-                                    (tagHover, index) => result.push(index === key ? false : tagHover));
-                                return result;
-                            });
-                        };
-
-                        return (
-                            <a
-                                key={key}
-                                onMouseEnter={onMouseEnterTag}
-                                onMouseLeave={onMouseLeaveTag}
-                                style={tagHovers[key] ? style.tagLinkHover : style.tagLink}>
-                                {`#${tag} `}
-                            </a>
-                        );
-                    })}
+                <div className={'post-item-tag-span'}>
+                    {tags.map((tag, key) => (
+                        <a
+                            key={key}
+                            className={'post-item-tag-link'}>
+                            {`#${tag} `}
+                        </a>
+                    ))}
                 </div>
             </div>
         </div>
