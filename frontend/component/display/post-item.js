@@ -1,6 +1,7 @@
 import React from 'react';
 import { Constant } from '../../common/constant';
 import '../../common/style/component/display/post-item.css';
+import ClockCircleOutlined from '@ant-design/icons/lib/icons/ClockCircleOutlined';
 
 export function PostItem(props) {
     const id = props.id || 0;
@@ -23,7 +24,13 @@ export function PostItem(props) {
             </div>
             <div className={'post-item-other-row'}>
                 <div className={'post-item-time-span'}>
-                    {time}
+                    <span>
+                        <ClockCircleOutlined/>
+                    </span>
+                    &nbsp;
+                    <span>
+                        {time}
+                    </span>
                 </div>
                 <div className={'post-item-tag-span'}>
                     {tags.map((tag, key) => (
