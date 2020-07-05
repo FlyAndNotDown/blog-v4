@@ -6,7 +6,7 @@ import { PostItem } from '../component/display/post-item';
 import { BodyAfterBanner } from '../component/container/body-after-banner';
 import { MockData } from '../common/mock/mock';
 import { BlogConfig } from '../blog.config';
-import { Col, Row } from 'antd';
+import { Col, Divider, Row } from 'antd';
 
 function Index(props) {
     const posts = props.posts || [];
@@ -24,12 +24,15 @@ function Index(props) {
                         xs={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 0 }} md={{ span: 0, offset: 0 }}
                         lg={{ span: 0, offset: 0 }} xl={{ span: 0, offset: 0 }} xxl={{ span: 10, offset: 7 }}>
                         {posts.map((post, key) => (
-                            <PostItem
-                                key={key}
-                                title={post.title}
-                                description={post.description}
-                                time={post.time}
-                                tags={post.tags}/>
+                            <div>
+                                <PostItem
+                                    key={key}
+                                    title={post.title}
+                                    description={post.description}
+                                    time={post.time}
+                                    tags={post.tags}/>
+                                <Divider/>
+                            </div>
                         ))}
                     </Col>
                 </Row>

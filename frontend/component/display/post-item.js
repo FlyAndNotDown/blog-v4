@@ -1,3 +1,4 @@
+import React from 'react';
 import { Constant } from '../../common/constant';
 import '../../common/style/component/display/post-item.css';
 

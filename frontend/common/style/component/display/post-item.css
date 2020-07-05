@@ -1,21 +1,8 @@
 .post-item {
     margin-left: 5px;
     margin-right: 5px;
-    margin-bottom: 25px;
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 3px #dddddd;
-}
-
-.post-item:hover {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 25px;
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 3px #dddddd;
+    margin-bottom: 20px;
+    padding: 20px;
 }
 
 .post-item-title-row {
@@ -34,7 +21,7 @@
 
 .post-item-other-row {
     font-size: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .post-item-time-span {
