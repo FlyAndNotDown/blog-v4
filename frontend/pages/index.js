@@ -21,8 +21,8 @@ function Index(props) {
             <BodyAfterBanner>
                 <Row>
                     <Col
-                        xs={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 0 }} md={{ span: 0, offset: 0 }}
-                        lg={{ span: 0, offset: 0 }} xl={{ span: 0, offset: 0 }} xxl={{ span: 10, offset: 7 }}>
+                        xs={{ span: 22, offset: 1 }} sm={{ span: 22, offset: 1 }} md={{ span: 20, offset: 2 }}
+                        lg={{ span: 18, offset: 3 }} xl={{ span: 16, offset: 4 }} xxl={{ span: 12, offset: 6 }}>
                         <PostList posts={posts}/>
                     </Col>
                 </Row>
