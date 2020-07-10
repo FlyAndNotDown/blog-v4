@@ -1,8 +1,24 @@
+@keyframes show-animation {
+    from { background-color: rgba(0, 0, 0, 0) }
+    to { background-color: #171f26 }
+}
+
+@keyframes gone-animation {
+    from { background-color: #171f26 }
+    to { background-color: rgba(0, 0, 0, 0) }
+}
+
 .nav-bar {
     height: 64px
 }
 
+.normal {
+    animation: gone-animation 1.5s;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .affixed {
+    animation: show-animation 1.5s;
     background-color: #171f26;
 }
 
