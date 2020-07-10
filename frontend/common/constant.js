@@ -24,7 +24,21 @@ const text = {
     indexSlogan: '离开世界前，一切都是过程',
     indexSubSlogan: 'Before your death, everything in process',
 
-    briefAvatarImgAlt: 'avatar'
+    briefAvatarImgAlt: 'avatar',
+
+    footerThemeTip: 'Theme By',
+    footerTheme: 'Deep-Dark',
+    footerThemeLink: 'https://github.com/FlyAndNotDown/blog-v4',
+    footerFrameworkTip: 'Framework by',
+    footerThanksFrontendFramework: 'And-Design',
+    footerThanksFrontendFrameworkLink: 'https://ant.design/index-cn',
+    footerThanksApplicationFramework: 'Next.js',
+    footerThanksApplicationFrameworkLink: 'https://nextjs.org/',
+    footerCopyRight: '©2017-2020 Copyright',
+    footerSite: 'kindem.xyz',
+    footerSiteLink: 'https://kindem.xyz/',
+    footerRecordation: '湘ICP备17018771号-1',
+    footerRecordationLink: 'http://beian.miit.gov.cn/'
 };
 
 const resource = {

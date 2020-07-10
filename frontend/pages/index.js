@@ -7,6 +7,7 @@ import { MockData } from '../common/mock/mock';
 import { BlogConfig } from '../blog.config';
 import { PostList } from '../component/display/post-list';
 import { Col, Row } from 'antd';
+import { Footer } from '../component/display/footer';
 
 function Index(props) {
     const posts = props.posts || [];
@@ -26,6 +27,7 @@ function Index(props) {
                         <PostList posts={posts}/>
                     </Col>
                 </Row>
+                <Footer/>
             </BodyAfterBanner>
         </div>
     );

@@ -1,0 +1,32 @@
+.footer {
+
+}
+
+.footer-content {
+    background-color: #353b48;
+}
+
+.footer-second {
+    background-color: #2f3640;
+}
+
+.footer-thanks-row {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #aaaaaa
+}
+
+.footer-copy-right-row{
+    margin-top: 5px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: #dddddd
+}
+
+.footer-second-link-second {
+    color: #aaaaaa;
+}
+
+.footer-second-link-primary {
+    color: #dddddd;
+}
