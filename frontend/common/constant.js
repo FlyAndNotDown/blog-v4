@@ -7,7 +7,8 @@ const route = {
     friend: '/friend',
     about: '/about',
     post: '/post',
-    login: '/user/login'
+    login: '/user/login',
+    pay: '/pay'
 };
 
 const text = {
@@ -50,7 +51,10 @@ const text = {
     footerSegmentFaultIconKey: 'k-sf',
     footerSegmentFaultIconLink: 'https://segmentfault.com/u/liuweimeng',
     footerJuejinIconKey: 'k-juejin',
-    footerJuejinIconLink: 'https://juejin.im/user/5b3a3d53f265da62d21e14fe'
+    footerJuejinIconLink: 'https://juejin.im/user/5b3a3d53f265da62d21e14fe',
+    footerContact: '联系站长',
+    footerContactMail: 'johnkindem@qq.com',
+    footerPay: '赞赏'
 };
 
 const resource = {
