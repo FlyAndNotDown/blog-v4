@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import { Constant } from '../../common/constant';
 import '../../common/style/component/display/footer.css';
+import { KIcon } from '../common/KIcon';
 
 export function Footer() {
     return (
@@ -10,7 +11,13 @@ export function Footer() {
                 <Col
                     xs={{ span: 22, offset: 1 }} sm={{ span: 22, offset: 1 }} md={{ span: 20, offset: 2 }}
                     lg={{ span: 18, offset: 3 }} xl={{ span: 16, offset: 4 }} xxl={{ span: 12, offset: 6 }}>
-                    <br/><br/><br/><br/><br/><br/>
+                    <div className={'footer-link-row'}>
+                        {Constant.other.footerIconLink.map((footerIcon, index) =>
+                            <a href={footerIcon.link}>
+                                <KIcon key={index} className={'footer-link-icon'} type={footerIcon.key}/>
+                            </a>
+                        )}
+                    </div>
                 </Col>
             </Row>
             <Row className={'footer-second'}>

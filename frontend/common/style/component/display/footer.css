@@ -6,6 +6,16 @@
     background-color: #353b48;
 }
 
+.footer-link-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-link-icon {
+    font-size: 40px;
+    margin-right: 15px;
+}
+
 .footer-second {
     background-color: #2f3640;
 }

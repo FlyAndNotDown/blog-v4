@@ -38,7 +38,19 @@ const text = {
     footerSite: 'kindem.xyz',
     footerSiteLink: 'https://kindem.xyz/',
     footerRecordation: '湘ICP备17018771号-1',
-    footerRecordationLink: 'http://beian.miit.gov.cn/'
+    footerRecordationLink: 'http://beian.miit.gov.cn/',
+    footerGithubIconKey: 'k-github',
+    footerGithubIconLink: 'https://github.com/FlyAndNotDown',
+    footerNpmIconKey: 'k-npm',
+    footerNpmIconLink: 'https://www.npmjs.com/~kindem',
+    footerJianshuIconKey: 'k-jianshu',
+    footerJianshuIconLink: 'https://www.jianshu.com/u/d498ebae7b21',
+    footerZhihuIconKey: 'k-zhihu',
+    footerZhihuIconLink: 'https://www.zhihu.com/people/kindem',
+    footerSegmentFaultIconKey: 'k-sf',
+    footerSegmentFaultIconLink: 'https://segmentfault.com/u/liuweimeng',
+    footerJuejinIconKey: 'k-juejin',
+    footerJuejinIconLink: 'https://juejin.im/user/5b3a3d53f265da62d21e14fe'
 };
 
 const resource = {
@@ -79,6 +91,25 @@ export const Constant = {
         navBtn: [{
             name: text.login,
             to: route.login
+        }],
+        footerIconLink: [{
+            key: text.footerGithubIconKey,
+            link: text.footerGithubIconLink
+        }, {
+            key: text.footerNpmIconKey,
+            link: text.footerNpmIconLink
+        }, {
+            key: text.footerJianshuIconKey,
+            link: text.footerJianshuIconLink
+        }, {
+            key: text.footerZhihuIconKey,
+            link: text.footerZhihuIconLink
+        }, {
+            key: text.footerSegmentFaultIconKey,
+            link: text.footerSegmentFaultIconLink
+        }, {
+            key: text.footerJuejinIconKey,
+            link: text.footerJuejinIconLink
         }]
     }
 };
