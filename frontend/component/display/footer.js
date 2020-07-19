@@ -4,7 +4,9 @@ import { Constant } from '../../common/constant';
 import '../../common/style/component/display/footer.css';
 import { KIcon } from '../common/KIcon';
 
-export function Footer() {
+export function Footer(props) {
+    const friends = props.friends || [];
+
     return (
         <div className={'footer'}>
             <Row className={'footer-content'}>
@@ -13,8 +15,15 @@ export function Footer() {
                     lg={{ span: 18, offset: 3 }} xl={{ span: 16, offset: 4 }} xxl={{ span: 12, offset: 6 }}>
                     <div className={'footer-link-row'}>
                         {Constant.other.footerIconLink.map((footerIcon, index) =>
-                            <a href={footerIcon.link}>
-                                <KIcon key={index} className={'footer-link-icon'} type={footerIcon.key}/>
+                            <a href={footerIcon.link} key={index}>
+                                <KIcon className={'footer-link-icon'} type={footerIcon.key}/>
+                            </a>
+                        )}
+                    </div>
+                    <div className={'footer-friends-row'}>
+                        {friends.map((friend, index) =>
+                            <a className={'footer-friends-link'} href={friend.to} key={index}>
+                                {friend.name}
                             </a>
                         )}
                     </div>

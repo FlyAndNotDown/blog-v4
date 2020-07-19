@@ -11,6 +11,8 @@ import { Footer } from '../component/display/footer';
 
 function Index(props) {
     const posts = props.posts || [];
+    const common = props.common || {};
+    const friends = common.friends || [];
 
     return (
         <div>
@@ -27,7 +29,7 @@ function Index(props) {
                         <PostList posts={posts}/>
                     </Col>
                 </Row>
-                <Footer/>
+                <Footer friends={friends}/>
             </BodyAfterBanner>
         </div>
     );

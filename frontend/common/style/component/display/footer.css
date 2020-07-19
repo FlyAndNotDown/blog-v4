@@ -8,7 +8,16 @@
 
 .footer-link-row {
     margin-top: 20px;
+}
+
+.footer-friends-row {
+    margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.footer-friends-link {
+    color: white;
+    margin-right: 5px;
 }
 
 .footer-link-icon {
