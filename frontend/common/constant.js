@@ -8,7 +8,8 @@ const route = {
     about: '/about',
     post: '/post',
     login: '/user/login',
-    pay: '/pay'
+    pay: '/pay',
+    ad: '/ad'
 };
 
 const text = {
@@ -54,7 +55,9 @@ const text = {
     footerJuejinIconLink: 'https://juejin.im/user/5b3a3d53f265da62d21e14fe',
     footerContact: '联系站长',
     footerContactMail: 'johnkindem@qq.com',
-    footerPay: '赞赏'
+    footerPay: '赞赏',
+    footerAdvertisement: '广告合作',
+    footerGetFriend: '交换友链'
 };
 
 const resource = {
@@ -85,9 +88,6 @@ export const Constant = {
         }, {
             name: text.work,
             to: route.work
-        }, {
-            name: text.friend,
-            to: route.friend
         }, {
             name: text.about,
             to: route.about

@@ -32,6 +32,14 @@ export function Footer() {
                         <a href={Constant.route.pay} className={'footer-second-link-second'}>
                             {Constant.text.footerPay}
                         </a>
+                        &nbsp;/&nbsp;
+                        <a href={Constant.route.ad} className={'footer-second-link-second'}>
+                            {Constant.text.footerAdvertisement}
+                        </a>
+                        &nbsp;/&nbsp;
+                        <a href={Constant.route.friend} className={'footer-second-link-second'}>
+                            {Constant.text.footerGetFriend}
+                        </a>
                     </div>
                     <div className={'footer-thanks-row'}>
                         {Constant.text.footerThemeTip}&nbsp;
