@@ -27,6 +27,7 @@ const text = {
     indexSubSlogan: 'Before your death, everything in process',
 
     briefAvatarImgAlt: 'avatar',
+    iconImgAlt: 'icon',
 
     footerThemeTip: 'Theme By',
     footerTheme: 'Deep-Dark',
@@ -62,7 +63,8 @@ const text = {
 
 const resource = {
     indexBannerImg: '/img/index-bg.png',
-    avatarImg: '/img/avatar.jpg'
+    avatarImg: '/img/avatar.jpg',
+    iconImg: '/img/icon.png'
 };
 
 /**

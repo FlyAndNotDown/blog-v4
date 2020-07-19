@@ -1,0 +1,11 @@
+.login-form {
+    background-color: #f6f6f6;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.login-form-title-row {
+    font-size: 20px;
+    font-weight: bold;
+    color: #444444;
+}
