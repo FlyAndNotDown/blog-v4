@@ -6,7 +6,7 @@
 .login-container {
     width: 100%;
     height: 100%;
-    background-color: #57606f;
+    background-color: #353b48;
 }
 
 .login-col {
@@ -16,5 +16,5 @@
 .login-form-container {
     position: relative;
     width: 100%;
-    top: 40%;
+    top: 30%;
 }
