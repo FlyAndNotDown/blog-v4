@@ -63,7 +63,6 @@ const text = {
 
 const resource = {
     indexBannerImg: '/img/index-bg.png',
-    indexSymbolsImg: '/img/index-symbols.png',
     avatarImg: '/img/avatar.jpg',
     iconImg: '/img/icon.png'
 };

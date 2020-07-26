@@ -21,8 +21,7 @@ function Index(props) {
                 background={Constant.resource.indexBannerImg}
                 slogan={Constant.text.indexSlogan}
                 subSlogan={Constant.text.indexSubSlogan}/>
-            <BodyAfterBanner
-                background={Constant.resource.indexSymbolsImg}>
+            <BodyAfterBanner>
                 <Row>
                     <Col
                         xs={{ span: 22, offset: 1 }} sm={{ span: 22, offset: 1 }} md={{ span: 20, offset: 2 }}
