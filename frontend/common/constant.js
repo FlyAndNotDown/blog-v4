@@ -58,7 +58,10 @@ const text = {
     footerContactMail: 'johnkindem@qq.com',
     footerPay: '赞赏',
     footerAdvertisement: '广告合作',
-    footerGetFriend: '交换友链'
+    footerGetFriend: '交换友链',
+
+    loginFormLoginTitle: '登录',
+    loginFormRegisterTitle: '注册'
 };
 
 const resource = {

@@ -1,11 +1,39 @@
 .login-form {
-    background-color: #f6f6f6;
-    padding: 10px 20px;
-    border-radius: 10px;
+    background-color: white;
 }
 
 .login-form-title-row {
-    font-size: 20px;
+    background-color: #171f26;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+}
+
+.login-form-icon-span {
+    vertical-align: middle;
+}
+
+.login-form-icon-image {
+    height: 50px;
+}
+
+.login-form-title-span {
+    color: white;
+    font-size: 30px;
     font-weight: bold;
-    color: #444444;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.login-form-username-row {
+    padding: 15px;
+}
+
+.login-form-password-row {
+    padding: 0 15px 15px 15px;
+}
+
+.login-form-action-row {
+    background-color: #e6e6e6;
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
 }
