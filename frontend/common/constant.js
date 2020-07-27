@@ -63,6 +63,7 @@ const text = {
     loginFormLoginTitle: '登录',
     loginFormRegisterTitle: '注册',
     loginFormLoginBtnContent: '即刻登录',
+    loginFormRegisterBtnContent: '即刻注册',
     loginFormSwitchToRegisterBtnContent: '注册',
     loginFormSwitchToLoginBtnContent: '登录',
     loginFormForgetBtnContent: '忘记密码'
