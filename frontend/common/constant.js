@@ -61,7 +61,11 @@ const text = {
     footerGetFriend: '交换友链',
 
     loginFormLoginTitle: '登录',
-    loginFormRegisterTitle: '注册'
+    loginFormRegisterTitle: '注册',
+    loginFormLoginBtnContent: '即刻登录',
+    loginFormSwitchToRegisterBtnContent: '注册',
+    loginFormSwitchToLoginBtnContent: '登录',
+    loginFormForgetBtnContent: '忘记密码'
 };
 
 const resource = {
