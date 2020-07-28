@@ -12,28 +12,35 @@ export function LoginForm(props) {
     const onRegister = props.onRegister;
 
     const [isLoginMode, setLoginMode] = useState(true);
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [repeat, setRepeat] = useState("");
 
     const onSwitchBtnClicked = () => {
         setLoginMode(!isLoginMode);
     };
 
-    const onUsernameChanged = (e) => {
-        setUsername(e.target.value);
+    const onEmailChanged = (e) => {
+        setEmail(e.target.value);
     };
 
     const onPasswordChanged = (e) => {
         setPassword(e.target.value);
     };
 
+    const onRepeatChanged = (e) => {
+        setRepeat(e.target.value);
+    };
+
     const onLoginInternal = () => {
-        onLogin(username, sha512().update(password).digest('hex'));
+        const passwordHash = sha512().update(password).digest('hex');
+        onLogin(email, passwordHash);
     };
 
     const onRegisterInternal = () => {
-        // TODO add more info
-        onRegister(username, sha512().update(password).digest('hex'));
+        const passwordHash = sha512().update(password).digest('hex');
+        const repeatHash = sha512().update(repeat).digest('hex');
+        onRegister(email, passwordHash, repeatHash);
     };
 
     return (
@@ -52,20 +59,31 @@ export function LoginForm(props) {
                             Constant.text.loginFormRegisterTitle}
                     </span>
                 </div>
-                <div className={'login-form-username-row'}>
+                <div className={'login-form-email-row'}>
                     <Input
                         size={'large'}
                         prefix={<UserOutlined/>}
-                        value={username}
-                        onChange={onUsernameChanged}/>
+                        placeholder={Constant.text.loginFormEmailPlaceholder}
+                        value={email}
+                        onChange={onEmailChanged}/>
                 </div>
                 <div className={'login-form-password-row'}>
                     <Input
                         size={'large'}
                         type={'password'}
                         prefix={<KeyOutlined/>}
+                        placeholder={Constant.text.loginFormPasswordPlaceholder}
                         value={password}
                         onChange={onPasswordChanged}/>
+                </div>
+                <div className={'login-form-repeat-row'}>
+                    <Input
+                        size={'large'}
+                        type={'password'}
+                        prefix={<KeyOutlined/>}
+                        placeholder={Constant.text.loginFormRepeatPlaceholder}
+                        value={repeat}
+                        onChange={onRepeatChanged}/>
                 </div>
                 <div className={'login-form-action-row'}>
                     <Button

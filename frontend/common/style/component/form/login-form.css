@@ -24,12 +24,17 @@
     vertical-align: middle;
 }
 
-.login-form-username-row {
+.login-form-email-row {
     background-color: white;
     padding: 15px;
 }
 
 .login-form-password-row {
+    background-color: white;
+    padding: 0 15px 15px 15px;
+}
+
+.login-form-repeat-row {
     background-color: white;
     padding: 0 15px 15px 15px;
 }

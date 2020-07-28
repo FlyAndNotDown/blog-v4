@@ -66,7 +66,10 @@ const text = {
     loginFormRegisterBtnContent: '即刻注册',
     loginFormSwitchToRegisterBtnContent: '注册',
     loginFormSwitchToLoginBtnContent: '登录',
-    loginFormForgetBtnContent: '忘记密码'
+    loginFormForgetBtnContent: '忘记密码',
+    loginFormEmailPlaceholder: '邮箱',
+    loginFormPasswordPlaceholder: '密码',
+    loginFormRepeatPlaceholder: '重复密码'
 };
 
 const resource = {
