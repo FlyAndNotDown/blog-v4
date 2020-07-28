@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '../../common/style/component/form/login-form.css';
 import { Button, Row, Col, Input } from 'antd';
 import { Constant } from "../../common/constant";
-import { UserOutlined, KeyOutlined, LoginOutlined } from '@ant-design/icons';
+import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import { sha512 } from 'hash.js';
 
 // TODO third part login
 export function LoginForm(props) {
@@ -27,7 +28,12 @@ export function LoginForm(props) {
     };
 
     const onLoginInternal = () => {
-        onLogin(username, password);
+        onLogin(username, sha512().update(password).digest('hex'));
+    };
+
+    const onRegisterInternal = () => {
+        // TODO add more info
+        onRegister(username, sha512().update(password).digest('hex'));
     };
 
     return (
@@ -63,12 +69,14 @@ export function LoginForm(props) {
                 </div>
                 <div className={'login-form-action-row'}>
                     <Button
-                        onClick={onLoginInternal}
+                        onClick={isLoginMode ? onLoginInternal : onRegisterInternal}
                         size={'large'}
                         shape={'round'}
                         type={'primary'}
-                        icon={<LoginOutlined/>}>
-                        {Constant.text.loginFormLoginBtnContent}
+                        icon={isLoginMode ? <LoginOutlined/> : <ThunderboltOutlined/>}>
+                        {isLoginMode ?
+                            Constant.text.loginFormLoginBtnContent :
+                            Constant.text.loginFormRegisterBtnContent}
                     </Button>
                     <Button
                         onClick={onSwitchBtnClicked}
