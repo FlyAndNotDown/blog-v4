@@ -4,6 +4,7 @@ import { Button, Row, Col, Input } from 'antd';
 import { Constant } from "../../common/constant";
 import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import { sha512 } from 'hash.js';
+import { KIcon } from '../common/KIcon';
 
 // TODO third part login
 export function LoginForm(props) {
@@ -23,7 +24,6 @@ export function LoginForm(props) {
     };
 
     const onPasswordChanged = (e) => {
-        // TODO save hash value
         setPassword(e.target.value);
     };
 
