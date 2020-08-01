@@ -88,6 +88,7 @@ const resource = {
 export const Constant = {
     route: route,
     text: text,
+    iconSource: '//at.alicdn.com/t/font_849519_35kgv6mtda7.js',
     resource: resource,
     other: {
         navLink: [{

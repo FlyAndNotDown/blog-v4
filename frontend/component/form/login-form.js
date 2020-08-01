@@ -27,7 +27,6 @@ export function LoginForm(props) {
         const passwordHash = sha512().update(password).digest('hex');
         onLogin(email, passwordHash);
     };
-
     const onRegisterInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
         const repeatHash = sha512().update(repeat).digest('hex');
