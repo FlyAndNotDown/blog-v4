@@ -69,7 +69,8 @@ const text = {
     loginFormForgetBtnContent: '忘记密码',
     loginFormEmailPlaceholder: '邮箱',
     loginFormPasswordPlaceholder: '密码',
-    loginFormRepeatPlaceholder: '重复密码'
+    loginFormRepeatPlaceholder: '重复密码',
+    loginFormValidationCodePlaceHolder: '验证码'
 };
 
 const resource = {

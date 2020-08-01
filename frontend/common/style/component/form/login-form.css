@@ -39,6 +39,11 @@
     padding: 0 15px 15px 15px;
 }
 
+.login-form-validation-row {
+    background-color: white;
+    padding: 0 15px 15px 15px;
+}
+
 .login-form-action-row {
     background-color: #e6e6e6;
     border-radius: 0 0 10px 10px;

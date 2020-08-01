@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../common/style/component/form/login-form.css';
 import { Button, Row, Col, Input } from 'antd';
 import { Constant } from "../../common/constant";
-import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined } from '@ant-design/icons';
 import { sha512 } from 'hash.js';
 import { KIcon } from '../common/KIcon';
 
@@ -15,22 +15,13 @@ export function LoginForm(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeat, setRepeat] = useState("");
+    const [validationCode, setValidationCode] = useState("");
 
-    const onSwitchBtnClicked = () => {
-        setLoginMode(!isLoginMode);
-    };
-
-    const onEmailChanged = (e) => {
-        setEmail(e.target.value);
-    };
-
-    const onPasswordChanged = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const onRepeatChanged = (e) => {
-        setRepeat(e.target.value);
-    };
+    const onSwitchBtnClicked = () => { setLoginMode(!isLoginMode); };
+    const onEmailChanged = (e) => { setEmail(e.target.value); };
+    const onPasswordChanged = (e) => { setPassword(e.target.value); };
+    const onRepeatChanged = (e) => { setRepeat(e.target.value); };
+    const onValidationCodeChanged = (e) => { setValidationCode(e.target.value); };
 
     const onLoginInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
@@ -76,15 +67,27 @@ export function LoginForm(props) {
                         value={password}
                         onChange={onPasswordChanged}/>
                 </div>
-                <div className={'login-form-repeat-row'}>
-                    <Input
-                        size={'large'}
-                        type={'password'}
-                        prefix={<KeyOutlined/>}
-                        placeholder={Constant.text.loginFormRepeatPlaceholder}
-                        value={repeat}
-                        onChange={onRepeatChanged}/>
-                </div>
+                {!isLoginMode && (
+                    <div className={'login-form-repeat-row'}>
+                        <Input
+                            size={'large'}
+                            type={'password'}
+                            prefix={<KeyOutlined/>}
+                            placeholder={Constant.text.loginFormRepeatPlaceholder}
+                            value={repeat}
+                            onChange={onRepeatChanged}/>
+                    </div>
+                )}
+                {!isLoginMode && (
+                    <div className={'login-form-validation-row'}>
+                        <Input
+                            size={'large'}
+                            prefix={<QrcodeOutlined/>}
+                            placeholder={Constant.text.loginFormValidationCodePlaceHolder}
+                            value={validationCode}
+                            onChange={onValidationCodeChanged}/>
+                    </div>
+                )}
                 <div className={'login-form-action-row'}>
                     <Button
                         onClick={isLoginMode ? onLoginInternal : onRegisterInternal}
