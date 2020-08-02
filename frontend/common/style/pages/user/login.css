@@ -18,3 +18,9 @@
     width: 100%;
     top: 30%;
 }
+
+.login-form-register-container {
+    position: relative;
+    width: 100%;
+    top: 25%;
+}

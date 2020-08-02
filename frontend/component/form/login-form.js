@@ -10,6 +10,7 @@ import { KIcon } from '../common/KIcon';
 export function LoginForm(props) {
     const onLogin = props.onLogin;
     const onRegister = props.onRegister;
+    const onModeChange = props.onModeChange;
 
     const [isLoginMode, setLoginMode] = useState(true);
     const [email, setEmail] = useState("");
@@ -17,7 +18,12 @@ export function LoginForm(props) {
     const [repeat, setRepeat] = useState("");
     const [validationCode, setValidationCode] = useState("");
 
-    const onSwitchBtnClicked = () => { setLoginMode(!isLoginMode); };
+    const setLoginModeAndNotifyOutside = (value) => {
+        setLoginMode(value);
+        onModeChange(value);
+    };
+
+    const onSwitchBtnClicked = () => { setLoginModeAndNotifyOutside(!isLoginMode); };
     const onEmailChanged = (e) => { setEmail(e.target.value); };
     const onPasswordChanged = (e) => { setPassword(e.target.value); };
     const onRepeatChanged = (e) => { setRepeat(e.target.value); };
