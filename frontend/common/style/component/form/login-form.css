@@ -44,6 +44,10 @@
     padding: 0 15px 15px 15px;
 }
 
+.login-form-fetch-validation-code-link {
+    color: black;
+}
+
 .login-form-action-row {
     background-color: #e6e6e6;
     border-radius: 0 0 10px 10px;

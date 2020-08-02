@@ -4,19 +4,22 @@ import { Button, Row, Col, Input } from 'antd';
 import { Constant } from "../../common/constant";
 import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined } from '@ant-design/icons';
 import { sha512 } from 'hash.js';
-import { KIcon } from '../common/KIcon';
+import { UIKit } from '../../common/utils/ui';
+import { Logger } from '../../common/utils/logger';
 
 // TODO third part login
 export function LoginForm(props) {
-    const onLogin = props.onLogin;
-    const onRegister = props.onRegister;
-    const onModeChange = props.onModeChange;
+    const onLogin = props.onLogin || (() => {});
+    const onRegister = props.onRegister || (() => {});
+    const onModeChange = props.onModeChange || (() => {});
+    const onFetchValidationCode = props.onFetchValidationCode || (() => {});
 
     const [isLoginMode, setLoginMode] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeat, setRepeat] = useState("");
     const [validationCode, setValidationCode] = useState("");
+    const [validationCodeTime, setValidationCodeTime] = useState(-1);
 
     const setLoginModeAndNotifyOutside = (value) => {
         setLoginMode(value);
@@ -38,6 +41,15 @@ export function LoginForm(props) {
         const repeatHash = sha512().update(repeat).digest('hex');
         onRegister(email, passwordHash, repeatHash);
     };
+    const onFetchValidationCodeBtnClicked = () => {
+        Logger.printDebug('btn', `btn ${Constant.id.fetchValidationCodeBtn} clicked`);
+        onFetchValidationCode();
+    };
+    const onFetchValidationCodeTimeRefresh = (value) => {
+        Logger.printDebug('time', `value: ${value}`);
+        setValidationCodeTime(value === 0 ? -1 : value);
+    };
+
 
     return (
         <Row className={'login-form'}>
@@ -90,6 +102,21 @@ export function LoginForm(props) {
                             prefix={<QrcodeOutlined/>}
                             placeholder={Constant.text.loginFormValidationCodePlaceHolder}
                             value={validationCode}
+                            addonAfter={
+                                <a className={'login-form-fetch-validation-code-link'}
+                                    onClick={() => {
+                                    UIKit.preventDoubleClick(
+                                        Constant.id.fetchValidationCodeBtn,
+                                        Constant.time.fetchValidationCodeTime,
+                                        () => { onFetchValidationCodeBtnClicked(); },
+                                        (time) => { onFetchValidationCodeTimeRefresh(time); });
+                                }}>
+                                    {validationCodeTime === -1 ?
+                                        Constant.text.loginFormFetchValidationCode :
+                                        validationCodeTime
+                                    }
+                                </a>
+                            }
                             onChange={onValidationCodeChanged}/>
                     </div>
                 )}

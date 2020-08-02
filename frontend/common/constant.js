@@ -70,13 +70,22 @@ const text = {
     loginFormEmailPlaceholder: '邮箱',
     loginFormPasswordPlaceholder: '密码',
     loginFormRepeatPlaceholder: '重复密码',
-    loginFormValidationCodePlaceHolder: '验证码'
+    loginFormValidationCodePlaceHolder: '邮箱验证码',
+    loginFormFetchValidationCode: '获取'
 };
 
 const resource = {
     indexBannerImg: '/img/index-bg.png',
     avatarImg: '/img/avatar.jpg',
     iconImg: '/img/icon.png'
+};
+
+const id = {
+    fetchValidationCodeBtn: 'fetchValidationCodeBtn'
+};
+
+const time = {
+    fetchValidationCodeTime: 60
 };
 
 /**
@@ -90,6 +99,8 @@ export const Constant = {
     text: text,
     iconSource: '//at.alicdn.com/t/font_849519_35kgv6mtda7.js',
     resource: resource,
+    id: id,
+    time: time,
     other: {
         navLink: [{
             name: text.archive,

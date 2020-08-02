@@ -18,7 +18,8 @@ function UserLogin() {
                     <LoginForm
                         onModeChange={onLoginModeChanged}
                         onLogin={() => {}}
-                        onRegister={() => {}}/>
+                        onRegister={() => {}}
+                        onFetchValidationCode={() => {}}/>
                 </div>
             </Col>
         </Row>
