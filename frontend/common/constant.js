@@ -90,7 +90,8 @@ const icon = {
 const resource = {
     indexBannerImg: '/img/index-bg.png',
     avatarImg: '/img/avatar.jpg',
-    iconImg: '/img/icon.png'
+    iconImg: '/img/icon.png',
+    iconPureImg: '/img/icon-pure.png'
 };
 
 const id = {

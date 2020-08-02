@@ -51,7 +51,12 @@ export function NavBar() {
                             xs={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }}
                             lg={{ span: 4, offset: 0 }} xl={{ span: 4, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
                             <Row id={'logo'} className={'nav-bar-logo'}>
-                                <a href={Constant.route.index} className={'nav-bar-logo-link'}>{Constant.text.logo}</a>
+                                <a href={Constant.route.index} className={'nav-bar-logo-link'}>
+                                    <img
+                                        className={'nav-bar-login-img'}
+                                        src={Constant.resource.iconPureImg}
+                                        alt={Constant.text.logo}/>
+                                </a>
                             </Row>
                         </Col>
                         <Col
