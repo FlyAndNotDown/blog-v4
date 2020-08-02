@@ -62,3 +62,14 @@
 .login-form-forget-btn {
     color: black;
 }
+
+.login-form-oauth-row {
+    margin: 20px;
+    text-align: center;
+}
+
+.login-form-oauth-icon {
+    font-size: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

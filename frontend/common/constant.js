@@ -9,7 +9,20 @@ const route = {
     post: '/post',
     login: '/user/login',
     pay: '/pay',
-    ad: '/ad'
+    ad: '/ad',
+
+    site: 'https://kindem.xyz/',
+    recordation: 'http://beian.miit.gov.cn/',
+    github: 'https://github.com/FlyAndNotDown',
+    npm: 'https://www.npmjs.com/~kindem',
+    jianshu: 'https://www.jianshu.com/u/d498ebae7b21',
+    zhihu: 'https://www.zhihu.com/people/kindem',
+    sf: 'https://segmentfault.com/u/liuweimeng',
+    juejin: 'https://juejin.im/user/5b3a3d53f265da62d21e14fe',
+
+    blogTheme: 'https://github.com/FlyAndNotDown/blog-v4',
+    blogFramework: 'https://nextjs.org/',
+    blogFrontendFramework: 'https://ant.design/index-cn',
 };
 
 const text = {
@@ -31,29 +44,12 @@ const text = {
 
     footerThemeTip: 'Theme By',
     footerTheme: 'Deep-Dark',
-    footerThemeLink: 'https://github.com/FlyAndNotDown/blog-v4',
     footerFrameworkTip: 'Framework by',
     footerThanksFrontendFramework: 'And-Design',
-    footerThanksFrontendFrameworkLink: 'https://ant.design/index-cn',
     footerThanksApplicationFramework: 'Next.js',
-    footerThanksApplicationFrameworkLink: 'https://nextjs.org/',
     footerCopyRight: '©2017-2020 Copyright',
     footerSite: 'kindem.xyz',
-    footerSiteLink: 'https://kindem.xyz/',
     footerRecordation: '湘ICP备17018771号-1',
-    footerRecordationLink: 'http://beian.miit.gov.cn/',
-    footerGithubIconKey: 'k-github',
-    footerGithubIconLink: 'https://github.com/FlyAndNotDown',
-    footerNpmIconKey: 'k-npm',
-    footerNpmIconLink: 'https://www.npmjs.com/~kindem',
-    footerJianshuIconKey: 'k-jianshu',
-    footerJianshuIconLink: 'https://www.jianshu.com/u/d498ebae7b21',
-    footerZhihuIconKey: 'k-zhihu',
-    footerZhihuIconLink: 'https://www.zhihu.com/people/kindem',
-    footerSegmentFaultIconKey: 'k-sf',
-    footerSegmentFaultIconLink: 'https://segmentfault.com/u/liuweimeng',
-    footerJuejinIconKey: 'k-juejin',
-    footerJuejinIconLink: 'https://juejin.im/user/5b3a3d53f265da62d21e14fe',
     footerContact: '联系站长',
     footerContactMail: 'johnkindem@qq.com',
     footerPay: '赞赏',
@@ -74,6 +70,20 @@ const text = {
     loginFormFetchValidationCode: '获取'
 };
 
+const icon = {
+    source: '//at.alicdn.com/t/font_849519_l662brlemx.js',
+    key: {
+        github: 'k-github',
+        npm: 'k-npm',
+        jianshu: 'k-jianshu',
+        zhihu: 'k-zhihu',
+        sf: 'k-sf',
+        juejin: 'k-juejin',
+        githubDark: 'k-github-dark',
+        qqDark: 'k-qq-dark'
+    }
+};
+
 const resource = {
     indexBannerImg: '/img/index-bg.png',
     avatarImg: '/img/avatar.jpg',
@@ -88,6 +98,48 @@ const time = {
     fetchValidationCodeTime: 60
 };
 
+const iteration = {
+    navLink: [{
+        name: text.archive,
+        to: route.archive,
+    }, {
+        name: text.tag,
+        to: route.tag
+    }, {
+        name: text.message,
+        to: route.message
+    }, {
+        name: text.work,
+        to: route.work
+    }, {
+        name: text.about,
+        to: route.about
+    }],
+    navBtn: [{
+        name: text.login,
+        to: route.login
+    }],
+    footerIconLink: [{
+        key: icon.key.github,
+        link: route.github
+    }, {
+        key: icon.key.npm,
+        link: route.npm
+    }, {
+        key: icon.key.jianshu,
+        link: route.jianshu
+    }, {
+        key: icon.key.zhihu,
+        link: route.juejin
+    }, {
+        key: icon.key.sf,
+        link: route.sf
+    }, {
+        key: icon.key.juejin,
+        link: route.juejin
+    }]
+};
+
 /**
  * Constant
  * @description global constant definition
@@ -95,51 +147,11 @@ const time = {
  * @since 2020-7-4
  */
 export const Constant = {
-    route: route,
-    text: text,
-    iconSource: '//at.alicdn.com/t/font_849519_35kgv6mtda7.js',
-    resource: resource,
-    id: id,
-    time: time,
-    other: {
-        navLink: [{
-            name: text.archive,
-            to: route.archive,
-        }, {
-            name: text.tag,
-            to: route.tag
-        }, {
-            name: text.message,
-            to: route.message
-        }, {
-            name: text.work,
-            to: route.work
-        }, {
-            name: text.about,
-            to: route.about
-        }],
-        navBtn: [{
-            name: text.login,
-            to: route.login
-        }],
-        footerIconLink: [{
-            key: text.footerGithubIconKey,
-            link: text.footerGithubIconLink
-        }, {
-            key: text.footerNpmIconKey,
-            link: text.footerNpmIconLink
-        }, {
-            key: text.footerJianshuIconKey,
-            link: text.footerJianshuIconLink
-        }, {
-            key: text.footerZhihuIconKey,
-            link: text.footerZhihuIconLink
-        }, {
-            key: text.footerSegmentFaultIconKey,
-            link: text.footerSegmentFaultIconLink
-        }, {
-            key: text.footerJuejinIconKey,
-            link: text.footerJuejinIconLink
-        }]
-    }
+    route,
+    text,
+    icon,
+    resource,
+    id,
+    time,
+    iteration
 };

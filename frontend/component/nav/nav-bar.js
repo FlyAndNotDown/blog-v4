@@ -13,7 +13,7 @@ export function NavBar() {
 
     const navBarDropdownMenu = (
         <Menu>
-            {Constant.other.navBtn.map((btn, key) => {
+            {Constant.iteration.navBtn.map((btn, key) => {
                 return (
                     <Menu.Item
                         key={key}
@@ -22,7 +22,7 @@ export function NavBar() {
                     </Menu.Item>
                 );
             })}
-            {Constant.other.navLink.map((link, key) => {
+            {Constant.iteration.navLink.map((link, key) => {
                 return (
                     <Menu.Item
                         key={key}
@@ -58,13 +58,13 @@ export function NavBar() {
                             xs={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 0 }} md={{ span: 20, offset: 0 }}
                             lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
                             <Row className={'nav-bar-nav'}>
-                                {Constant.other.navLink.map((link, key) => {
+                                {Constant.iteration.navLink.map((link, key) => {
                                     return (
                                         <a key={key} href={link.to} className={'nav-bar-nav-link'}>{link.name}</a>
                                     );
                                 })}
                                 <span className={'nav-bar-btn-span'}>
-                                {Constant.other.navBtn.map((btn, key) => {
+                                {Constant.iteration.navBtn.map((btn, key) => {
                                     return (
                                         <Button
                                             key={key}

@@ -6,8 +6,8 @@ import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOu
 import { sha512 } from 'hash.js';
 import { UIKit } from '../../common/utils/ui';
 import { Logger } from '../../common/utils/logger';
+import { KIcon } from '../common/KIcon';
 
-// TODO third part login
 export function LoginForm(props) {
     const onLogin = props.onLogin || (() => {});
     const onRegister = props.onRegister || (() => {});
@@ -146,6 +146,10 @@ export function LoginForm(props) {
                         type={'link'}>
                         {Constant.text.loginFormForgetBtnContent}
                     </Button>
+                </div>
+                <div className={'login-form-oauth-row'}>
+                    <a><KIcon className={'login-form-oauth-icon'} type={'k-github-dark'}/></a>
+                    <a><KIcon className={'login-form-oauth-icon'} type={'k-qq-dark'}/></a>
                 </div>
             </Col>
         </Row>
