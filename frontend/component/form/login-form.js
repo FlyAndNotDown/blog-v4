@@ -7,6 +7,7 @@ import { sha512 } from 'hash.js';
 import { UIKit } from '../../common/utils/ui';
 import { Logger } from '../../common/utils/logger';
 import { KIcon } from '../common/KIcon';
+import { Router } from '../../common/utils/router';
 
 export function LoginForm(props) {
     const onLogin = props.onLogin || (() => {});
@@ -56,10 +57,14 @@ export function LoginForm(props) {
             <Col span={24}>
                 <div className={'login-form-title-row'}>
                     <span className={'login-form-icon-span'}>
-                        <img
-                            className={'login-form-icon-image'}
-                            src={Constant.resource.iconImg}
-                            alt={Constant.text.iconImgAlt}/>
+                        <a onClick={() => {
+                                Router.jumpTo(Constant.route.index)
+                            }}>
+                            <img
+                                className={'login-form-icon-image'}
+                                src={Constant.resource.iconImg}
+                                alt={Constant.text.iconImgAlt}/>
+                        </a>
                     </span>
                     <span className={'login-form-title-span'}>
                         {isLoginMode ?
@@ -148,8 +153,15 @@ export function LoginForm(props) {
                     </Button>
                 </div>
                 <div className={'login-form-oauth-row'}>
-                    <a><KIcon className={'login-form-oauth-icon'} type={'k-github-dark'}/></a>
-                    <a><KIcon className={'login-form-oauth-icon'} type={'k-qq-dark'}/></a>
+                    {Constant.iteration.oauthIcon.map((icon, index) =>
+                        <a
+                            onClick={() => {
+                                Router.jumpTo(icon.link);
+                            }}
+                            key={index}>
+                            <KIcon className={'login-form-oauth-icon'} type={icon.key}/>
+                        </a>
+                    )}
                 </div>
             </Col>
         </Row>

@@ -23,6 +23,9 @@ const route = {
     blogTheme: 'https://github.com/FlyAndNotDown/blog-v4',
     blogFramework: 'https://nextjs.org/',
     blogFrontendFramework: 'https://ant.design/index-cn',
+
+    oauthGithub: '',
+    oauthQQ: ''
 };
 
 const text = {
@@ -137,6 +140,13 @@ const iteration = {
     }, {
         key: icon.key.juejin,
         link: route.juejin
+    }],
+    oauthIcon: [{
+        key: icon.key.githubDark,
+        link: route.oauthGithub
+    }, {
+        key: icon.key.qqDark,
+        link: route.oauthQQ
     }]
 };
 
