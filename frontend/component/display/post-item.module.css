@@ -1,35 +1,35 @@
-.post-item {
+.main {
     padding: 20px;
 }
 
-.post-item-title-row {
+.titleRow {
     font-size: 25px;
     margin-top: 10px;
     margin-bottom: 5px;
 }
 
-.post-item-title-link {
+.titleLink {
     color: #000000;
 }
 
-.post-item-description-row {
+.descriptionRow {
     font-size: 15px;
     margin-bottom: 10px;
 }
 
-.post-item-other-row {
+.otherRow {
     font-size: 15px;
     margin-bottom: 50px;
 }
 
-.post-item-time-span {
+.timeSpan {
     float: left;
 }
 
-.post-item-tag-span {
+.tagSpan {
     float: right;
 }
 
-.post-item-tag-link {
+.tagLink {
     color: rgba(0, 0, 0, 0.65);
 }

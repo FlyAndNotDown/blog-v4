@@ -8,55 +8,57 @@
     to { background-color: rgba(0, 0, 0, 0) }
 }
 
-.nav-bar {
+.main {
     height: 64px
 }
 
 .normal {
+    composes: main;
     animation: gone-animation 1.5s;
     background-color: rgba(0, 0, 0, 0);
 }
 
 .affixed {
+    composes: main;
     animation: show-animation 1.5s;
     background-color: #171f26;
 }
 
-.nav-bar-container {
+.container {
     height: 100%;
 }
 
-.nav-bar-logo {
+.logo {
     line-height: 64px;
     font-size: 25px;
     color: #ffffff;
     float: left;
 }
 
-.nav-bar-nav {
+.nav {
     line-height: 64px;
     float: right;
 }
 
-.nav-bar-logo-link {
+.logoLink {
     color: #ffffff;
 }
 
-.nav-bar-login-img {
+.logoImg {
     width: 64px;
 }
 
-.nav-bar-nav-link {
+.navLink {
     font-size: 15px;
     color: #ffffff;
     margin-left: 4px;
 }
 
-.nav-bar-btn-span {
+.btnSpan {
     margin-left: 4px;
 }
 
-.nav-bar-dropdown-item {
+.dropdownItem {
     margin: 3px 5px;
 }
 

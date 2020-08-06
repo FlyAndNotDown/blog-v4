@@ -1,22 +1,22 @@
-.login-form {
+.main {
     background-color: #f6f6f6;
 }
 
-.login-form-title-row {
+.titleRow {
     background-color: #171f26;
     border-radius: 10px 10px 0 0;
     padding: 10px;
 }
 
-.login-form-icon-span {
+.iconSpan {
     vertical-align: middle;
 }
 
-.login-form-icon-image {
+.iconImage {
     height: 50px;
 }
 
-.login-form-title-span {
+.titleSpan {
     color: white;
     font-size: 30px;
     font-weight: bold;
@@ -24,51 +24,51 @@
     vertical-align: middle;
 }
 
-.login-form-email-row {
+.emailRow {
     background-color: white;
     padding: 15px;
 }
 
-.login-form-password-row {
+.passwordRow {
     background-color: white;
     padding: 0 15px 15px 15px;
 }
 
-.login-form-repeat-row {
+.repeatRow {
     background-color: white;
     padding: 0 15px 15px 15px;
 }
 
-.login-form-validation-row {
+.validationRow {
     background-color: white;
     padding: 0 15px 15px 15px;
 }
 
-.login-form-fetch-validation-code-link {
+.fetchValidationCodeLink {
     color: black;
 }
 
-.login-form-action-row {
+.actionRow {
     background-color: #e6e6e6;
     border-radius: 0 0 10px 10px;
     padding: 10px;
 }
 
-.login-form-switch-btn {
+.switchBtn {
     margin-left: 10px;
     color: black;
 }
 
-.login-form-forget-btn {
+.forgetBtn {
     color: black;
 }
 
-.login-form-oauth-row {
+.oauthRow {
     margin: 20px;
     text-align: center;
 }
 
-.login-form-oauth-icon {
+.oauthIcon {
     font-size: 40px;
     margin-left: 10px;
     margin-right: 10px;

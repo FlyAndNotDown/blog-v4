@@ -1,7 +1,7 @@
 import React from 'react';
 import { Constant } from '../../common/constant';
-import './post-item.module.less';
 import ClockCircleOutlined from '@ant-design/icons/lib/icons/ClockCircleOutlined';
+import Style from './post-item.module.css';
 
 export function PostItem(props) {
     const id = props.id || 0;
@@ -11,19 +11,19 @@ export function PostItem(props) {
     const tags = props.tags || [];
 
     return (
-        <div className={'post-item'}>
-            <div className={'post-item-title-row'}>
+        <div className={Style.main}>
+            <div className={Style.titleRow}>
                 <a
                     href={`${Constant.route.post}/${id}`}
-                    className={'post-item-title-link'}>
+                    className={Style.titleLink}>
                     {title}
                 </a>
             </div>
-            <div className={'post-item-description-row'}>
+            <div className={Style.descriptionRow}>
                 {description}
             </div>
-            <div className={'post-item-other-row'}>
-                <div className={'post-item-time-span'}>
+            <div className={Style.otherRow}>
+                <div className={Style.timeSpan}>
                     <span>
                         <ClockCircleOutlined/>
                     </span>
@@ -32,11 +32,11 @@ export function PostItem(props) {
                         {time}
                     </span>
                 </div>
-                <div className={'post-item-tag-span'}>
+                <div className={Style.tagSpan}>
                     {tags.map((tag, key) => (
                         <a
                             key={key}
-                            className={'post-item-tag-link'}>
+                            className={Style.tagLink}>
                             {`#${tag} `}
                         </a>
                     ))}

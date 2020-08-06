@@ -10,16 +10,16 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 // Where your antd-custom.less file lives
-// const themeVariables = lessToJS(
-//     fs.readFileSync(path.resolve(__dirname, './css/antd.less'), 'utf8')
-// )
+const themeVariables = lessToJS(
+    fs.readFileSync(path.resolve(__dirname, './css/antd.less'), 'utf8')
+)
 
 const plugins = [
     [withLess({
         lessLoaderOptions: {
             javascriptEnabled: true,
             // make your antd custom effective
-            // modifyVars: themeVariables,
+            modifyVars: themeVariables,
         },
         webpack: (config, { isServer }) => {
             if (isServer) {
