@@ -1,5 +1,5 @@
 import React from 'react';
-import './banner.module.css';
+import './banner.module.less';
 
 export function Banner(props) {
     const background = props.background || '';

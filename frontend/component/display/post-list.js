@@ -1,5 +1,5 @@
 import React from 'react';
-import './post-list.module.css';
+import './post-list.module.less';
 import { Divider } from 'antd';
 import { PostItem } from './post-item';
 
