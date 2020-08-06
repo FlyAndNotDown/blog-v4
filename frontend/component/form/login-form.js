@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../common/style/component/form/login-form.css';
+import './login-form.module.css';
 import { Button, Row, Col, Input } from 'antd';
 import { Constant } from "../../common/constant";
 import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined } from '@ant-design/icons';

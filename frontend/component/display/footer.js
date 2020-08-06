@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import { Constant } from '../../common/constant';
-import '../../common/style/component/display/footer.css';
+import './footer.module.css';
 import { KIcon } from '../common/KIcon';
 
 export function Footer(props) {

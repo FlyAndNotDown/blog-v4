@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import '../../common/style/global.css';
-import '../../common/style/pages/user/login.css';
+import './login.module.css';
 import { Row, Col } from 'antd';
 import { LoginForm } from '../../component/form/login-form';
 

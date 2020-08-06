@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../common/style/component/display/post-list.css';
+import './post-list.module.css';
 import { Divider } from 'antd';
 import { PostItem } from './post-item';
 

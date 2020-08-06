@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../common/style/component/container/body-after-banner.css';
+import './body-after-banner.module.css';
 
 export function BodyAfterBanner(props) {
     return (

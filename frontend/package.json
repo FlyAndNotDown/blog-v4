@@ -15,6 +15,7 @@
     "babel-plugin-import": "^1.13.0",
     "hash.js": "^1.1.7",
     "next": "9.4.4",
+    "next-plugin-antd-less": "^0.0.4",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   }

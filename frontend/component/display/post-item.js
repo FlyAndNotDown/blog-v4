@@ -1,6 +1,6 @@
 import React from 'react';
 import { Constant } from '../../common/constant';
-import '../../common/style/component/display/post-item.css';
+import './post-item.module.css';
 import ClockCircleOutlined from '@ant-design/icons/lib/icons/ClockCircleOutlined';
 
 export function PostItem(props) {

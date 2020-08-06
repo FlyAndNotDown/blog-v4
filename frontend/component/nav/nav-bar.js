@@ -4,8 +4,7 @@ import { DownOutlined } from '@ant-design/icons';
 import { Constant } from '../../common/constant';
 import { Logger } from '../../common/utils/logger';
 import { Router } from '../../common/utils/router';
-import '../../common/style/global.css';
-import '../../common/style/component/nav/nav-bar.css';
+import './nav-bar.module.css';
 
 export function NavBar() {
     const [goneAnimationWorking, setGoneAnimationWorking] = useState(false);
