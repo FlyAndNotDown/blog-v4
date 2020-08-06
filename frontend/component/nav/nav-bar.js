@@ -4,7 +4,7 @@ import { DownOutlined } from '@ant-design/icons';
 import { Constant } from '../../common/constant';
 import { Logger } from '../../common/utils/logger';
 import { Router } from '../../common/utils/router';
-import './nav-bar.module.less';
+import Style from './nav-bar.module.css';
 
 export function NavBar() {
     const [goneAnimationWorking, setGoneAnimationWorking] = useState(false);
@@ -16,7 +16,7 @@ export function NavBar() {
                 return (
                     <Menu.Item
                         key={key}
-                        className={'nav-bar-dropdown-item'}>
+                        className={Style.dropdownItem}>
                         <a href={btn.to}>{btn.name}</a>
                     </Menu.Item>
                 );
@@ -25,7 +25,7 @@ export function NavBar() {
                 return (
                     <Menu.Item
                         key={key}
-                        className={'nav-bar-dropdown-item'}>
+                        className={Style.dropdownItem}>
                         <a href={link.to}>{link.name}</a>
                     </Menu.Item>
                 );
@@ -41,18 +41,18 @@ export function NavBar() {
 
     return (
         <Affix offsetTop={0} onChange={onAffixedChange}>
-            <Row className={`nar-bar${navBarAffixed ? ' affixed' : ` ${goneAnimationWorking ? 'normal' : ''}`}`}>
+            <Row className={navBarAffixed ? Style.affixed : (goneAnimationWorking ? Style.normal : '')}>
                 <Col
                     xs={{ span: 22, offset: 1 }} sm={{ span: 22, offset: 1 }} md={{ span: 22, offset: 1 }}
                     lg={{ span: 22, offset: 1 }} xl={{ span: 22, offset: 1 }} xxl={{ span: 22, offset: 1 }}>
-                    <Row className={'nav-bar-container'}>
+                    <Row className={Style.container}>
                         <Col
                             xs={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }}
                             lg={{ span: 4, offset: 0 }} xl={{ span: 4, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
-                            <Row id={'logo'} className={'nav-bar-logo'}>
-                                <a href={Constant.route.index} className={'nav-bar-logo-link'}>
+                            <Row id={'logo'} className={Style.logo}>
+                                <a href={Constant.route.index} className={Style.logoLink}>
                                     <img
-                                        className={'nav-bar-login-img'}
+                                        className={Style.logoImg}
                                         src={Constant.resource.iconPureImg}
                                         alt={Constant.text.logo}/>
                                 </a>
@@ -61,13 +61,13 @@ export function NavBar() {
                         <Col
                             xs={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 0 }} md={{ span: 20, offset: 0 }}
                             lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
-                            <Row className={'nav-bar-nav'}>
+                            <Row className={Style.nav}>
                                 {Constant.iteration.navLink.map((link, key) => {
                                     return (
-                                        <a key={key} href={link.to} className={'nav-bar-nav-link'}>{link.name}</a>
+                                        <a key={key} href={link.to} className={Style.navLink}>{link.name}</a>
                                     );
                                 })}
-                                <span className={'nav-bar-btn-span'}>
+                                <span className={Style.btnSpan}>
                                 {Constant.iteration.navBtn.map((btn, key) => {
                                     return (
                                         <Button
@@ -88,9 +88,9 @@ export function NavBar() {
                         <Col
                             xs={{ span: 20, offset: 0 }} sm={{ span: 20, offset: 0 }} md={{ span: 0, offset: 0 }}
                             lg={{ span: 0, offset: 0 }} xl={{ span: 0, offset: 0 }} xxl={{ span: 0, offset: 0 }}>
-                            <Row className={'nav-bar-nav'}>
+                            <Row className={Style.nav}>
                                 <Dropdown overlay={navBarDropdownMenu}>
-                                    <a className={'nav-bar-nav-link'}>{Constant.text.menu} <DownOutlined/></a>
+                                    <a className={Style.navLink}>{Constant.text.menu} <DownOutlined/></a>
                                 </Dropdown>
                             </Row>
                         </Col>

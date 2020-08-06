@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './login-form.module.less';
 import { Button, Row, Col, Input } from 'antd';
 import { Constant } from "../../common/constant";
 import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined } from '@ant-design/icons';
@@ -8,6 +7,7 @@ import { UIKit } from '../../common/utils/ui';
 import { Logger } from '../../common/utils/logger';
 import { KIcon } from '../common/KIcon';
 import { Router } from '../../common/utils/router';
+import Style from './login-form.module.css';
 
 export function LoginForm(props) {
     const onLogin = props.onLogin || (() => {});
@@ -53,26 +53,26 @@ export function LoginForm(props) {
 
 
     return (
-        <Row className={'login-form'}>
+        <Row className={Style.main}>
             <Col span={24}>
-                <div className={'login-form-title-row'}>
-                    <span className={'login-form-icon-span'}>
+                <div className={Style.titleRow}>
+                    <span className={Style.iconSpan}>
                         <a onClick={() => {
                                 Router.jumpTo(Constant.route.index)
                             }}>
                             <img
-                                className={'login-form-icon-image'}
+                                className={Style.iconImage}
                                 src={Constant.resource.iconImg}
                                 alt={Constant.text.iconImgAlt}/>
                         </a>
                     </span>
-                    <span className={'login-form-title-span'}>
+                    <span className={Style.titleSpan}>
                         {isLoginMode ?
                             Constant.text.loginFormLoginTitle :
                             Constant.text.loginFormRegisterTitle}
                     </span>
                 </div>
-                <div className={'login-form-email-row'}>
+                <div className={Style.emailRow}>
                     <Input
                         size={'large'}
                         prefix={<UserOutlined/>}
@@ -80,7 +80,7 @@ export function LoginForm(props) {
                         value={email}
                         onChange={onEmailChanged}/>
                 </div>
-                <div className={'login-form-password-row'}>
+                <div className={Style.passwordRow}>
                     <Input
                         size={'large'}
                         type={'password'}
@@ -90,7 +90,7 @@ export function LoginForm(props) {
                         onChange={onPasswordChanged}/>
                 </div>
                 {!isLoginMode && (
-                    <div className={'login-form-repeat-row'}>
+                    <div className={Style.repeatRow}>
                         <Input
                             size={'large'}
                             type={'password'}
@@ -101,14 +101,14 @@ export function LoginForm(props) {
                     </div>
                 )}
                 {!isLoginMode && (
-                    <div className={'login-form-validation-row'}>
+                    <div className={Style.validationRow}>
                         <Input
                             size={'large'}
                             prefix={<QrcodeOutlined/>}
                             placeholder={Constant.text.loginFormValidationCodePlaceHolder}
                             value={validationCode}
                             addonAfter={
-                                <a className={'login-form-fetch-validation-code-link'}
+                                <a className={Style.fetchValidationCodeLink}
                                     onClick={() => {
                                     UIKit.preventDoubleClick(
                                         Constant.id.fetchValidationCodeBtn,
@@ -125,7 +125,7 @@ export function LoginForm(props) {
                             onChange={onValidationCodeChanged}/>
                     </div>
                 )}
-                <div className={'login-form-action-row'}>
+                <div className={Style.actionRow}>
                     <Button
                         onClick={isLoginMode ? onLoginInternal : onRegisterInternal}
                         size={'large'}
@@ -138,7 +138,7 @@ export function LoginForm(props) {
                     </Button>
                     <Button
                         onClick={onSwitchBtnClicked}
-                        className={'login-form-switch-btn'}
+                        className={Style.switchBtn}
                         size={'large'}
                         type={'link'}>
                         {isLoginMode ?
@@ -146,20 +146,20 @@ export function LoginForm(props) {
                             Constant.text.loginFormSwitchToLoginBtnContent}
                     </Button>
                     <Button
-                        className={'login-form-forget-btn'}
+                        className={Style.forgetBtn}
                         size={'large'}
                         type={'link'}>
                         {Constant.text.loginFormForgetBtnContent}
                     </Button>
                 </div>
-                <div className={'login-form-oauth-row'}>
+                <div className={Style.oauthRow}>
                     {Constant.iteration.oauthIcon.map((icon, index) =>
                         <a
                             onClick={() => {
                                 Router.jumpTo(icon.link);
                             }}
                             key={index}>
-                            <KIcon className={'login-form-oauth-icon'} type={icon.key}/>
+                            <KIcon className={Style.oauthIcon} type={icon.key}/>
                         </a>
                     )}
                 </div>
