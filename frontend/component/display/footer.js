@@ -46,7 +46,7 @@ export function Footer(props) {
                             {Constant.text.footerAdvertisement}
                         </a>
                         &nbsp;/&nbsp;
-                        <a href={Constant.route.friend} className={Style.secondLinkPrimary}>
+                        <a href={Constant.route.friend} className={Style.secondLinkSecond}>
                             {Constant.text.footerGetFriend}
                         </a>
                     </div>
