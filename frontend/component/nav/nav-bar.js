@@ -6,7 +6,9 @@ import { Logger } from '../../common/utils/logger';
 import { Router } from '../../common/utils/router';
 import Style from './nav-bar.module.css';
 
-export function NavBar() {
+export function NavBar(props) {
+    const alwaysAffixed = !!props.alwaysAffixed;
+
     const [goneAnimationWorking, setGoneAnimationWorking] = useState(false);
     const [navBarAffixed, setNavBarAffixed] = useState(false);
 
@@ -41,7 +43,8 @@ export function NavBar() {
 
     return (
         <Affix offsetTop={0} onChange={onAffixedChange}>
-            <Row className={navBarAffixed ? Style.affixed : (goneAnimationWorking ? Style.normal : '')}>
+            <Row className={alwaysAffixed ? Style.affixedConstant :
+                    (navBarAffixed ? Style.affixed : (goneAnimationWorking ? Style.normal : ''))}>
                 <Col
                     xs={{ span: 22, offset: 1 }} sm={{ span: 22, offset: 1 }} md={{ span: 22, offset: 1 }}
                     lg={{ span: 22, offset: 1 }} xl={{ span: 22, offset: 1 }} xxl={{ span: 22, offset: 1 }}>

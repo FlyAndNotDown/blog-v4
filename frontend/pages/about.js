@@ -3,7 +3,7 @@ import { NavBar } from '../component/nav/nav-bar';
 
 function About() {
     return (
-        <NavBar/>
+        <NavBar alwaysAffixed={true}/>
     );
 }
 
