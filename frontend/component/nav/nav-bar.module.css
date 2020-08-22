@@ -18,10 +18,14 @@
     background-color: rgba(0, 0, 0, 0);
 }
 
-.affixed {
+.affixedConstant {
     composes: main;
-    animation: show-animation 1.5s;
     background-color: #171f26;
+}
+
+.affixed {
+    composes: affixedConstant;
+    animation: show-animation 1.5s;
 }
 
 .container {

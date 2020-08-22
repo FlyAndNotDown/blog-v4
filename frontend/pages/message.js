@@ -1,9 +1,15 @@
 import React from 'react';
 import { NavBar } from '../component/nav/nav-bar';
+import {Body} from '../component/container/body';
 
 function Message() {
     return (
-        <NavBar/>
+        <div>
+            <NavBar alwaysAffixed={true}/>
+            <Body>
+
+            </Body>
+        </div>
     );
 }
 
