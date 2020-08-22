@@ -4,6 +4,8 @@
  * @author John Kindem
  * @since 2020-7-4
  */
+import { Constant } from '../constant';
+
 export class Router {
     /**
      * jump to destination url
@@ -11,5 +13,14 @@ export class Router {
      */
     static jumpTo(url) {
         window.location.href = url;
+    }
+
+    /**
+     * jump to post page with specific id
+     *
+     * @param id id of post
+     */
+    static jumpToPost(id) {
+        window.location.href = `${Constant.route.post}/${id}`;
     }
 }
