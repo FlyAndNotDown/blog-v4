@@ -3,6 +3,7 @@ import { List } from 'antd';
 import Style from './archive-item.module.css';
 import { Router } from '../../common/utils/router';
 
+// TODO change me to custom style, some div with white background color
 export function ArchiveItem(props) {
     const year = props.year || 'Null';
     const posts = props.posts || [];
