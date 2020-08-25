@@ -8,9 +8,8 @@ export function ArchiveList(props) {
     return (
         <div className={Style.main}>
             {items.map((item, key) => (
-                <div className={Style.item}>
+                <div className={Style.item} key={key}>
                     <ArchiveItem
-                        key={key}
                         year={item.year}
                         posts={item.posts}/>
                 </div>

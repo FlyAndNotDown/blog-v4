@@ -1,9 +1,8 @@
 import React from 'react';
-import { List } from 'antd';
 import Style from './archive-item.module.css';
 import { Router } from '../../common/utils/router';
+import { Divider } from 'antd';
 
-// TODO change me to custom style, some div with white background color
 export function ArchiveItem(props) {
     const year = props.year || 'Null';
     const posts = props.posts || [];
@@ -14,15 +13,20 @@ export function ArchiveItem(props) {
         };
     };
 
-    const itemRenderer = (item) => (
-        <List.Item>
-            <span>{item.time}</span>
-            <a
-                className={Style.itemLink}
-                onClick={linkClickedCallbackGenerator(item.id)}>
-                {item.name}
-            </a>
-        </List.Item>
+    const itemRenderer = (item, index) => (
+        <div key={index}>
+            <div className={Style.item}>
+                <span className={Style.time}>
+                    {item.time}
+                </span>
+                <a
+                    className={Style.title}
+                    onClick={linkClickedCallbackGenerator(item.id)}>
+                    {item.name}
+                </a>
+            </div>
+            {index === posts.length - 1 || <Divider className={Style.divider}/>}
+        </div>
     );
 
     return (
@@ -30,10 +34,9 @@ export function ArchiveItem(props) {
             <div className={Style.yearRow}>
                 {year}
             </div>
-            <List
-                bordered
-                dataSource={posts}
-                renderItem={itemRenderer}/>
+            <div className={Style.blockRow}>
+                {posts.map(itemRenderer)}
+            </div>
         </div>
     );
 }
