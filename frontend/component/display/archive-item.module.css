@@ -1,9 +1,11 @@
 .yearRow {
+    padding-left: 10px;
     font-size: 35px;
     color: black;
 }
 
 .blockRow {
+    margin-top: 10px;
     background-color: white;
     border-radius: 10px;
 }

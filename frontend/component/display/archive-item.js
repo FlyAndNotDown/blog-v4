@@ -16,7 +16,7 @@ export function ArchiveItem(props) {
     const itemRenderer = (item, index) => (
         <div key={index}>
             <div className={Style.item}>
-                <span className={Style.time}>
+                <span>
                     {item.time}
                 </span>
                 <a
