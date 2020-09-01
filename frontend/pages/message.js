@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavBar } from '../component/nav/nav-bar';
-import {Body} from '../component/container/body';
+import { Body } from '../component/container/body';
 
-function Message() {
+function MessagePage() {
     return (
         <div>
             <NavBar alwaysAffixed={true}/>
@@ -13,4 +13,4 @@ function Message() {
     );
 }
 
-export default Message;
+export default MessagePage;

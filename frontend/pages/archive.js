@@ -1,14 +1,13 @@
 import React from 'react';
 import { NavBar } from '../component/nav/nav-bar';
 import { Body } from '../component/container/body';
-import { Row, Col } from 'antd';
 import { ArchiveList } from '../component/display/archive-list';
 import { BlogConfig } from '../blog.config';
 import { MockData } from '../common/mock/mock';
 import { Footer } from '../component/display/footer';
 import { Content } from '../component/container/content';
 
-function Archive(props) {
+function ArchivePage(props) {
     const archives = props.archives || [];
 
     return (
@@ -24,8 +23,8 @@ function Archive(props) {
     );
 }
 
-Archive.getInitialProps = async () => {
+ArchivePage.getInitialProps = async () => {
     return BlogConfig.useMockData ? MockData.archive : {};
 };
 
-export default Archive;
+export default ArchivePage;

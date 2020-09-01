@@ -9,7 +9,7 @@ import { PostList } from '../component/display/post-list';
 import { Footer } from '../component/display/footer';
 import { Content} from '../component/container/content';
 
-function Index(props) {
+function IndexPage(props) {
     const posts = props.posts || [];
     const common = props.common || {};
     const friends = common.friends || [];
@@ -31,8 +31,8 @@ function Index(props) {
     );
 }
 
-Index.getInitialProps = async () => {
+IndexPage.getInitialProps = async () => {
     return BlogConfig.useMockData ? MockData.index : {};
 };
 
-export default Index;
+export default IndexPage;
