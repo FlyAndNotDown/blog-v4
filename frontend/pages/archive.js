@@ -1,34 +1,31 @@
 import React from 'react';
 import { NavBar } from '../component/nav/nav-bar';
 import { Body } from '../component/container/body';
-import { Row, Col } from 'antd';
 import { ArchiveList } from '../component/display/archive-list';
 import { BlogConfig } from '../blog.config';
 import { MockData } from '../common/mock/mock';
 import { Footer } from '../component/display/footer';
+import { Content } from '../component/container/content';
 
-function Archive(props) {
+function ArchivePage(props) {
     const archives = props.archives || [];
+    const friends = props.common.friends || [];
 
     return (
         <div>
             <NavBar alwaysAffixed={true}/>
             <Body>
-                <Row>
-                    <Col
-                        xs={{ span: 22, offset: 1 }} sm={{ span: 22, offset: 1 }} md={{ span: 20, offset: 2 }}
-                        lg={{ span: 18, offset: 3 }} xl={{ span: 16, offset: 4 }} xxl={{ span: 12, offset: 6 }}>
-                        <ArchiveList items={archives}/>
-                    </Col>
-                </Row>
-                <Footer/>
+                <Content>
+                    <ArchiveList items={archives}/>
+                </Content>
+                <Footer friends={friends}/>
             </Body>
         </div>
     );
 }
 
-Archive.getInitialProps = async () => {
+ArchivePage.getInitialProps = async () => {
     return BlogConfig.useMockData ? MockData.archive : {};
 };
 
-export default Archive;
+export default ArchivePage;

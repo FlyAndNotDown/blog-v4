@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import { LoginForm } from '../../component/form/login-form';
 import Style from './login.module.css';
 
-function UserLogin() {
+function UserLoginPage() {
     const [isLoginMode, setLoginMode] = useState(true);
 
     const onLoginModeChanged = (loginModeValue) => { setLoginMode(loginModeValue); };
@@ -25,4 +25,4 @@ function UserLogin() {
     );
 }
 
-export default UserLogin;
+export default UserLoginPage;

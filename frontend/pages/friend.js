@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavBar } from '../component/nav/nav-bar';
-import {Body} from '../component/container/body';
+import { Body } from '../component/container/body';
 
-function Friend() {
+function FriendPage() {
     return (
         <div>
             <NavBar alwaysAffixed={true}/>
@@ -13,4 +13,4 @@ function Friend() {
     );
 }
 
-export default Friend;
+export default FriendPage;

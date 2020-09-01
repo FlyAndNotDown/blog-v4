@@ -6,10 +6,10 @@ import { BodyAfterBanner } from '../component/container/body-after-banner';
 import { MockData } from '../common/mock/mock';
 import { BlogConfig } from '../blog.config';
 import { PostList } from '../component/display/post-list';
-import { Col, Row } from 'antd';
 import { Footer } from '../component/display/footer';
+import { Content} from '../component/container/content';
 
-function Index(props) {
+function IndexPage(props) {
     const posts = props.posts || [];
     const common = props.common || {};
     const friends = common.friends || [];
@@ -22,21 +22,17 @@ function Index(props) {
                 slogan={Constant.text.indexSlogan}
                 subSlogan={Constant.text.indexSubSlogan}/>
             <BodyAfterBanner>
-                <Row>
-                    <Col
-                        xs={{ span: 22, offset: 1 }} sm={{ span: 22, offset: 1 }} md={{ span: 20, offset: 2 }}
-                        lg={{ span: 18, offset: 3 }} xl={{ span: 16, offset: 4 }} xxl={{ span: 12, offset: 6 }}>
-                        <PostList posts={posts}/>
-                    </Col>
-                </Row>
+                <Content>
+                    <PostList posts={posts}/>
+                </Content>
                 <Footer friends={friends}/>
             </BodyAfterBanner>
         </div>
     );
 }
 
-Index.getInitialProps = async () => {
+IndexPage.getInitialProps = async () => {
     return BlogConfig.useMockData ? MockData.index : {};
 };
 
-export default Index;
+export default IndexPage;
