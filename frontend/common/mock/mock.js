@@ -1,5 +1,6 @@
 import IndexMockData from './data/index';
 import ArchiveMockData from './data/archive';
+import TagMockData from './data/tag';
 
 /**
  * MockData
@@ -9,5 +10,6 @@ import ArchiveMockData from './data/archive';
  */
 export const MockData = {
     index: IndexMockData,
-    archive: ArchiveMockData
+    archive: ArchiveMockData,
+    tag: TagMockData
 };

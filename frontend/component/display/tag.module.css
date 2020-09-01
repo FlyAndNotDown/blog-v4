@@ -1,0 +1,7 @@
+.main {
+    display: inline-block;
+    background-color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+}

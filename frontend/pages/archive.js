@@ -9,6 +9,7 @@ import { Content } from '../component/container/content';
 
 function ArchivePage(props) {
     const archives = props.archives || [];
+    const friends = props.common.friends || [];
 
     return (
         <div>
@@ -17,7 +18,7 @@ function ArchivePage(props) {
                 <Content>
                     <ArchiveList items={archives}/>
                 </Content>
-                <Footer/>
+                <Footer friends={friends}/>
             </Body>
         </div>
     );
