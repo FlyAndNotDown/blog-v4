@@ -70,7 +70,12 @@ const text = {
     loginFormPasswordPlaceholder: '密码',
     loginFormRepeatPlaceholder: '重复密码',
     loginFormValidationCodePlaceHolder: '邮箱验证码',
-    loginFormFetchValidationCode: '获取'
+    loginFormFetchValidationCode: '获取',
+
+    messagePageLoginButton: '登录以留言',
+    messageFormPlaceholder: '说点什么吧~~',
+    messageFormSendMessageButton: '发表留言',
+    messageListTitle: '留言板'
 };
 
 const icon = {
@@ -100,6 +105,10 @@ const id = {
 
 const time = {
     fetchValidationCodeTime: 60
+};
+
+const format = {
+    momentFormat: 'YYYY-MM-DD hh:mm:ss'
 };
 
 const iteration = {
@@ -164,5 +173,6 @@ export const Constant = {
     resource,
     id,
     time,
-    iteration
+    iteration,
+    format
 };

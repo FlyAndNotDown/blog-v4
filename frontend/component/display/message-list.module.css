@@ -1,3 +1,17 @@
 .main {
 
 }
+
+.titleDiv {
+    margin-top: 20px;
+    font-size: 35px;
+    padding-left: 10px;
+}
+
+.messagesDiv {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    padding: 20px 40px;
+    background-color: white;
+    border-radius: 10px;
+}

@@ -21,6 +21,10 @@ export class Router {
      * @param id id of post
      */
     static jumpToPost(id) {
-        window.location.href = `${Constant.route.post}/${id}`;
+        Router.jumpTo(`${Constant.route.post}/${id}`);
+    }
+
+    static jumpToLogin() {
+        Router.jumpTo(Constant.route.login);
     }
 }
