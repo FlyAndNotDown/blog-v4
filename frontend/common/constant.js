@@ -40,7 +40,7 @@ const text = {
     menu: 'Menu',
 
     indexSlogan: '眼界决定格局',
-    indexSubSlogan: 'What you see, where are you reached',
+    indexSubSlogan: 'What you see, where you reached',
 
     briefAvatarImgAlt: 'avatar',
     iconImgAlt: 'icon',
