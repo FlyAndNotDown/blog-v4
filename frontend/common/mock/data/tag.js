@@ -2,75 +2,57 @@ export default {
     tags: [{
         name: 'Git',
         posts: [{
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }, {
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         },{
-            time: '2019-11-23',
             name: 'Git Fork 仓从主仓拉取更新的方法',
             id: 20
         }]
