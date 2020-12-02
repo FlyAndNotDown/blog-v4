@@ -39,8 +39,8 @@ const text = {
     login: '登录',
     menu: 'Menu',
 
-    indexSlogan: '离开世界前，一切都是过程',
-    indexSubSlogan: 'Before your death, everything in process',
+    indexSlogan: '眼界决定格局',
+    indexSubSlogan: 'What you see, where you reached',
 
     briefAvatarImgAlt: 'avatar',
     iconImgAlt: 'icon',
