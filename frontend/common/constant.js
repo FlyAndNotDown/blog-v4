@@ -102,6 +102,10 @@ const time = {
     fetchValidationCodeTime: 60
 };
 
+const format = {
+    momentFormat: 'YYYY-MM-DD hh:mm:ss'
+};
+
 const iteration = {
     navLink: [{
         name: text.archive,
@@ -164,5 +168,6 @@ export const Constant = {
     resource,
     id,
     time,
-    iteration
+    iteration,
+    format
 };
