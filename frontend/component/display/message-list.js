@@ -38,7 +38,12 @@ export function MessageList(props) {
 
     return (
         <div className={Style.main}>
-            {messages.map(messageItemRenderer)}
+            <div className={Style.titleDiv}>
+                {Constant.text.messageListTitle}
+            </div>
+            <div className={Style.messagesDiv}>
+                {messages.map(messageItemRenderer)}
+            </div>
         </div>
     );
 }

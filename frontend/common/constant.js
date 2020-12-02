@@ -70,7 +70,9 @@ const text = {
     loginFormPasswordPlaceholder: '密码',
     loginFormRepeatPlaceholder: '重复密码',
     loginFormValidationCodePlaceHolder: '邮箱验证码',
-    loginFormFetchValidationCode: '获取'
+    loginFormFetchValidationCode: '获取',
+
+    messageListTitle: '留言板'
 };
 
 const icon = {
