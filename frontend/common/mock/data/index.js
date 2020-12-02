@@ -90,6 +90,14 @@ export default {
         }, {
             name: '虎书博客',
             to: 'http://www.tigerbook.cn/'
-        }]
+        }],
+        user: {
+            login: true,
+            info: {
+                id: 1,
+                username: 'Kindem',
+                avatar: null
+            }
+        }
     }
 };

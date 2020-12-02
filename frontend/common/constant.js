@@ -72,6 +72,9 @@ const text = {
     loginFormValidationCodePlaceHolder: '邮箱验证码',
     loginFormFetchValidationCode: '获取',
 
+    messagePageLoginButton: '登录以留言',
+    messageFormPlaceholder: '说点什么吧~~',
+    messageFormSendMessageButton: '发表留言',
     messageListTitle: '留言板'
 };
 
