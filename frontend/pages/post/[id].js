@@ -5,12 +5,10 @@ import { NavBar } from '../../component/nav/nav-bar';
 import { Body } from '../../component/container/body';
 import { Content } from '../../component/container/content';
 import { Footer } from '../../component/display/footer';
+import { PostDetail } from '../../component/display/post-detail';
 
 function PostPage(props) {
-    const id = props.id || 0;
-    const name = props.name || '';
-    const labels = props.labels || [];
-    const content = props.content || '';
+    const post = props.post || {};
     const friends = props.common.friends || [];
 
     return (
@@ -18,6 +16,12 @@ function PostPage(props) {
             <NavBar alwaysAffixed={true}/>
             <Body>
                 <Content>
+                    <PostDetail
+                        id={post.id}
+                        title={post.title}
+                        time={post.time}
+                        tags={post.tags}
+                        content={post.content}/>
                 </Content>
                 <Footer friends={friends}/>
             </Body>

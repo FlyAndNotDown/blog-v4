@@ -1,0 +1,44 @@
+.main {
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.titleDiv {}
+
+.titleDivTitleRow {
+    font-size: 30px;
+}
+
+.titleDivTagsRow {
+    margin-top: 5px;
+    font-size: 17px;
+}
+
+.titleDivTagSpanFirst {}
+
+.titleDivTagSpan {
+    margin-left: 5px;
+}
+
+.normalColorLink {
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.titleDivTimeRow {
+    margin-top: 5px;
+    font-size: 17px;
+}
+
+.titleDivTimeTooltip {
+    margin-left: 5px;
+}
+
+.divider {
+    padding: 0;
+}
+
+.contentDiv {
+    margin-top: 20px;
+    font-size: 16px;
+}
