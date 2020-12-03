@@ -3,8 +3,6 @@ const route = {
     archive: '/archive',
     tag: '/tag',
     message: '/message',
-    work: '/work',
-    friend: '/friend',
     about: '/about',
     post: '/post',
     login: '/user/login',
@@ -34,7 +32,6 @@ const text = {
     tag: '标签',
     message: '留言',
     work: '作品',
-    friend: '友链',
     about: '关于',
     login: '登录',
     menu: 'Menu',
@@ -121,9 +118,6 @@ const iteration = {
     }, {
         name: text.message,
         to: route.message
-    }, {
-        name: text.work,
-        to: route.work
     }, {
         name: text.about,
         to: route.about

@@ -2,6 +2,7 @@ import IndexMockData from './data/index';
 import ArchiveMockData from './data/archive';
 import TagMockData from './data/tag';
 import MessageMockData from './data/message';
+import PostsMockData from './data/post';
 
 /**
  * MockData
@@ -13,5 +14,6 @@ export const MockData = {
     index: IndexMockData,
     archive: ArchiveMockData,
     tag: TagMockData,
-    message: MessageMockData
+    message: MessageMockData,
+    posts: PostsMockData
 };
