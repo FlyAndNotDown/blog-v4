@@ -25,7 +25,27 @@ export default [{
         'git clone --depth=1 https://......\n' +
         '```\n' +
         '\n' +
-        '项目克隆下来你会发现文件都在，一切都正常，但是历史却只保留了最近的一次 `commit` ，速度当然快\n'
+        '项目克隆下来你会发现文件都在，一切都正常，但是历史却只保留了最近的一次 `commit` ，速度当然快\n',
+    common: {
+        friends: [{
+            name: '栗子木凤凰芯',
+            to: 'https://chestnut-phoenix.xyz/'
+        }, {
+            name: '网站架构',
+            to: 'http://www.architecy.com/'
+        }, {
+            name: '虎书博客',
+            to: 'http://www.tigerbook.cn/'
+        }],
+        user: {
+            login: true,
+            info: {
+                id: 1,
+                username: 'Kindem',
+                avatar: null
+            }
+        }
+    }
 }, {
     id: 1,
     name: 'git push 每次都要输入登录凭据的解决方法',
@@ -55,5 +75,25 @@ export default [{
         'git push\n' +
         '```\n' +
         '\n' +
-        '命令的时候，你的登录凭据将会被记住，这样就不用每次push都重新输入一次用户名和密码了。\n'
+        '命令的时候，你的登录凭据将会被记住，这样就不用每次push都重新输入一次用户名和密码了。\n',
+    common: {
+        friends: [{
+            name: '栗子木凤凰芯',
+            to: 'https://chestnut-phoenix.xyz/'
+        }, {
+            name: '网站架构',
+            to: 'http://www.architecy.com/'
+        }, {
+            name: '虎书博客',
+            to: 'http://www.tigerbook.cn/'
+        }],
+        user: {
+            login: true,
+            info: {
+                id: 1,
+                username: 'Kindem',
+                avatar: null
+            }
+        }
+    }
 }];
