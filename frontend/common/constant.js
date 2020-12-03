@@ -3,7 +3,6 @@ const route = {
     archive: '/archive',
     tag: '/tag',
     message: '/message',
-    work: '/work',
     friend: '/friend',
     about: '/about',
     post: '/post',
@@ -121,9 +120,6 @@ const iteration = {
     }, {
         name: text.message,
         to: route.message
-    }, {
-        name: text.work,
-        to: route.work
     }, {
         name: text.about,
         to: route.about
