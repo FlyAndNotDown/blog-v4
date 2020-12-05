@@ -1,13 +1,14 @@
 .main {
-    padding: 20px 30px;
+}
+
+.titleDiv {
     background-color: white;
+    padding: 20px 30px;
     border-radius: 10px;
 }
 
-.titleDiv {}
-
 .titleDivTitleRow {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .titleDivTagsRow {
@@ -39,6 +40,9 @@
 }
 
 .contentDiv {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
     margin-top: 20px;
     font-size: 16px;
 }
