@@ -34,6 +34,7 @@ const text = {
     work: '作品',
     about: '关于',
     login: '登录',
+    logout: '注销',
     menu: 'Menu',
 
     indexSlogan: '眼界决定格局',
@@ -121,10 +122,6 @@ const iteration = {
     }, {
         name: text.about,
         to: route.about
-    }],
-    navBtn: [{
-        name: text.login,
-        to: route.login
     }],
     footerIconLink: [{
         key: icon.key.github,

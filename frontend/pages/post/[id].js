@@ -10,10 +10,13 @@ import { PostDetail } from '../../component/display/post-detail';
 function PostPage(props) {
     const post = props.post || {};
     const friends = props.common.friends || [];
+    const user = props.common.user || {};
 
     return (
         <div>
-            <NavBar alwaysAffixed={true}/>
+            <NavBar
+                user={user}
+                alwaysAffixed={true}/>
             <Body>
                 <Content>
                     <PostDetail

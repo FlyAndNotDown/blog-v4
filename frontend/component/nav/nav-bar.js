@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Row, Col, Dropdown, Menu, Affix } from 'antd';
+import {Button, Row, Col, Dropdown, Menu, Affix, Avatar} from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { Constant } from '../../common/constant';
 import { Logger } from '../../common/utils/logger';
@@ -8,30 +8,51 @@ import Style from './nav-bar.module.css';
 
 export function NavBar(props) {
     const alwaysAffixed = !!props.alwaysAffixed;
+    const user = props.user || {};
 
     const [goneAnimationWorking, setGoneAnimationWorking] = useState(false);
     const [navBarAffixed, setNavBarAffixed] = useState(false);
 
+    const onLogoutLinkClick = e => {};
+    const onLogoutBtnClick = e => {};
+
     const navBarDropdownMenu = (
         <Menu>
-            {Constant.iteration.navBtn.map((btn, key) => {
-                return (
-                    <Menu.Item
-                        key={key}
-                        className={Style.dropdownItem}>
-                        <a href={btn.to}>{btn.name}</a>
-                    </Menu.Item>
-                );
-            })}
-            {Constant.iteration.navLink.map((link, key) => {
-                return (
-                    <Menu.Item
-                        key={key}
-                        className={Style.dropdownItem}>
-                        <a href={link.to}>{link.name}</a>
-                    </Menu.Item>
-                );
-            })}
+            {user.login ? (
+                <Menu.Item
+                    disabled={true}
+                    className={Style.dropdownItem}>
+                    {user.info.username}
+                </Menu.Item>
+            ) : (
+                <Menu.Item
+                    className={Style.dropdownItem}>
+                    <a href={Constant.route.login}>{Constant.text.login}</a>
+                </Menu.Item>
+            )}
+            {user.login && (
+                <Menu.Item
+                    onClick={onLogoutLinkClick}
+                    className={Style.dropdownItem}>
+                    {Constant.text.logout}
+                </Menu.Item>
+            )}
+            <Menu.Item
+                className={Style.dropdownItem}>
+                <a href={Constant.route.archive}>{Constant.text.archive}</a>
+            </Menu.Item>
+            <Menu.Item
+                className={Style.dropdownItem}>
+                <a href={Constant.route.tag}>{Constant.text.tag}</a>
+            </Menu.Item>
+            <Menu.Item
+                className={Style.dropdownItem}>
+                <a href={Constant.route.message}>{Constant.text.message}</a>
+            </Menu.Item>
+            <Menu.Item
+                className={Style.dropdownItem}>
+                <a href={Constant.route.about}>{Constant.text.about}</a>
+            </Menu.Item>
         </Menu>
     );
 
@@ -39,6 +60,11 @@ export function NavBar(props) {
         Logger.printDebug('callback', `affixed: ${affixed}`);
         setNavBarAffixed(affixed);
         setGoneAnimationWorking(true);
+    };
+
+    const onBtnLoginClick = e => {
+        Logger.printDebug('btn', `btn ${Constant.text.login} clicked`);
+        Router.jumpTo(Constant.route.login);
     };
 
     return (
@@ -65,27 +91,26 @@ export function NavBar(props) {
                             xs={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 0 }} md={{ span: 20, offset: 0 }}
                             lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
                             <Row className={Style.nav}>
-                                {Constant.iteration.navLink.map((link, key) => {
-                                    return (
-                                        <a key={key} href={link.to} className={Style.navLink}>{link.name}</a>
-                                    );
-                                })}
+                                <a href={Constant.route.archive} className={Style.navLink}>{Constant.text.archive}</a>
+                                <a href={Constant.route.tag} className={Style.navLink}>{Constant.text.tag}</a>
+                                <a href={Constant.route.message} className={Style.navLink}>{Constant.text.message}</a>
+                                <a href={Constant.route.about} className={Style.navLink}>{Constant.text.about}</a>
                                 <span className={Style.btnSpan}>
-                                {Constant.iteration.navBtn.map((btn, key) => {
-                                    return (
+                                    {user.login ? (
+                                        user.info.avatar ? (
+                                            <Avatar src={user.info.avatar} alt={'avatar'}/>
+                                        ) : (
+                                            <Avatar>{user.info.username[0].toUpperCase()}</Avatar>
+                                        )
+                                    ) : (
                                         <Button
-                                            key={key}
                                             type={'primary'}
                                             shape={'round'}
-                                            onClick={(e) => {
-                                                Logger.printDebug('btn', `btn ${btn.name} clicked`);
-                                                Router.jumpTo(btn.to);
-                                            }}>
-                                            {btn.name}
+                                            onClick={onBtnLoginClick}>
+                                            {Constant.text.login}
                                         </Button>
-                                    );
-                                })}
-                            </span>
+                                    )}
+                                </span>
                             </Row>
                         </Col>
                         <Col

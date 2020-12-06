@@ -13,10 +13,11 @@ function IndexPage(props) {
     const posts = props.posts || [];
     const common = props.common || {};
     const friends = common.friends || [];
+    const user = common.user || {};
 
     return (
         <div>
-            <NavBar/>
+            <NavBar user={user}/>
             <Banner
                 background={Constant.resource.indexBannerImg}
                 slogan={Constant.text.indexSlogan}
