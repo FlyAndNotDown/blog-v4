@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Row, Col, Dropdown, Menu, Affix, Avatar} from 'antd';
+import { Button, Row, Col, Dropdown, Menu, Affix, Avatar } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { Constant } from '../../common/constant';
 import { Logger } from '../../common/utils/logger';
@@ -13,8 +13,12 @@ export function NavBar(props) {
     const [goneAnimationWorking, setGoneAnimationWorking] = useState(false);
     const [navBarAffixed, setNavBarAffixed] = useState(false);
 
-    const onLogoutLinkClick = e => {};
-    const onLogoutBtnClick = e => {};
+    const onLogoutLinkClick = e => {
+        // TODO
+    };
+    const onLogoutBtnClick = e => {
+        // TODO
+    };
 
     const navBarDropdownMenu = (
         <Menu>
@@ -97,17 +101,27 @@ export function NavBar(props) {
                                 <a href={Constant.route.about} className={Style.navLink}>{Constant.text.about}</a>
                                 <span className={Style.btnSpan}>
                                     {user.login ? (
-                                        user.info.avatar ? (
-                                            <Avatar src={user.info.avatar} alt={'avatar'}/>
-                                        ) : (
-                                            <Avatar>{user.info.username[0].toUpperCase()}</Avatar>
-                                        )
+                                        <Dropdown
+                                            overlay={
+                                                <Menu>
+                                                    <Menu.Item
+                                                        onClick={onBtnLoginClick}>
+                                                        {Constant.text.logout}
+                                                    </Menu.Item>
+                                                </Menu>
+                                            }>
+                                            {user.info.avatar ? (
+                                                <Avatar src={user.info.avatar} alt={'avatar'}/>
+                                                ) : (
+                                                <Avatar>{user.info.username[0].toUpperCase()}</Avatar>
+                                            )}
+                                        </Dropdown>
                                     ) : (
                                         <Button
-                                            type={'primary'}
-                                            shape={'round'}
-                                            onClick={onBtnLoginClick}>
-                                            {Constant.text.login}
+                                        type={'primary'}
+                                        shape={'round'}
+                                        onClick={onBtnLoginClick}>
+                                        {Constant.text.login}
                                         </Button>
                                     )}
                                 </span>
