@@ -23,7 +23,16 @@ module.exports = app => {
     });
   };
 
-  User.findEmailUser = async function(login) {
+  User.getSimpleInfo = async function(pk) {
+    return await this.findByPk(pk, {
+      attributes: [
+        'username',
+        'avatar',
+      ],
+    });
+  };
+
+  User.getEmailUser = async function(login) {
     return await this.findOne({
       where: {
         type: 'email',
@@ -32,7 +41,7 @@ module.exports = app => {
     });
   };
 
-  User.findGithubUser = async function(login) {
+  User.getGithubUser = async function(login) {
     return await this.findOne({
       where: {
         type: 'github',
@@ -41,7 +50,7 @@ module.exports = app => {
     });
   };
 
-  User.findQQUser = async function(login) {
+  User.getQQUser = async function(login) {
     return await this.findOne({
       where: {
         type: 'qq',

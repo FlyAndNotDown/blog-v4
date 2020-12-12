@@ -19,16 +19,30 @@ module.exports = app => {
     });
   };
 
-  Post.totalNum = async function() {
-    return await this.count();
+  Post.getPostSummaryList = async function() {
+    return await this.findAll({
+      include: [{
+        model: app.model.Tag,
+        as: 'tags',
+      }],
+      attributes: [
+        'title',
+        'description',
+        'created_at',
+      ],
+    });
   };
 
-  Post.findPost = async function(pk) {
+  Post.getPost = async function(pk) {
     return await this.findByPk(pk, {
       include: [{
         model: app.Model.Tag,
       }],
     });
+  };
+
+  Post.totalNum = async function() {
+    return await this.count();
   };
 
   Post.associate = function() {
