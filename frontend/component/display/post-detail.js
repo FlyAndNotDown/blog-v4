@@ -2,9 +2,10 @@ import React from 'react';
 import Style from './post-detail.module.css';
 import Moment from 'moment';
 import { Constant } from '../../common/constant';
-import {Divider, Tooltip} from 'antd';
+import { Tooltip } from 'antd';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { Router } from '../../common/utils/router';
+import { MarkdownRenderer } from './markdown-renderer';
 
 export function PostDetail(props) {
     const title = props.title || '';
@@ -20,11 +21,15 @@ export function PostDetail(props) {
         };
 
         return index === 0 ? (
-            <span className={Style.titleDivTagSpanFirst}>
+            <span
+                key={index}
+                className={Style.titleDivTagSpanFirst}>
                 <a className={Style.normalColorLink} onClick={onClick}>{`#${tag}`}</a>
             </span>
         ) : (
-            <span className={Style.titleDivTagSpan}>
+            <span
+                key={index}
+                className={Style.titleDivTagSpan}>
                 <a className={Style.normalColorLink} onClick={onClick}>{`#${tag}`}</a>
             </span>
         );
@@ -48,9 +53,8 @@ export function PostDetail(props) {
                     </Tooltip>
                 </div>
             </div>
-            <Divider className={Style.divider}/>
             <div className={Style.contentDiv}>
-                {content}
+                <MarkdownRenderer source={content}/>
             </div>
         </div>
     );

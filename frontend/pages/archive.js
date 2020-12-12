@@ -10,10 +10,13 @@ import { Content } from '../component/container/content';
 function ArchivePage(props) {
     const archives = props.archives || [];
     const friends = props.common.friends || [];
+    const user = props.common.user || {};
 
     return (
         <div>
-            <NavBar alwaysAffixed={true}/>
+            <NavBar
+                user={user}
+                alwaysAffixed={true}/>
             <Body>
                 <Content>
                     <ArchiveList items={archives}/>

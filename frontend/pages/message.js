@@ -22,7 +22,9 @@ function MessagePage(props) {
 
     return (
         <div>
-            <NavBar alwaysAffixed={true}/>
+            <NavBar
+                user={user}
+                alwaysAffixed={true}/>
             <Body>
                 <Content>
                     {user.login ?
