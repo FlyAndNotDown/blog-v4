@@ -19,6 +19,18 @@ module.exports = app => {
     });
   };
 
+  Post.totalNum = async function() {
+    return await this.count();
+  };
+
+  Post.findPost = async function(pk) {
+    return await this.findByPk(pk, {
+      include: [{
+        model: app.Model.Tag,
+      }],
+    });
+  };
+
   Post.associate = function() {
     app.model.Post.belongsToMany(app.model.Tag, {
       as: 'tags',

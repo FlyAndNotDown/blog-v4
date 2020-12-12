@@ -9,6 +9,18 @@ module.exports = app => {
     updated_at: DATE,
   });
 
+  Tag.getTagList = async function() {
+    return await this.findAll();
+  };
+
+  Tag.getTagListWithPosts = async function() {
+    return await this.findAll({
+      include: [{
+        model: app.model.Post,
+      }],
+    });
+  };
+
   Tag.associate = function() {
     app.model.Tag.belongsToMany(app.model.Post, {
       as: 'posts',
