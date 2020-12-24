@@ -59,7 +59,7 @@ class UserController extends Controller {
     const user = ctx.model.User.getEmailUser(email);
     if (!user) {
       ctx.body = {
-        result: false,
+        success: false,
         reason: 'email is not exists',
       };
       return;
@@ -67,7 +67,7 @@ class UserController extends Controller {
 
     if (password !== user.password) {
       ctx.body = {
-        result: false,
+        success: false,
         reason: 'bad password',
       };
       return;
@@ -76,7 +76,7 @@ class UserController extends Controller {
     ctx.session.userLogin = true;
     ctx.session.userPk = user.pk;
     ctx.body = {
-      result: true,
+      success: true,
     };
   }
 

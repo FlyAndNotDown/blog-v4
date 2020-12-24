@@ -5,8 +5,12 @@ const Controller = require('egg').Controller;
 class TagController extends Controller {
   async getSummaries() {
     const { ctx } = this;
-    // TODO
-    ctx.body = {};
+    ctx.body = {
+      success: true,
+      content: {
+        summaries: ctx.model.Tag.getTagListWithPosts(),
+      },
+    };
   }
 }
 
