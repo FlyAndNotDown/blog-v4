@@ -28,8 +28,15 @@ class CommentController extends Controller {
 
     const comment = ctx.model.Comment.createPost(author, content);
     if (comment === null) {
-      // TODO
+      ctx.body = {
+        success: false,
+        reason: 'failed to create comment',
+      };
+      return;
     }
+    ctx.body = {
+      success: true,
+    };
   }
 }
 
