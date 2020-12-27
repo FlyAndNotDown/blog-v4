@@ -33,6 +33,27 @@ module.exports = app => {
     });
   };
 
+  Post.getPostSummaryListByRange = async function(pkBegin, pkEnd) {
+    return await this.findAll({
+      include: [{
+        model: app.model.Tag,
+        as: 'tags',
+      }],
+      attributes: [
+          'title',
+          'description',
+          'created_at'
+      ],
+      where: {
+        [this.Op.between]: [{
+          pk: pkBegin
+        }, {
+          pk: pkEnd
+        }]
+      }
+    });
+  }
+
   Post.getPost = async function(pk) {
     return await this.findByPk(pk, {
       include: [{
