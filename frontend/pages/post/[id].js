@@ -6,6 +6,8 @@ import { Body } from '../../component/container/body';
 import { Content } from '../../component/container/content';
 import { Footer } from '../../component/display/footer';
 import { PostDetail } from '../../component/display/post-detail';
+import Axios from "axios";
+import {BackendUtils} from "../../common/utils/backend";
 
 function PostPage(props) {
     const post = props.post || {};
@@ -32,13 +34,28 @@ function PostPage(props) {
     );
 }
 
-PostPage.getInitialProps = async (context) => {
-    const id = parseInt(context.query.id) || 0;
-    if (BlogConfig.useMockData) {
-        return id >= MockData.posts.length ? {} : MockData.posts[id];
-    } else {
-        return {};
+if (BlogConfig.useMockData) {
+    PostPage.getInitialProps = async (context) => {
+        const id = parseInt(context.query.id) || 0;
+        if (BlogConfig.useMockData) {
+            return id >= MockData.posts.length ? {} : MockData.posts[id];
+        } else {
+            return {};
+        }
+    };
+} else {
+    PostPage.getServerSideProps = async (context) => {
+        const id = parseInt(context.query.id) || 0;
+        const { data } = await Axios.get(BackendUtils.getUrl(`/backend/post/pk/${id}`));
+        return data.success ? {
+            post: {
+                title: data.content.post.name,
+                time: data.content.post.created_at,
+                tags: data.content.post.tags.map(tag => tag.name),
+                content: data.content.post.content
+            }
+        } : {};
     }
-};
+}
 
 export default PostPage;
