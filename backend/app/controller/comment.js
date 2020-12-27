@@ -5,14 +5,38 @@ const Controller = require('egg').Controller;
 class CommentController extends Controller {
   async getList() {
     const { ctx } = this;
-    // TODO
-    ctx.body = {};
+    ctx.body = {
+      success: true,
+      content: {
+        comments: ctx.model.Comment.getCommentListWithAuthor(),
+      },
+    };
   }
 
   async post() {
     const { ctx } = this;
-    // TODO
-    ctx.body = {};
+    const author = ctx.request.body.author || -1;
+    const content = ctx.request.body.content || '';
+
+    if (author === -1) {
+      ctx.body = {
+        success: false,
+        reason: 'bad author',
+      };
+      return;
+    }
+
+    const comment = ctx.model.Comment.createPost(author, content);
+    if (comment === null) {
+      ctx.body = {
+        success: false,
+        reason: 'failed to create comment',
+      };
+      return;
+    }
+    ctx.body = {
+      success: true,
+    };
   }
 }
 

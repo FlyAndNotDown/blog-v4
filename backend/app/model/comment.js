@@ -9,6 +9,13 @@ module.exports = app => {
     updated_at: DATE,
   });
 
+  Comment.post = async function(author, content) {
+    return await this.create({
+      author,
+      content,
+    });
+  };
+
   Comment.getCommentList = async function() {
     return await this.findAll();
   };

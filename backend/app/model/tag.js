@@ -17,6 +17,10 @@ module.exports = app => {
     return await this.findAll({
       include: [{
         model: app.model.Post,
+        attributes: [
+          'title',
+          'created_at',
+        ],
       }],
     });
   };

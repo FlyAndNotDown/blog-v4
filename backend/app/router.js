@@ -6,8 +6,10 @@
 module.exports = app => {
   const { router, controller } = app;
 
-  router.get('/backend/post/:pk', controller.post.getByPk);
-  router.get('/backend/post/summaries', controller.post.getSummaries);
+  router.get('/backend/post/count', controller.post.getCount);
+  router.get('/backend/post/pk/:pk', controller.post.getByPk);
+  router.get('/backend/post/summaries/:pkBegin/:pkEnd', controller.post.getSummariesWithRange);
+  router.get('/backend/post/summaries/all', controller.post.getSummaries);
 
   router.get('/backend/tag/summaries', controller.tag.getSummaries);
 
