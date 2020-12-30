@@ -40,19 +40,19 @@ module.exports = app => {
         as: 'tags',
       }],
       attributes: [
-          'title',
-          'description',
-          'created_at'
+        'title',
+        'description',
+        'created_at',
       ],
       where: {
         [this.Op.between]: [{
-          pk: pkBegin
+          pk: pkBegin,
         }, {
-          pk: pkEnd
-        }]
-      }
+          pk: pkEnd,
+        }],
+      },
     });
-  }
+  };
 
   Post.getPost = async function(pk) {
     return await this.findByPk(pk, {

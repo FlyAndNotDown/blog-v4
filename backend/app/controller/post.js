@@ -10,7 +10,7 @@ class PostController extends Controller {
     if (post === null) {
       ctx.body = {
         success: false,
-        reason: 'bad pk'
+        reason: 'bad pk',
       };
       return;
     }
@@ -26,7 +26,7 @@ class PostController extends Controller {
       success: true,
       content: {
         count: ctx.model.Post.count(),
-      }
+      },
     };
   }
 
@@ -48,14 +48,14 @@ class PostController extends Controller {
       ctx.body = {
         success: false,
         reason: 'bad params',
-      }
+      };
       return;
     }
     ctx.body = {
       success: true,
       content: {
         summaries: ctx.model.Post.getPostSummaryListByRange(pkBegin, pkEnd),
-      }
+      },
     };
   }
 }
