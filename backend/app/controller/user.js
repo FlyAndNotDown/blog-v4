@@ -18,7 +18,7 @@ class UserController extends Controller {
     }
 
     if (userLogin) {
-      const user = ctx.model.User.findByPk(userPk);
+      const user = await ctx.model.User.findByPk(userPk);
       if (!user) {
         ctx.body = {
           success: false,
@@ -31,7 +31,7 @@ class UserController extends Controller {
         success: true,
         content: {
           login: true,
-          info: ctx.model.User.findByPk(userPk, {
+          info: await ctx.model.User.findByPk(userPk, {
             attributes: [
               'username',
               'avatar',
@@ -56,7 +56,7 @@ class UserController extends Controller {
     const email = ctx.request.body.email || '';
     const password = ctx.request.body.password || '';
 
-    const user = ctx.model.User.getEmailUser(email);
+    const user = await ctx.model.User.getEmailUser(email);
     if (!user) {
       ctx.body = {
         success: false,
