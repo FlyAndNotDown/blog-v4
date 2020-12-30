@@ -8,7 +8,7 @@ class CommentController extends Controller {
     ctx.body = {
       success: true,
       content: {
-        comments: ctx.model.Comment.getCommentListWithAuthor(),
+        comments: await ctx.model.Comment.getCommentListWithAuthor(),
       },
     };
   }
@@ -26,7 +26,7 @@ class CommentController extends Controller {
       return;
     }
 
-    const comment = ctx.model.Comment.createPost(author, content);
+    const comment = await ctx.model.Comment.createPost(author, content);
     if (comment === null) {
       ctx.body = {
         success: false,

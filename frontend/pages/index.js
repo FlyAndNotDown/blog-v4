@@ -8,8 +8,12 @@ import { BlogConfig } from '../blog.config';
 import { PostList } from '../component/display/post-list';
 import { Footer } from '../component/display/footer';
 import { Content} from '../component/container/content';
+import { BackendUtils } from "../common/utils/backend";
+import { Network } from "../common/utils/network";
 
 function IndexPage(props) {
+    console.log(props);
+
     const posts = props.posts || [];
     const common = props.common || {};
     const friends = common.friends || [];
@@ -33,7 +37,11 @@ function IndexPage(props) {
 }
 
 IndexPage.getInitialProps = async () => {
-    return BlogConfig.useMockData ? MockData.index : {};
+    if (BlogConfig.useMockData) {
+        return MockData.index;
+    }
+    const { data } = await Network.getInstance().get(BackendUtils.getUrl('/backend/post/summaries/all'));
+    return data;
 };
 
 export default IndexPage;

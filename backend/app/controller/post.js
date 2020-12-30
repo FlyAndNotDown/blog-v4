@@ -6,11 +6,11 @@ class PostController extends Controller {
   async getByPk() {
     const { ctx } = this;
     const pk = ctx.params.pk || -1;
-    const post = ctx.model.Post.getPost(pk);
+    const post = await ctx.model.Post.getPost(pk);
     if (post === null) {
       ctx.body = {
         success: false,
-        reason: 'bad pk'
+        reason: 'bad pk',
       };
       return;
     }
@@ -25,8 +25,8 @@ class PostController extends Controller {
     ctx.body = {
       success: true,
       content: {
-        count: ctx.model.Post.count(),
-      }
+        count: await ctx.model.Post.count(),
+      },
     };
   }
 
@@ -35,7 +35,7 @@ class PostController extends Controller {
     ctx.body = {
       success: true,
       content: {
-        summaries: ctx.model.Post.getPostSummaryList(),
+        summaries: await ctx.model.Post.getPostSummaryList(),
       },
     };
   }
@@ -48,14 +48,14 @@ class PostController extends Controller {
       ctx.body = {
         success: false,
         reason: 'bad params',
-      }
+      };
       return;
     }
     ctx.body = {
       success: true,
       content: {
-        summaries: ctx.model.Post.getPostSummaryListByRange(pkBegin, pkEnd),
-      }
+        summaries: await ctx.model.Post.getPostSummaryListByRange(pkBegin, pkEnd),
+      },
     };
   }
 }

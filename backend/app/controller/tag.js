@@ -8,7 +8,7 @@ class TagController extends Controller {
     ctx.body = {
       success: true,
       content: {
-        summaries: ctx.model.Tag.getTagListWithPosts(),
+        summaries: await ctx.model.Tag.getTagListWithPosts(),
       },
     };
   }
