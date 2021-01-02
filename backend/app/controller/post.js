@@ -40,6 +40,16 @@ class PostController extends Controller {
     };
   }
 
+  async getArchive() {
+    const { ctx } = this;
+    ctx.body = {
+      success: true,
+      content: {
+        archive: await ctx.model.Post.getArchive(),
+      },
+    };
+  }
+
   async getSummariesWithRange() {
     const { ctx } = this;
     const pkBegin = ctx.params.pkBegin || -1;

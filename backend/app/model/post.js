@@ -51,12 +51,44 @@ module.exports = app => {
     }));
   };
 
+  Post.getArchive = async function() {
+    const archiveList = await this.findAll({
+      attributes: [
+        'id',
+        'title',
+        'date',
+      ],
+      order: [
+        [ 'id', 'DESC' ],
+      ],
+    });
+    const tmp = {};
+    archiveList.forEach(post => {
+      const year = post.date.split('-')[0];
+      if (!tmp.hasOwnProperty(year)) {
+        tmp[year] = [];
+      }
+      tmp[year].push(post);
+    });
+    const result = [];
+    for (const key in tmp) {
+      if (tmp.hasOwnProperty(key)) {
+        result.push({
+          year: key,
+          posts: tmp[key],
+        });
+      }
+    }
+    return result;
+  };
+
   Post.getPostById = async function(id) {
     const post = await this.findOne({
       include: [{
         model: app.model.Tag,
         as: 'tags',
         attributes: [
+          'id',
           'name',
         ],
       }],
