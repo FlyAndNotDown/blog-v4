@@ -47,7 +47,7 @@ export function NavBar(props) {
             </Menu.Item>
             <Menu.Item
                 className={Style.dropdownItem}>
-                <a href={Constant.route.tag}>{Constant.text.tag}</a>
+                <a href={Constant.route.tagSummary}>{Constant.text.tag}</a>
             </Menu.Item>
             <Menu.Item
                 className={Style.dropdownItem}>
