@@ -6,13 +6,13 @@ module.exports = app => {
   const Comment = app.model.define('comment', {
     content: STRING(1000),
     created_at: DATE,
-    updated_at: DATE,
   });
 
   Comment.post = async function(author, content) {
     return await this.create({
       author,
       content,
+      created_at: new Date(),
     });
   };
 

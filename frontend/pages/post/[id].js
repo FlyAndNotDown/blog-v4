@@ -43,19 +43,6 @@ if (BlogConfig.useMockData) {
             return {};
         }
     };
-} else {
-    PostPage.getServerSideProps = async (context) => {
-        const id = parseInt(context.query.id) || 0;
-        const { data } = await Axios.get(BackendUtils.getUrl(`/backend/post/pk/${id}`));
-        return data.success ? {
-            post: {
-                title: data.content.post.name,
-                time: data.content.post.created_at,
-                tags: data.content.post.tags.map(tag => tag.name),
-                content: data.content.post.content
-            }
-        } : {};
-    }
 }
 
 export default PostPage;

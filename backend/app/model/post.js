@@ -7,17 +7,9 @@ module.exports = app => {
     title: STRING(100),
     description: STRING(500),
     content: TEXT,
+    date: TEXT,
     created_at: DATE,
-    updated_at: DATE,
   });
-
-  Post.createPost = async function(title, description, content) {
-    return await this.create({
-      title,
-      description,
-      content,
-    });
-  };
 
   Post.getPostSummaryList = async function() {
     return await this.findAll({
@@ -28,7 +20,7 @@ module.exports = app => {
       attributes: [
         'title',
         'description',
-        'created_at',
+        'date',
       ],
     });
   };
@@ -42,7 +34,7 @@ module.exports = app => {
       attributes: [
         'title',
         'description',
-        'created_at',
+        'date',
       ],
       where: {
         [this.Op.between]: [{

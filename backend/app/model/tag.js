@@ -6,7 +6,6 @@ module.exports = app => {
   const Tag = app.model.define('tag', {
     name: STRING(20),
     created_at: DATE,
-    updated_at: DATE,
   });
 
   Tag.getTagList = async function() {
@@ -19,7 +18,7 @@ module.exports = app => {
         model: app.model.Post,
         attributes: [
           'title',
-          'created_at',
+          'date',
         ],
       }],
     });

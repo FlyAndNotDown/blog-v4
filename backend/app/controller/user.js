@@ -73,6 +73,7 @@ class UserController extends Controller {
       return;
     }
 
+    await user.logSignIn();
     ctx.session.userLogin = true;
     ctx.session.userPk = user.pk;
     ctx.body = {
