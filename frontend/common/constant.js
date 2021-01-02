@@ -1,6 +1,7 @@
 const route = {
     index: '/',
     archive: '/archive',
+    tagSummary: '/tag/0',
     tag: '/tag',
     message: '/message',
     about: '/about',
@@ -110,19 +111,6 @@ const format = {
 };
 
 const iteration = {
-    navLink: [{
-        name: text.archive,
-        to: route.archive,
-    }, {
-        name: text.tag,
-        to: route.tag
-    }, {
-        name: text.message,
-        to: route.message
-    }, {
-        name: text.about,
-        to: route.about
-    }],
     footerIconLink: [{
         key: icon.key.github,
         link: route.github

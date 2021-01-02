@@ -5,17 +5,30 @@ import { Divider, Empty } from 'antd';
 import { Router } from '../../common/utils/router';
 
 export function TagList(props) {
-    const tags = props.tags || [];
+    const initialId = props.initialId || 0;
+    const summaries = props.summaries || [];
 
-    const [posts, setPosts] = useState([]);
-    const [currentTag, setCurrentTag] = useState('');
+    let initialState = {
+        posts: [],
+        name: '',
+    };
+    for (let i = 0; i < summaries.length; i++) {
+        if (initialId === summaries[i].id) {
+            console.log('found');
+            initialState = summaries[i];
+            break;
+        }
+    }
+
+    const [posts, setPosts] = useState(initialState.posts);
+    const [currentTagName, setCurrentTagName] = useState(initialState.name);
 
     const tagRenderer = (tag, key) => {
         const onClickInternal = () => {
-            const currentTag = tags[key].name || '';
-            const tPosts = tags[key].posts || [];
+            const currentTag = summaries[key].name || '';
+            const tPosts = summaries[key].posts || [];
 
-            setCurrentTag(currentTag);
+            setCurrentTagName(currentTag);
             setPosts(tPosts);
         };
 
@@ -42,7 +55,7 @@ export function TagList(props) {
                     <a
                         className={Style.postTitle}
                         onClick={postTitleClickListenerGenerator(post.id)}>
-                        {post.name}
+                        {post.title}
                     </a>
                 </div>
                 {key === posts.length - 1 || <Divider className={Style.divider}/>}
@@ -53,12 +66,12 @@ export function TagList(props) {
     return (
         <div className={Style.main}>
             <div>
-                {tags.map(tagRenderer)}
+                {summaries.map(tagRenderer)}
             </div>
             <div className={Style.postsDiv}>
                 <div
                     className={Style.postsDivTitle}>
-                    {currentTag}
+                    {currentTagName}
                 </div>
                 <div
                     className={Style.postsDivContent}>
