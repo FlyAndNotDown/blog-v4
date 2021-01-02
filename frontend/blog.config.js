@@ -1,8 +1,6 @@
 export const BlogConfig = {
     // Debug Mode
     debugMode: true,
-    // Mock Data
-    useMockData: false,
     // env
     env: 'development',
     // server

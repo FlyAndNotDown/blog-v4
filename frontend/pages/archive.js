@@ -2,13 +2,13 @@ import React from 'react';
 import { NavBar } from '../component/nav/nav-bar';
 import { Body } from '../component/container/body';
 import { ArchiveList } from '../component/display/archive-list';
-import { BlogConfig } from '../blog.config';
-import { MockData } from '../common/mock/mock';
 import { Footer } from '../component/display/footer';
 import { Content } from '../component/container/content';
+import { Network } from "../common/utils/network";
+import { BackendUtils } from "../common/utils/backend";
 
 function ArchivePage(props) {
-    const archives = props.archives || [];
+    const archive = props.archive || [];
     const friends = props.common.friends || [];
     const user = props.common.user || {};
 
@@ -19,7 +19,7 @@ function ArchivePage(props) {
                 alwaysAffixed={true}/>
             <Body>
                 <Content>
-                    <ArchiveList items={archives}/>
+                    <ArchiveList items={archive}/>
                 </Content>
                 <Footer friends={friends}/>
             </Body>
@@ -27,8 +27,17 @@ function ArchivePage(props) {
     );
 }
 
-ArchivePage.getInitialProps = async () => {
-    return BlogConfig.useMockData ? MockData.archive : {};
-};
+export async function getServerSideProps() {
+    const { data } = await Network.getInstance().get(BackendUtils.getUrl('/backend/post/archive/all'));
+    return {
+        props: {
+            archive: data.success ? data.content.archive : {},
+            common: {
+                friends: [],
+                user: {},
+            }
+        }
+    }
+}
 
 export default ArchivePage;

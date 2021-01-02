@@ -10,8 +10,6 @@ module.exports = app => {
     password: STRING(64),
     avatar: STRING(100),
     last_sign_in: DATE,
-    created_at: DATE,
-    updated_at: DATE,
   });
 
   User.createEmailUser = async function(login, username, password) {

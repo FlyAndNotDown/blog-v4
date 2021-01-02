@@ -28,7 +28,7 @@ export class Router {
         Router.jumpTo(Constant.route.login);
     }
 
-    static jumpToTag(name) {
-        Router.jumpTo(`${Constant.route}/${name}`);
+    static jumpToTag(id) {
+        Router.jumpTo(`${Constant.route.tag}/${id}`);
     }
 }

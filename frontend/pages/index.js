@@ -3,8 +3,6 @@ import { Constant } from '../common/constant';
 import { NavBar } from '../component/nav/nav-bar';
 import { Banner } from '../component/display/banner';
 import { BodyAfterBanner } from '../component/container/body-after-banner';
-import { MockData } from '../common/mock/mock';
-import { BlogConfig } from '../blog.config';
 import { PostList } from '../component/display/post-list';
 import { Footer } from '../component/display/footer';
 import { Content} from '../component/container/content';
@@ -12,9 +10,7 @@ import { BackendUtils } from "../common/utils/backend";
 import { Network } from "../common/utils/network";
 
 function IndexPage(props) {
-    console.log(props);
-
-    const posts = props.posts || [];
+    const summaries = props.summaries || [];
     const common = props.common || {};
     const friends = common.friends || [];
     const user = common.user || {};
@@ -28,7 +24,7 @@ function IndexPage(props) {
                 subSlogan={Constant.text.indexSubSlogan}/>
             <BodyAfterBanner>
                 <Content>
-                    <PostList posts={posts}/>
+                    <PostList summaries={summaries}/>
                 </Content>
                 <Footer friends={friends}/>
             </BodyAfterBanner>
@@ -36,12 +32,11 @@ function IndexPage(props) {
     );
 }
 
-IndexPage.getInitialProps = async () => {
-    if (BlogConfig.useMockData) {
-        return MockData.index;
-    }
+export async function getServerSideProps() {
     const { data } = await Network.getInstance().get(BackendUtils.getUrl('/backend/post/summaries/all'));
-    return data;
-};
+    return {
+        props: data.success ? data.content : {}
+    }
+}
 
 export default IndexPage;

@@ -3,10 +3,10 @@
 const Controller = require('egg').Controller;
 
 class PostController extends Controller {
-  async getByPk() {
+  async getById() {
     const { ctx } = this;
-    const pk = ctx.params.pk || -1;
-    const post = await ctx.model.Post.getPost(pk);
+    const id = ctx.params.id || -1;
+    const post = await ctx.model.Post.getPostById(id);
     if (post === null) {
       ctx.body = {
         success: false,
@@ -36,6 +36,16 @@ class PostController extends Controller {
       success: true,
       content: {
         summaries: await ctx.model.Post.getPostSummaryList(),
+      },
+    };
+  }
+
+  async getArchive() {
+    const { ctx } = this;
+    ctx.body = {
+      success: true,
+      content: {
+        archive: await ctx.model.Post.getArchive(),
       },
     };
   }
