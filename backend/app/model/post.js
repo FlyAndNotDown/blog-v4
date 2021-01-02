@@ -1,35 +1,29 @@
 'use strict';
 
+const Sequelize = require('sequelize');
+
 module.exports = app => {
-  const { TEXT, STRING, DATE } = app.Sequelize;
+  const { TEXT, STRING } = app.Sequelize;
 
   const Post = app.model.define('post', {
     title: STRING(100),
     description: STRING(500),
     content: TEXT,
     date: TEXT,
-    created_at: DATE,
   });
 
   Post.getPostSummaryList = async function() {
-    return await this.findAll({
-      include: [{
-        model: app.model.Tag,
-        as: 'tags',
-      }],
-      attributes: [
-        'title',
-        'description',
-        'date',
-      ],
-    });
+    return await this.getPostSummaryListByRange(1, await this.count());
   };
 
-  Post.getPostSummaryListByRange = async function(pkBegin, pkEnd) {
-    return await this.findAll({
+  Post.getPostSummaryListByRange = async function(idBegin, idEnd) {
+    const summaryList = await this.findAll({
       include: [{
         model: app.model.Tag,
         as: 'tags',
+        attributes: [
+          'name',
+        ],
       }],
       attributes: [
         'title',
@@ -37,25 +31,36 @@ module.exports = app => {
         'date',
       ],
       where: {
-        [this.Op.between]: [{
-          pk: pkBegin,
-        }, {
-          pk: pkEnd,
-        }],
+        id: {
+          [Sequelize.Op.between]: [ idBegin, idEnd ],
+        },
       },
     });
+
+    return summaryList.map(summary => ({
+      title: summary.title,
+      description: summary.description,
+      date: summary.date,
+      tags: summary.tags.map(tag => tag.name),
+    }));
   };
 
-  Post.getPost = async function(pk) {
-    return await this.findByPk(pk, {
+  Post.getPostById = async function(id) {
+    const post = this.findById(id, {
       include: [{
         model: app.Model.Tag,
+        as: 'tags',
+        attributes: [
+          'name',
+        ],
       }],
     });
-  };
-
-  Post.totalNum = async function() {
-    return await this.count();
+    return {
+      title: post.title,
+      description: post.description,
+      date: post.date,
+      tags: post.tags.map(tag => tag.name),
+    };
   };
 
   Post.associate = function() {

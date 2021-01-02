@@ -1,18 +1,16 @@
 'use strict';
 
 module.exports = app => {
-  const { STRING, DATE } = app.Sequelize;
+  const { STRING } = app.Sequelize;
 
   const Comment = app.model.define('comment', {
     content: STRING(1000),
-    created_at: DATE,
   });
 
-  Comment.post = async function(author, content) {
+  Comment.post = async function(author_id, content) {
     return await this.create({
-      author,
+      author_id,
       content,
-      created_at: new Date(),
     });
   };
 

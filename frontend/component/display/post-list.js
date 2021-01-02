@@ -4,16 +4,18 @@ import { PostItem } from './post-item';
 import Style from './post-list.module.css';
 
 export function PostList(props) {
-    const posts = props.posts || [];
+    const summaries = props.summaries || [];
+
+    console.log(summaries);
 
     return (
         <div className={Style.main}>
-            {posts.map((post, key) => (
+            {summaries.map((post, key) => (
                 <div key={key}>
                     <PostItem
                         title={post.title}
                         description={post.description}
-                        time={post.time}
+                        date={post.date}
                         tags={post.tags}/>
                     <Divider className={Style.divider}/>
                 </div>

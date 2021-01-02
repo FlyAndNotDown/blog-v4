@@ -10,13 +10,11 @@ module.exports = app => {
     password: STRING(64),
     avatar: STRING(100),
     last_sign_in: DATE,
-    created_at: DATE,
   });
 
   User.createEmailUser = async function(login, username, password) {
     return await this.create({
       type: 'email',
-      created_at: new Date(),
       login,
       username,
       password,

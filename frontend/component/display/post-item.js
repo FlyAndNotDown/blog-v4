@@ -7,7 +7,7 @@ export function PostItem(props) {
     const id = props.id || 0;
     const title = props.title || '';
     const description = props.description || '';
-    const time = props.time || '';
+    const date = props.date || '';
     const tags = props.tags || [];
 
     return (
@@ -29,7 +29,7 @@ export function PostItem(props) {
                     </span>
                     &nbsp;
                     <span>
-                        {time}
+                        {date}
                     </span>
                 </div>
                 <div className={Style.tagSpan}>

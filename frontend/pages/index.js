@@ -24,7 +24,7 @@ function IndexPage(props) {
                 subSlogan={Constant.text.indexSubSlogan}/>
             <BodyAfterBanner>
                 <Content>
-                    <PostList posts={summaries}/>
+                    <PostList summaries={summaries}/>
                 </Content>
                 <Footer friends={friends}/>
             </BodyAfterBanner>

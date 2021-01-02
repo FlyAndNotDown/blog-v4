@@ -1,11 +1,10 @@
 'use strict';
 
 module.exports = app => {
-  const { STRING, DATE } = app.Sequelize;
+  const { STRING } = app.Sequelize;
 
   const Tag = app.model.define('tag', {
     name: STRING(20),
-    created_at: DATE,
   });
 
   Tag.getTagList = async function() {
