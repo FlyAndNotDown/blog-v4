@@ -17,6 +17,7 @@ module.exports = app => {
         model: app.model.Post,
         as: 'posts',
         attributes: [
+          'id',
           'title',
           'date',
         ],
@@ -25,6 +26,7 @@ module.exports = app => {
     return tagList.map(tag => ({
       name: tag.name,
       posts: tag.posts.map(post => ({
+        id: post.id,
         title: post.title,
         date: post.date,
       })),

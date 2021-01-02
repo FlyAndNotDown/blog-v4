@@ -3,12 +3,12 @@ import { NavBar } from '../component/nav/nav-bar';
 import { Body } from '../component/container/body';
 import { Footer } from '../component/display/footer';
 import { Content } from '../component/container/content';
-import { BlogConfig } from '../blog.config';
-import { MockData } from '../common/mock/mock';
 import { TagList } from '../component/display/tag-list';
+import { Network } from "../common/utils/network";
+import { BackendUtils } from "../common/utils/backend";
 
 function TagPage(props) {
-    const tags = props.tags || [];
+    const summaries = props.summaries || [];
     const friends = props.common.friends || [];
     const user = props.common.user || {};
 
@@ -19,7 +19,7 @@ function TagPage(props) {
                 alwaysAffixed={true}/>
             <Body>
                 <Content>
-                    <TagList tags={tags}/>
+                    <TagList summaries={summaries}/>
                 </Content>
                 <Footer friends={friends}/>
             </Body>
@@ -27,8 +27,17 @@ function TagPage(props) {
     );
 }
 
-TagPage.getInitialProps = async () => {
-    return BlogConfig.useMockData ? MockData.tag : {};
-};
+export async function getServerSideProps() {
+    const { data } = await Network.getInstance().get(BackendUtils.getUrl('/backend/tag/summaries'));
+    return {
+        props: {
+            summaries: data.success ? data.content.summaries : {},
+            common: {
+                friends: [],
+                user: {},
+            }
+        }
+    }
+}
 
 export default TagPage;
