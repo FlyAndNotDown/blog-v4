@@ -1,36 +1,31 @@
 import React from 'react';
 import Style from './post-detail.module.css';
-import Moment from 'moment';
-import { Constant } from '../../common/constant';
-import { Tooltip } from 'antd';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { Router } from '../../common/utils/router';
 import { MarkdownRenderer } from './markdown-renderer';
 
 export function PostDetail(props) {
     const title = props.title || '';
-    const time = props.time || '';
+    const date = props.date || '';
     const tags = props.tags || [];
     const content = props.content || '';
 
-    const datetime = Moment(time, Constant.format.momentFormat);
-
     const tagsRenderer = (tag, index) => {
         const onClick = () => {
-            Router.jumpToTag(tag);
+            Router.jumpToTag(tag.id);
         };
 
         return index === 0 ? (
             <span
                 key={index}
                 className={Style.titleDivTagSpanFirst}>
-                <a className={Style.normalColorLink} onClick={onClick}>{`#${tag}`}</a>
+                <a className={Style.normalColorLink} onClick={onClick}>{`#${tag.name}`}</a>
             </span>
         ) : (
             <span
                 key={index}
                 className={Style.titleDivTagSpan}>
-                <a className={Style.normalColorLink} onClick={onClick}>{`#${tag}`}</a>
+                <a className={Style.normalColorLink} onClick={onClick}>{`#${tag.name}`}</a>
             </span>
         );
     };
@@ -46,11 +41,10 @@ export function PostDetail(props) {
                 </div>
                 <div className={Style.titleDivTimeRow}>
                     <ClockCircleOutlined/>
-                    <Tooltip
-                        className={Style.titleDivTimeTooltip}
-                        title={datetime.format(Constant.format.momentFormat)}>
-                        {datetime.fromNow()}
-                    </Tooltip>
+                    <span
+                        className={Style.titleDivDateText}>
+                        {date}
+                    </span>
                 </div>
             </div>
             <div className={Style.contentDiv}>

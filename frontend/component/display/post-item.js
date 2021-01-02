@@ -37,7 +37,7 @@ export function PostItem(props) {
                         <a
                             key={key}
                             className={Style.tagLink}>
-                            {`#${tag} `}
+                            {`#${tag.name} `}
                         </a>
                     ))}
                 </div>

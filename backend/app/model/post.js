@@ -22,10 +22,12 @@ module.exports = app => {
         model: app.model.Tag,
         as: 'tags',
         attributes: [
+          'id',
           'name',
         ],
       }],
       attributes: [
+        'id',
         'title',
         'description',
         'date',
@@ -38,28 +40,50 @@ module.exports = app => {
     });
 
     return summaryList.map(summary => ({
+      id: summary.id,
       title: summary.title,
       description: summary.description,
       date: summary.date,
-      tags: summary.tags.map(tag => tag.name),
+      tags: summary.tags.map(tag => ({
+        id: tag.id,
+        name: tag.name,
+      })),
     }));
   };
 
   Post.getPostById = async function(id) {
-    const post = this.findById(id, {
+    const post = await this.findOne({
       include: [{
-        model: app.Model.Tag,
+        model: app.model.Tag,
         as: 'tags',
         attributes: [
           'name',
         ],
       }],
+      attributes: [
+        'id',
+        'title',
+        'description',
+        'date',
+        'content',
+      ],
+      where: {
+        id: {
+          [Sequelize.Op.eq]: id,
+        },
+      },
     });
+
     return {
+      id: post.id,
+      content: post.content,
       title: post.title,
       description: post.description,
       date: post.date,
-      tags: post.tags.map(tag => tag.name),
+      tags: post.tags.map(tag => ({
+        id: tag.id,
+        name: tag.name,
+      })),
     };
   };
 

@@ -6,13 +6,12 @@ import Style from './post-list.module.css';
 export function PostList(props) {
     const summaries = props.summaries || [];
 
-    console.log(summaries);
-
     return (
         <div className={Style.main}>
             {summaries.map((post, key) => (
                 <div key={key}>
                     <PostItem
+                        id={post.id}
                         title={post.title}
                         description={post.description}
                         date={post.date}

@@ -12,15 +12,23 @@ module.exports = app => {
   };
 
   Tag.getTagListWithPosts = async function() {
-    return await this.findAll({
+    const tagList = await this.findAll({
       include: [{
         model: app.model.Post,
+        as: 'posts',
         attributes: [
           'title',
           'date',
         ],
       }],
     });
+    return tagList.map(tag => ({
+      name: tag.name,
+      posts: tag.posts.map(post => ({
+        title: post.title,
+        date: post.date,
+      })),
+    }));
   };
 
   Tag.associate = function() {
