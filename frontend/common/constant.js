@@ -92,10 +92,10 @@ const icon = {
 };
 
 const resource = {
-    indexBannerImg: '/img/index-bg.png',
-    avatarImg: '/img/avatar.jpg',
-    iconImg: '/img/icon.png',
-    iconPureImg: '/img/icon-pure.png'
+    indexBannerImg: '/static/img/index-bg.png',
+    iconImg: '/static/img/icon.png',
+    iconPureImg: '/static/img/icon-pure.png',
+    aboutMarkdownSource: '/static/about.md'
 };
 
 const id = {

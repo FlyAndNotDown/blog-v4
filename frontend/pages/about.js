@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavBar } from '../component/nav/nav-bar';
 import { Body } from '../component/container/body';
-import { BlogConfig } from '../blog.config';
-import { MockData } from '../common/mock/mock';
 import { Content } from '../component/container/content';
+import { Footer } from "../component/display/footer";
 
 function AboutPage(props) {
+    const source = props.source || '';
+    const friends = props.common.friends || [];
     const user = props.common.user || {};
 
     return (
@@ -15,15 +16,24 @@ function AboutPage(props) {
                 alwaysAffixed={true}/>
             <Body>
                 <Content>
-
+                    {source}
                 </Content>
+                <Footer friends={friends}/>
             </Body>
         </div>
     );
 }
 
-AboutPage.getInitialProps = async () => {
-    return BlogConfig.useMockData ? MockData.about : {};
-};
+export async function getServerSideProps() {
+    return {
+        props: {
+            source: '',
+            common: {
+                friends: [],
+                user: {}
+            }
+        }
+    }
+}
 
 export default AboutPage;
