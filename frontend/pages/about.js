@@ -5,6 +5,7 @@ import { Content } from '../component/container/content';
 import { Footer } from "../component/display/footer";
 import { Network } from "../common/utils/network";
 import { BackendUtils } from "../common/utils/backend";
+import { AboutPostDetail } from "../component/display/about-post-detail";
 
 function AboutPage(props) {
     const source = props.source || '';
@@ -18,7 +19,7 @@ function AboutPage(props) {
                 alwaysAffixed={true}/>
             <Body>
                 <Content>
-                    {source}
+                    <AboutPostDetail source={source}/>
                 </Content>
                 <Footer friends={friends}/>
             </Body>
