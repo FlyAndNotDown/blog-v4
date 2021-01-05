@@ -3,6 +3,8 @@ import { NavBar } from '../component/nav/nav-bar';
 import { Body } from '../component/container/body';
 import { Content } from '../component/container/content';
 import { Footer } from "../component/display/footer";
+import { Network } from "../common/utils/network";
+import { BackendUtils } from "../common/utils/backend";
 
 function AboutPage(props) {
     const source = props.source || '';
@@ -25,9 +27,10 @@ function AboutPage(props) {
 }
 
 export async function getServerSideProps() {
+    const { data } = await Network.getInstance().get(BackendUtils.getUrl('/public/about.md'));
     return {
         props: {
-            source: '',
+            source: data.toString(),
             common: {
                 friends: [],
                 user: {}
