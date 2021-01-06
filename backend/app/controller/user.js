@@ -93,6 +93,35 @@ class UserController extends Controller {
     ctx.body = {};
   }
 
+  async postRegisterEmail() {
+    const { ctx } = this;
+
+    const email = ctx.request.body.email || '';
+    const username = ctx.request.body.username || '';
+    const password = ctx.request.body.password || '';
+
+    const user = await ctx.model.User.getEmailUser(email);
+    if (user != null) {
+      ctx.body = {
+        success: false,
+        reason: 'user has already exists',
+      };
+      return;
+    }
+
+    const newUser = await ctx.model.User.createEmailUser(email, username, password);
+    if (newUser == null) {
+      ctx.body = {
+        success: false,
+        reason: 'failed to create user',
+      };
+      return;
+    }
+    ctx.body = {
+      success: true,
+    };
+  }
+
   async deleteLogin() {
     const { ctx } = this;
 

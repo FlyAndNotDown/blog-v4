@@ -40,10 +40,14 @@ export function LoginForm(props) {
     const onRegisterInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
         const repeatHash = sha512().update(repeat).digest('hex');
-        onRegister(email, passwordHash, repeatHash);
+        if (passwordHash !== repeatHash) {
+            Logger.printDebug('bad repeat password');
+            return;
+        }
+        onRegister(email, passwordHash);
     };
     const onFetchValidationCodeBtnClicked = () => {
-        Logger.printDebug('btn', `btn ${Constant.id.fetchValidationCodeBtn} clicked`);
+        Logger.printDebug('btn', `fetchValidationCodeBtn clicked`);
         onFetchValidationCode();
     };
     const onFetchValidationCodeTimeRefresh = (value) => {
@@ -111,8 +115,8 @@ export function LoginForm(props) {
                                 <a className={Style.fetchValidationCodeLink}
                                     onClick={() => {
                                     UIKit.preventDoubleClick(
-                                        Constant.id.fetchValidationCodeBtn,
-                                        Constant.time.fetchValidationCodeTime,
+                                        'fetchValidationCodeBtn',
+                                        60,
                                         () => { onFetchValidationCodeBtnClicked(); },
                                         (time) => { onFetchValidationCodeTimeRefresh(time); });
                                 }}>
@@ -153,15 +157,8 @@ export function LoginForm(props) {
                     </Button>
                 </div>
                 <div className={Style.oauthRow}>
-                    {Constant.iteration.oauthIcon.map((icon, index) =>
-                        <a
-                            onClick={() => {
-                                Router.jumpTo(icon.link);
-                            }}
-                            key={index}>
-                            <KIcon className={Style.oauthIcon} type={icon.key}/>
-                        </a>
-                    )}
+                    <a><KIcon className={Style.oauthIcon} type={Constant.icon.key.githubDark} href={Constant.route.oauthGithub}/></a>
+                    <a><KIcon className={Style.oauthIcon} type={Constant.icon.key.qqDark} href={Constant.route.oauthQQ}/></a>
                 </div>
             </Col>
         </Row>

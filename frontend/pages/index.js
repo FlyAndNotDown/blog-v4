@@ -8,6 +8,7 @@ import { Footer } from '../component/display/footer';
 import { Content} from '../component/container/content';
 import { BackendUtils } from "../common/utils/backend";
 import { Network } from "../common/utils/network";
+import {Logger} from "../common/utils/logger";
 
 function IndexPage(props) {
     const summaries = props.summaries || [];
@@ -33,7 +34,15 @@ function IndexPage(props) {
 }
 
 export async function getServerSideProps() {
-    const { data } = await Network.getInstance().get(BackendUtils.getUrl('/backend/post/summaries/all'));
+    let response = null;
+    try {
+        response = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.postSummariesAll));
+    } catch (e) {
+        Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+    }
+    response = response || {};
+    const data = response.data || {};
+
     return {
         props: data.success ? data.content : {}
     }

@@ -27,6 +27,16 @@ const route = {
     oauthQQ: ''
 };
 
+const backendRoute = {
+    postArchiveAll: '/backend/post/archive/all',
+    postSummariesAll: '/backend/post/summaries/all',
+    postId: '/backend/post/id',
+    tagSummaries: '/backend/tag/summaries',
+
+    // TODO update prefix to /backend
+    aboutMarkdown: '/public/about.md',
+};
+
 const text = {
     logo: 'Kindem',
     archive: '归档',
@@ -74,7 +84,13 @@ const text = {
     messagePageLoginButton: '登录以留言',
     messageFormPlaceholder: '说点什么吧~~',
     messageFormSendMessageButton: '发表留言',
-    messageListTitle: '留言板'
+    messageListTitle: '留言板',
+
+    loggerTagServer: 'server',
+
+    serverError: '服务器错误',
+    failedToLogin: '用户名或密码错误',
+    loginSuccessfully: '登录成功，将为您跳转'
 };
 
 const icon = {
@@ -98,45 +114,8 @@ const resource = {
     aboutMarkdownSource: '/static/about.md'
 };
 
-const id = {
-    fetchValidationCodeBtn: 'fetchValidationCodeBtn'
-};
-
-const time = {
-    fetchValidationCodeTime: 60
-};
-
 const format = {
     momentFormat: 'YYYY-MM-DD hh:mm:ss'
-};
-
-const iteration = {
-    footerIconLink: [{
-        key: icon.key.github,
-        link: route.github
-    }, {
-        key: icon.key.npm,
-        link: route.npm
-    }, {
-        key: icon.key.jianshu,
-        link: route.jianshu
-    }, {
-        key: icon.key.zhihu,
-        link: route.juejin
-    }, {
-        key: icon.key.sf,
-        link: route.sf
-    }, {
-        key: icon.key.juejin,
-        link: route.juejin
-    }],
-    oauthIcon: [{
-        key: icon.key.githubDark,
-        link: route.oauthGithub
-    }, {
-        key: icon.key.qqDark,
-        link: route.oauthQQ
-    }]
 };
 
 /**
@@ -147,11 +126,9 @@ const iteration = {
  */
 export const Constant = {
     route,
+    backendRoute,
     text,
     icon,
     resource,
-    id,
-    time,
-    iteration,
-    format
+    format,
 };

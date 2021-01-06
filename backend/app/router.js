@@ -21,5 +21,6 @@ module.exports = app => {
   router.post('/backend/user/login/email', controller.user.postLoginEmail);
   router.post('/backend/user/login/github', controller.user.postLoginGithub);
   router.post('/backend/user/login/qq', controller.user.postLoginQQ);
+  router.post('/backend/user/register/email', controller.user.postRegisterEmail);
   router.delete('/backend/user/login', controller.user.deleteLogin);
 };

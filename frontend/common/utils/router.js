@@ -9,10 +9,18 @@ import { Constant } from '../constant';
 export class Router {
     /**
      * jump to destination url
+     *
      * @param url destination url
      */
     static jumpTo(url) {
         window.location.href = url;
+    }
+
+    /**
+     * jump to home page
+     */
+    static jumpToHome() {
+        window.location.href = Constant.route.index;
     }
 
     /**
