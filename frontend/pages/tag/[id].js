@@ -7,6 +7,7 @@ import { TagList } from '../../component/display/tag-list';
 import { Network } from "../../common/utils/network";
 import { BackendUtils } from "../../common/utils/backend";
 import { Constant } from "../../common/constant";
+import { Logger } from "../../common/utils/logger";
 
 function TagPage(props) {
     const id = props.id || 0;
@@ -32,11 +33,19 @@ function TagPage(props) {
 }
 
 export async function getServerSideProps(context) {
-    const { data } = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.tagSummaries));
+    let response = null;
+    try {
+        response = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.tagSummaries));;
+    } catch (e) {
+        Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+    }
+    response = response || {};
+    const data = response.data || {};
+
     return {
         props: {
             id: parseInt(context.params.id),
-            summaries: data.success ? data.content.summaries : {},
+            summaries: data.success ? data.content.summaries : [],
             common: {
                 friends: [],
                 user: {},

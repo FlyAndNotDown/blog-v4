@@ -86,6 +86,8 @@ const text = {
     messageFormSendMessageButton: '发表留言',
     messageListTitle: '留言板',
 
+    loggerTagServer: 'server',
+
     serverError: '服务器错误',
     failedToLogin: '用户名或密码错误',
     loginSuccessfully: '登录成功，将为您跳转'

@@ -7,6 +7,7 @@ import { Network } from "../common/utils/network";
 import { BackendUtils } from "../common/utils/backend";
 import { AboutPostDetail } from "../component/display/about-post-detail";
 import { Constant } from "../common/constant";
+import {Logger} from "../common/utils/logger";
 
 function AboutPage(props) {
     const source = props.source || '';
@@ -29,7 +30,15 @@ function AboutPage(props) {
 }
 
 export async function getServerSideProps() {
-    const { data } = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.aboutMarkdown));
+    let response = null;
+    try {
+        response = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.aboutMarkdown));
+    } catch (e) {
+        Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+    }
+    response = response || {};
+    const data = response.data || '';
+
     return {
         props: {
             source: data.toString(),
