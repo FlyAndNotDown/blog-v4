@@ -102,14 +102,6 @@ const resource = {
     aboutMarkdownSource: '/static/about.md'
 };
 
-const id = {
-    fetchValidationCodeBtn: 'fetchValidationCodeBtn'
-};
-
-const time = {
-    fetchValidationCodeTime: 60
-};
-
 const format = {
     momentFormat: 'YYYY-MM-DD hh:mm:ss'
 };
@@ -125,7 +117,5 @@ export const Constant = {
     text,
     icon,
     resource,
-    id,
-    time,
     format
 };

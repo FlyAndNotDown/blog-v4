@@ -47,7 +47,7 @@ export function LoginForm(props) {
         onRegister(email, passwordHash);
     };
     const onFetchValidationCodeBtnClicked = () => {
-        Logger.printDebug('btn', `btn ${Constant.id.fetchValidationCodeBtn} clicked`);
+        Logger.printDebug('btn', `fetchValidationCodeBtn clicked`);
         onFetchValidationCode();
     };
     const onFetchValidationCodeTimeRefresh = (value) => {
@@ -115,8 +115,8 @@ export function LoginForm(props) {
                                 <a className={Style.fetchValidationCodeLink}
                                     onClick={() => {
                                     UIKit.preventDoubleClick(
-                                        Constant.id.fetchValidationCodeBtn,
-                                        Constant.time.fetchValidationCodeTime,
+                                        'fetchValidationCodeBtn',
+                                        60,
                                         () => { onFetchValidationCodeBtnClicked(); },
                                         (time) => { onFetchValidationCodeTimeRefresh(time); });
                                 }}>
