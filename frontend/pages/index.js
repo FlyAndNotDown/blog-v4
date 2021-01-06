@@ -33,7 +33,7 @@ function IndexPage(props) {
 }
 
 export async function getServerSideProps() {
-    const { data } = await Network.getInstance().get(BackendUtils.getUrl('/backend/post/summaries/all'));
+    const { data } = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.postSummariesAll));
     return {
         props: data.success ? data.content : {}
     }

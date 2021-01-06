@@ -8,6 +8,7 @@ import { Footer } from '../../component/display/footer';
 import { PostDetail } from '../../component/display/post-detail';
 import { Network } from "../../common/utils/network";
 import { BackendUtils } from "../../common/utils/backend";
+import { Constant } from "../../common/constant";
 
 function PostPage(props) {
     const post = props.post || {};
@@ -35,7 +36,7 @@ function PostPage(props) {
 }
 
 export async function getServerSideProps(context) {
-    const { data } = await Network.getInstance().get(BackendUtils.getUrl(`/backend/post/id/${context.params.id}`));
+    const { data } = await Network.getInstance().get(BackendUtils.getUrl(`${Constant.backendRoute.postId}/${context.params.id}`));
     return {
         props: {
             post: data.success ? data.content.post : {},

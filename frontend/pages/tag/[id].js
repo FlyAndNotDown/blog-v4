@@ -6,6 +6,7 @@ import { Content } from '../../component/container/content';
 import { TagList } from '../../component/display/tag-list';
 import { Network } from "../../common/utils/network";
 import { BackendUtils } from "../../common/utils/backend";
+import { Constant } from "../../common/constant";
 
 function TagPage(props) {
     const id = props.id || 0;
@@ -31,7 +32,7 @@ function TagPage(props) {
 }
 
 export async function getServerSideProps(context) {
-    const { data } = await Network.getInstance().get(BackendUtils.getUrl('/backend/tag/summaries'));
+    const { data } = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.tagSummaries));
     return {
         props: {
             id: parseInt(context.params.id),

@@ -6,6 +6,7 @@ import { Footer } from '../component/display/footer';
 import { Content } from '../component/container/content';
 import { Network } from "../common/utils/network";
 import { BackendUtils } from "../common/utils/backend";
+import { Constant } from "../common/constant";
 
 function ArchivePage(props) {
     const archive = props.archive || [];
@@ -28,7 +29,7 @@ function ArchivePage(props) {
 }
 
 export async function getServerSideProps() {
-    const { data } = await Network.getInstance().get(BackendUtils.getUrl('/backend/post/archive/all'));
+    const { data } = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.postArchiveAll));
     return {
         props: {
             archive: data.success ? data.content.archive : {},

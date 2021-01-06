@@ -27,6 +27,16 @@ const route = {
     oauthQQ: ''
 };
 
+const backendRoute = {
+    postArchiveAll: '/backend/post/archive/all',
+    postSummariesAll: '/backend/post/summaries/all',
+    postId: '/backend/post/id',
+    tagSummaries: '/backend/tag/summaries',
+
+    // TODO update prefix to /backend
+    aboutMarkdown: '/public/about.md',
+};
+
 const text = {
     logo: 'Kindem',
     archive: '归档',
@@ -114,8 +124,9 @@ const format = {
  */
 export const Constant = {
     route,
+    backendRoute,
     text,
     icon,
     resource,
-    format
+    format,
 };

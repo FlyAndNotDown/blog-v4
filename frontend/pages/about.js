@@ -6,6 +6,7 @@ import { Footer } from "../component/display/footer";
 import { Network } from "../common/utils/network";
 import { BackendUtils } from "../common/utils/backend";
 import { AboutPostDetail } from "../component/display/about-post-detail";
+import { Constant } from "../common/constant";
 
 function AboutPage(props) {
     const source = props.source || '';
@@ -28,7 +29,7 @@ function AboutPage(props) {
 }
 
 export async function getServerSideProps() {
-    const { data } = await Network.getInstance().get(BackendUtils.getUrl('/public/about.md'));
+    const { data } = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.aboutMarkdown));
     return {
         props: {
             source: data.toString(),
