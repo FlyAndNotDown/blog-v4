@@ -114,35 +114,6 @@ const format = {
     momentFormat: 'YYYY-MM-DD hh:mm:ss'
 };
 
-const iteration = {
-    footerIconLink: [{
-        key: icon.key.github,
-        link: route.github
-    }, {
-        key: icon.key.npm,
-        link: route.npm
-    }, {
-        key: icon.key.jianshu,
-        link: route.jianshu
-    }, {
-        key: icon.key.zhihu,
-        link: route.juejin
-    }, {
-        key: icon.key.sf,
-        link: route.sf
-    }, {
-        key: icon.key.juejin,
-        link: route.juejin
-    }],
-    oauthIcon: [{
-        key: icon.key.githubDark,
-        link: route.oauthGithub
-    }, {
-        key: icon.key.qqDark,
-        link: route.oauthQQ
-    }]
-};
-
 /**
  * Constant
  * @description global constant definition
@@ -156,6 +127,5 @@ export const Constant = {
     resource,
     id,
     time,
-    iteration,
     format
 };

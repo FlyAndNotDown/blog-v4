@@ -157,15 +157,8 @@ export function LoginForm(props) {
                     </Button>
                 </div>
                 <div className={Style.oauthRow}>
-                    {Constant.iteration.oauthIcon.map((icon, index) =>
-                        <a
-                            onClick={() => {
-                                Router.jumpTo(icon.link);
-                            }}
-                            key={index}>
-                            <KIcon className={Style.oauthIcon} type={icon.key}/>
-                        </a>
-                    )}
+                    <a><KIcon className={Style.oauthIcon} type={Constant.icon.key.githubDark} href={Constant.route.oauthGithub}/></a>
+                    <a><KIcon className={Style.oauthIcon} type={Constant.icon.key.qqDark} href={Constant.route.oauthQQ}/></a>
                 </div>
             </Col>
         </Row>

@@ -14,11 +14,24 @@ export function Footer(props) {
                     xs={{ span: 22, offset: 1 }} sm={{ span: 22, offset: 1 }} md={{ span: 20, offset: 2 }}
                     lg={{ span: 18, offset: 3 }} xl={{ span: 16, offset: 4 }} xxl={{ span: 12, offset: 6 }}>
                     <div className={Style.linkRow}>
-                        {Constant.iteration.footerIconLink.map((footerIcon, index) =>
-                            <a href={footerIcon.link} key={index}>
-                                <KIcon className={Style.linkIcon} type={footerIcon.key}/>
-                            </a>
-                        )}
+                        <a href={Constant.route.github}>
+                            <KIcon className={Style.linkIcon} type={Constant.icon.key.github}/>
+                        </a>
+                        <a href={Constant.route.npm}>
+                            <KIcon className={Style.linkIcon} type={Constant.icon.key.npm}/>
+                        </a>
+                        <a href={Constant.route.jianshu}>
+                            <KIcon className={Style.linkIcon} type={Constant.icon.key.jianshu}/>
+                        </a>
+                        <a href={Constant.route.zhihu}>
+                            <KIcon className={Style.linkIcon} type={Constant.icon.key.zhihu}/>
+                        </a>
+                        <a href={Constant.route.sf}>
+                            <KIcon className={Style.linkIcon} type={Constant.icon.key.sf}/>
+                        </a>
+                        <a href={Constant.route.juejin}>
+                            <KIcon className={Style.linkIcon} type={Constant.icon.key.juejin}/>
+                        </a>
                     </div>
                     <div className={Style.friendsRow}>
                         {friends.map((friend, index) =>
