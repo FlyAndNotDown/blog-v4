@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, message } from 'antd';
 import { LoginForm } from '../../component/form/login-form';
 import Style from './login.module.css';
 
@@ -7,6 +7,15 @@ function UserLoginPage() {
     const [isLoginMode, setLoginMode] = useState(true);
 
     const onLoginModeChanged = (loginModeValue) => { setLoginMode(loginModeValue); };
+    const onLogin = async (email, password) => {
+        // TODO
+    };
+    const onRegister = (email, password) => {
+        // TODO
+    }
+    const onFetchValidationCode = () => {
+        // TODO
+    };
 
     return (
         <Row className={Style.main}>
@@ -16,8 +25,8 @@ function UserLoginPage() {
                 <div className={isLoginMode ? Style.container : Style.registerContainer}>
                     <LoginForm
                         onModeChange={onLoginModeChanged}
-                        onLogin={() => {}}
-                        onRegister={() => {}}
+                        onLogin={onLogin}
+                        onRegister={onRegister}
                         onFetchValidationCode={() => {}}/>
                 </div>
             </Col>

@@ -96,7 +96,7 @@ export function NavBar(props) {
                             lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
                             <Row className={Style.nav}>
                                 <a href={Constant.route.archive} className={Style.navLink}>{Constant.text.archive}</a>
-                                <a href={Constant.route.tag} className={Style.navLink}>{Constant.text.tag}</a>
+                                <a href={Constant.route.tagSummary} className={Style.navLink}>{Constant.text.tag}</a>
                                 <a href={Constant.route.message} className={Style.navLink}>{Constant.text.message}</a>
                                 <a href={Constant.route.about} className={Style.navLink}>{Constant.text.about}</a>
                                 <span className={Style.btnSpan}>

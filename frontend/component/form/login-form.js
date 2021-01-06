@@ -40,7 +40,11 @@ export function LoginForm(props) {
     const onRegisterInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
         const repeatHash = sha512().update(repeat).digest('hex');
-        onRegister(email, passwordHash, repeatHash);
+        if (passwordHash !== repeatHash) {
+            Logger.printDebug('bad repeat password');
+            return;
+        }
+        onRegister(email, passwordHash);
     };
     const onFetchValidationCodeBtnClicked = () => {
         Logger.printDebug('btn', `btn ${Constant.id.fetchValidationCodeBtn} clicked`);
