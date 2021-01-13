@@ -53,7 +53,7 @@ class UserController extends Controller {
   async postValidationEmail() {
     const { ctx } = this;
 
-    const email = ctx.body.email || '';
+    const email = ctx.request.body.email || '';
 
     const result = await ctx.service.validationCode.sendValidationCode(email);
     if (result.success) {
@@ -61,11 +61,11 @@ class UserController extends Controller {
         value: result.validationCode,
         createAt: new Date(),
       };
-      ctx.response = {
+      ctx.body = {
         success: true,
       };
     } else {
-      ctx.response = {
+      ctx.body = {
         success: false,
         reason: 'failed to send email',
       };

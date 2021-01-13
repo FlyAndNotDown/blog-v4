@@ -7,7 +7,7 @@ class ValidationCodeGenerator {
   static generate() {
     let result = '';
     for (let i = 0; i < 6; i++) {
-      result += Math.floor(Math.random()*10).toString();
+      result += Math.floor(Math.random() * 10).toString();
     }
     return result;
   }
