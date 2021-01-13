@@ -50,6 +50,28 @@ class UserController extends Controller {
     }
   }
 
+  async postValidationEmail() {
+    const { ctx } = this;
+
+    const email = ctx.body.email || '';
+
+    const result = await ctx.service.validationCode.sendValidationCode(email);
+    if (result.success) {
+      ctx.session.validationCode = {
+        value: result.validationCode,
+        createAt: new Date(),
+      };
+      ctx.response = {
+        success: true,
+      };
+    } else {
+      ctx.response = {
+        success: false,
+        reason: 'failed to send email',
+      };
+    }
+  }
+
   async postLoginEmail() {
     const { ctx } = this;
 

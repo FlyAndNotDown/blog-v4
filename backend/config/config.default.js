@@ -30,7 +30,19 @@ module.exports = appInfo => {
 
   // add your user config here
   const userConfig = {
-    // myAppName: 'egg',
+    emailServer: {
+      client: {
+        user: 'noreply@kindem.xyz',
+        password: 'tjS6WAu35zJGn8Dy',
+        host: 'smtp.exmail.qq.com',
+        port: 465,
+        ssl: true,
+      },
+      sender: {
+        name: 'Kindem的小秘书',
+        email: 'noreply@kindem.xyz',
+      },
+    },
   };
 
   return {
