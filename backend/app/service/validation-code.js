@@ -21,10 +21,10 @@ class ValidationCodeService extends Service {
     const validationCode = ValidationCodeGenerator.generate();
     try {
       await client.sendAsync({
-        text: `你的验证码，请在五分钟内使用：${validationCode}`,
+        text: `下面是您的验证码，请在五分钟内使用：${validationCode}`,
         from: `${ctx.app.config.emailServer.sender.name} <${ctx.app.config.emailServer.sender.email}>`,
         to: email,
-        subject: 'Kindem的博客-验证码',
+        subject: '[Kindem的博客] 请查收您的验证码',
       });
       return {
         success: true,
