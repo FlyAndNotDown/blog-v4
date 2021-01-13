@@ -76,10 +76,17 @@ const text = {
     loginFormSwitchToLoginBtnContent: '登录',
     loginFormForgetBtnContent: '忘记密码',
     loginFormEmailPlaceholder: '邮箱',
+    loginFormUsernamePlaceholder: '用户名',
     loginFormPasswordPlaceholder: '密码',
     loginFormRepeatPlaceholder: '重复密码',
     loginFormValidationCodePlaceHolder: '邮箱验证码',
     loginFormFetchValidationCode: '获取',
+
+    validationErrInfoEmail: '非法邮箱地址',
+    validationErrInfoUsername: '用户名必须为字母、数字的组合，且长度在6与20之间',
+    validationErrInfoPassword: '密码必须为字母、数字、@#的组合，且长度在6与20之间',
+    validationErrInfoRepeat: '两次输入的密码不同',
+    validationErrInfoValidationCode: '验证码必须为6位数字',
 
     messagePageLoginButton: '登录以留言',
     messageFormPlaceholder: '说点什么吧~~',
@@ -118,6 +125,13 @@ const format = {
     momentFormat: 'YYYY-MM-DD hh:mm:ss'
 };
 
+const regex = {
+    email: /^\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}$/,
+    username: /^[\w]{6,20}$/,
+    password: /^[\w@#]{6,20}$/,
+    validationCode: /^[0-9]{6}$/
+};
+
 /**
  * Constant
  * @description global constant definition
@@ -131,4 +145,5 @@ export const Constant = {
     icon,
     resource,
     format,
+    regex
 };

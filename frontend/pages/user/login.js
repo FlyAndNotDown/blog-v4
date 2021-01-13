@@ -10,10 +10,10 @@ function UserLoginPage() {
     const onLogin = async (email, password) => {
         // TODO
     };
-    const onRegister = (email, password) => {
+    const onRegister = (username, email, password, validationCode) => {
         // TODO
     }
-    const onFetchValidationCode = () => {
+    const onFetchValidationCode = (email) => {
         // TODO
     };
 

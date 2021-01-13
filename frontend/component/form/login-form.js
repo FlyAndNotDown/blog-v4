@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Button, Row, Col, Input } from 'antd';
+import { Button, Row, Col, Input, message } from 'antd';
 import { Constant } from "../../common/constant";
-import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined } from '@ant-design/icons';
+import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined, SmileOutlined } from '@ant-design/icons';
 import { sha512 } from 'hash.js';
 import { UIKit } from '../../common/utils/ui';
 import { Logger } from '../../common/utils/logger';
 import { KIcon } from '../common/KIcon';
 import { Router } from '../../common/utils/router';
+import { ValidationUtils } from '../../common/utils/validation';
 import Style from './login-form.module.css';
 
 export function LoginForm(props) {
@@ -17,6 +18,7 @@ export function LoginForm(props) {
 
     const [isLoginMode, setLoginMode] = useState(true);
     const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [repeat, setRepeat] = useState("");
     const [validationCode, setValidationCode] = useState("");
@@ -29,26 +31,35 @@ export function LoginForm(props) {
 
     const onSwitchBtnClicked = () => { setLoginModeAndNotifyOutside(!isLoginMode); };
     const onEmailChanged = (e) => { setEmail(e.target.value); };
+    const onUsernameChanged = (e) => { setUsername(e.target.value); };
     const onPasswordChanged = (e) => { setPassword(e.target.value); };
     const onRepeatChanged = (e) => { setRepeat(e.target.value); };
     const onValidationCodeChanged = (e) => { setValidationCode(e.target.value); };
 
     const onLoginInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
+        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
+        ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword);
         onLogin(email, passwordHash);
     };
     const onRegisterInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
         const repeatHash = sha512().update(repeat).digest('hex');
+        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
+        ValidationUtils.validate(username, Constant.regex.username, Constant.text.validationErrInfoUsername);
+        ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword);
+        ValidationUtils.validate(validationCode, Constant.regex.validationCode, Constant.text.validationErrInfoValidationCode);
         if (passwordHash !== repeatHash) {
             Logger.printDebug('bad repeat password');
+            message.error(Constant.text.validationErrInfoRepeat);
             return;
         }
-        onRegister(email, passwordHash);
+        onRegister(username, email, passwordHash, validationCode);
     };
     const onFetchValidationCodeBtnClicked = () => {
+        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
         Logger.printDebug('btn', `fetchValidationCodeBtn clicked`);
-        onFetchValidationCode();
+        onFetchValidationCode(email);
     };
     const onFetchValidationCodeTimeRefresh = (value) => {
         Logger.printDebug('time', `value: ${value}`);
@@ -84,6 +95,16 @@ export function LoginForm(props) {
                         value={email}
                         onChange={onEmailChanged}/>
                 </div>
+                {!isLoginMode && (
+                    <div className={Style.usernameRow}>
+                        <Input
+                            size={'large'}
+                            prefix={<SmileOutlined/>}
+                            placeholder={Constant.text.loginFormUsernamePlaceholder}
+                            value={username}
+                            onChange={onUsernameChanged}/>
+                    </div>
+                )}
                 <div className={Style.passwordRow}>
                     <Input
                         size={'large'}

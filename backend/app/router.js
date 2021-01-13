@@ -18,6 +18,7 @@ module.exports = app => {
   router.post('/backend/comment', controller.comment.post);
 
   router.get('/backend/user/login', controller.user.getLogin);
+  router.post('/backend/user/validation/email', controller.user.postValidationEmail);
   router.post('/backend/user/login/email', controller.user.postLoginEmail);
   router.post('/backend/user/login/github', controller.user.postLoginGithub);
   router.post('/backend/user/login/qq', controller.user.postLoginQQ);
