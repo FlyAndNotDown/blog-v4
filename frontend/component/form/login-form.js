@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Row, Col, Input } from 'antd';
+import { Button, Row, Col, Input, message } from 'antd';
 import { Constant } from "../../common/constant";
 import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined, SmileOutlined } from '@ant-design/icons';
 import { sha512 } from 'hash.js';
@@ -7,6 +7,7 @@ import { UIKit } from '../../common/utils/ui';
 import { Logger } from '../../common/utils/logger';
 import { KIcon } from '../common/KIcon';
 import { Router } from '../../common/utils/router';
+import { ValidationUtils } from '../../common/utils/validation';
 import Style from './login-form.module.css';
 
 export function LoginForm(props) {
@@ -37,20 +38,28 @@ export function LoginForm(props) {
 
     const onLoginInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
+        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
+        ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword);
         onLogin(email, passwordHash);
     };
     const onRegisterInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
         const repeatHash = sha512().update(repeat).digest('hex');
+        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
+        ValidationUtils.validate(username, Constant.regex.username, Constant.text.validationErrInfoUsername);
+        ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword);
+        ValidationUtils.validate(validationCode, Constant.regex.validationCode, Constant.text.validationErrInfoValidationCode);
         if (passwordHash !== repeatHash) {
             Logger.printDebug('bad repeat password');
+            message.error(Constant.text.validationErrInfoRepeat);
             return;
         }
         onRegister(username, email, passwordHash, validationCode);
     };
     const onFetchValidationCodeBtnClicked = () => {
+        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
         Logger.printDebug('btn', `fetchValidationCodeBtn clicked`);
-        onFetchValidationCode();
+        onFetchValidationCode(email);
     };
     const onFetchValidationCodeTimeRefresh = (value) => {
         Logger.printDebug('time', `value: ${value}`);
