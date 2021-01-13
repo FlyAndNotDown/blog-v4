@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Row, Col, Input } from 'antd';
 import { Constant } from "../../common/constant";
-import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined } from '@ant-design/icons';
+import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined, SmileOutlined } from '@ant-design/icons';
 import { sha512 } from 'hash.js';
 import { UIKit } from '../../common/utils/ui';
 import { Logger } from '../../common/utils/logger';
@@ -17,6 +17,7 @@ export function LoginForm(props) {
 
     const [isLoginMode, setLoginMode] = useState(true);
     const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [repeat, setRepeat] = useState("");
     const [validationCode, setValidationCode] = useState("");
@@ -29,6 +30,7 @@ export function LoginForm(props) {
 
     const onSwitchBtnClicked = () => { setLoginModeAndNotifyOutside(!isLoginMode); };
     const onEmailChanged = (e) => { setEmail(e.target.value); };
+    const onUsernameChanged = (e) => { setUsername(e.target.value); };
     const onPasswordChanged = (e) => { setPassword(e.target.value); };
     const onRepeatChanged = (e) => { setRepeat(e.target.value); };
     const onValidationCodeChanged = (e) => { setValidationCode(e.target.value); };
@@ -44,7 +46,7 @@ export function LoginForm(props) {
             Logger.printDebug('bad repeat password');
             return;
         }
-        onRegister(email, passwordHash);
+        onRegister(username, email, passwordHash, validationCode);
     };
     const onFetchValidationCodeBtnClicked = () => {
         Logger.printDebug('btn', `fetchValidationCodeBtn clicked`);
@@ -84,6 +86,16 @@ export function LoginForm(props) {
                         value={email}
                         onChange={onEmailChanged}/>
                 </div>
+                {!isLoginMode && (
+                    <div className={Style.usernameRow}>
+                        <Input
+                            size={'large'}
+                            prefix={<SmileOutlined/>}
+                            placeholder={Constant.text.loginFormUsernamePlaceholder}
+                            value={username}
+                            onChange={onUsernameChanged}/>
+                    </div>
+                )}
                 <div className={Style.passwordRow}>
                     <Input
                         size={'large'}

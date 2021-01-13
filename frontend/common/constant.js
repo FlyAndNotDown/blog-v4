@@ -76,6 +76,7 @@ const text = {
     loginFormSwitchToLoginBtnContent: '登录',
     loginFormForgetBtnContent: '忘记密码',
     loginFormEmailPlaceholder: '邮箱',
+    loginFormUsernamePlaceholder: '用户名',
     loginFormPasswordPlaceholder: '密码',
     loginFormRepeatPlaceholder: '重复密码',
     loginFormValidationCodePlaceHolder: '邮箱验证码',
