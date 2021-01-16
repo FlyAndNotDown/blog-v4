@@ -3,7 +3,6 @@ import { Button, Row, Col, Input, message } from 'antd';
 import { Constant } from "../../common/constant";
 import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined, SmileOutlined } from '@ant-design/icons';
 import { sha512 } from 'hash.js';
-import { UIKit } from '../../common/utils/ui';
 import { Logger } from '../../common/utils/logger';
 import { KIcon } from '../common/KIcon';
 import { Router } from '../../common/utils/router';
@@ -22,7 +21,6 @@ export function LoginForm(props) {
     const [password, setPassword] = useState("");
     const [repeat, setRepeat] = useState("");
     const [validationCode, setValidationCode] = useState("");
-    const [validationCodeTime, setValidationCodeTime] = useState(-1);
 
     const setLoginModeAndNotifyOutside = (value) => {
         setLoginMode(value);
@@ -37,35 +35,36 @@ export function LoginForm(props) {
     const onValidationCodeChanged = (e) => { setValidationCode(e.target.value); };
 
     const onLoginInternal = () => {
+        if (!ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail)
+            || !ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword)) {
+            return;
+        }
         const passwordHash = sha512().update(password).digest('hex');
-        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
-        ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword);
         onLogin(email, passwordHash);
     };
     const onRegisterInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
         const repeatHash = sha512().update(repeat).digest('hex');
-        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
-        ValidationUtils.validate(username, Constant.regex.username, Constant.text.validationErrInfoUsername);
-        ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword);
-        ValidationUtils.validate(validationCode, Constant.regex.validationCode, Constant.text.validationErrInfoValidationCode);
+        if (!ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail)
+            || !ValidationUtils.validate(username, Constant.regex.username, Constant.text.validationErrInfoUsername)
+            || !ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword)
+            || !ValidationUtils.validate(validationCode, Constant.regex.validationCode, Constant.text.validationErrInfoValidationCode)) {
+            return;
+        }
         if (passwordHash !== repeatHash) {
             Logger.printDebug('bad repeat password');
             message.error(Constant.text.validationErrInfoRepeat);
             return;
         }
-        onRegister(username, email, passwordHash, validationCode);
+        onRegister(email, username, passwordHash, validationCode);
     };
     const onFetchValidationCodeBtnClicked = () => {
-        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
+        if (!ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail)) {
+            return;
+        }
         Logger.printDebug('btn', `fetchValidationCodeBtn clicked`);
         onFetchValidationCode(email);
     };
-    const onFetchValidationCodeTimeRefresh = (value) => {
-        Logger.printDebug('time', `value: ${value}`);
-        setValidationCodeTime(value === 0 ? -1 : value);
-    };
-
 
     return (
         <Row className={Style.main}>
@@ -134,17 +133,8 @@ export function LoginForm(props) {
                             value={validationCode}
                             addonAfter={
                                 <a className={Style.fetchValidationCodeLink}
-                                    onClick={() => {
-                                    UIKit.preventDoubleClick(
-                                        'fetchValidationCodeBtn',
-                                        60,
-                                        () => { onFetchValidationCodeBtnClicked(); },
-                                        (time) => { onFetchValidationCodeTimeRefresh(time); });
-                                }}>
-                                    {validationCodeTime === -1 ?
-                                        Constant.text.loginFormFetchValidationCode :
-                                        validationCodeTime
-                                    }
+                                    onClick={onFetchValidationCodeBtnClicked}>
+                                    {Constant.text.loginFormFetchValidationCode}
                                 </a>
                             }
                             onChange={onValidationCodeChanged}/>

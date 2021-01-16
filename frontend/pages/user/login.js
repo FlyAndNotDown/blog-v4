@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { Row, Col, message } from 'antd';
 import { LoginForm } from '../../component/form/login-form';
+import { Network } from "../../common/utils/network";
+import { Logger } from "../../common/utils/logger";
 import Style from './login.module.css';
+import { BackendUtils } from "../../common/utils/backend";
+import { Constant } from "../../common/constant";
+import { Router } from "../../common/utils/router";
 
 function UserLoginPage() {
     const [isLoginMode, setLoginMode] = useState(true);
@@ -10,11 +15,41 @@ function UserLoginPage() {
     const onLogin = async (email, password) => {
         // TODO
     };
-    const onRegister = (username, email, password, validationCode) => {
-        // TODO
+    const onRegister = async (email, username, password, validationCode) => {
+        let response = null;
+        try {
+            response = await Network.getInstance().post(BackendUtils.getUrl(Constant.backendRoute.userRegisterEmail), {
+                email,
+                username,
+                password,
+                validationCode
+            });
+        } catch (e) {
+            Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+        }
+        response = response || {};
+        const data = response.data || {};
+        if (!data.success) {
+            message.error(data.reason || Constant.text.registerFailed);
+            return;
+        }
+        message.info(Constant.text.registerSuccessfully);
+        Router.jumpToHome();
     }
-    const onFetchValidationCode = (email) => {
-        // TODO
+    const onFetchValidationCode = async (email) => {
+        let response = null;
+        try {
+            response = await Network.getInstance().post(BackendUtils.getUrl(Constant.backendRoute.userValidationEmail), { email });
+        } catch (e) {
+            Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+        }
+        response = response || {};
+        const data = response.data || {};
+        if (data.success) {
+            message.info(Constant.text.validationCodeSendSuccessfully);
+        } else {
+            message.error(data.reason || Constant.text.validationCodeSendFailed);
+        }
     };
 
     return (
@@ -27,7 +62,7 @@ function UserLoginPage() {
                         onModeChange={onLoginModeChanged}
                         onLogin={onLogin}
                         onRegister={onRegister}
-                        onFetchValidationCode={() => {}}/>
+                        onFetchValidationCode={onFetchValidationCode}/>
                 </div>
             </Col>
         </Row>

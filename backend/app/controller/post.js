@@ -10,7 +10,7 @@ class PostController extends Controller {
     if (post === null) {
       ctx.body = {
         success: false,
-        reason: 'bad pk',
+        reason: '不正确的id',
       };
       return;
     }
@@ -57,7 +57,7 @@ class PostController extends Controller {
     if (pkBegin < 0 || pkEnd < 0 || pkBegin > pkEnd) {
       ctx.body = {
         success: false,
-        reason: 'bad params',
+        reason: '不合法的参数',
       };
       return;
     }

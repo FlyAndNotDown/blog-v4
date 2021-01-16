@@ -32,6 +32,8 @@ const backendRoute = {
     postSummariesAll: '/backend/post/summaries/all',
     postId: '/backend/post/id',
     tagSummaries: '/backend/tag/summaries',
+    userValidationEmail: '/backend/user/validation/email',
+    userRegisterEmail: '/backend/user/register/email',
 
     // TODO update prefix to /backend
     aboutMarkdown: '/public/about.md',
@@ -97,7 +99,11 @@ const text = {
 
     serverError: '服务器错误',
     failedToLogin: '用户名或密码错误',
-    loginSuccessfully: '登录成功，将为您跳转'
+    loginSuccessfully: '登录成功，将为您跳转',
+    validationCodeSendSuccessfully: '验证码发送成功，请登录邮箱查收',
+    validationCodeSendFailed: '验证码发送失败',
+    registerSuccessfully: '注册成功，即将为您跳转',
+    registerFailed: '注册失败'
 };
 
 const icon = {

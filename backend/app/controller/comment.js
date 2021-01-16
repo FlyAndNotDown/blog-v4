@@ -21,7 +21,7 @@ class CommentController extends Controller {
     if (author === -1) {
       ctx.body = {
         success: false,
-        reason: 'bad author',
+        reason: '用户参数错误',
       };
       return;
     }
@@ -30,7 +30,7 @@ class CommentController extends Controller {
     if (comment === null) {
       ctx.body = {
         success: false,
-        reason: 'failed to create comment',
+        reason: '无法新建评论',
       };
       return;
     }

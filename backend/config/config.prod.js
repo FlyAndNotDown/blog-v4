@@ -18,21 +18,14 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
-  // sequelize model config (DEV)
+  // sequelize model config
   config.sequelize = {
     dialect: 'mysql',
     database: 'blog4',
-    host: '119.3.159.48',
+    host: '127.0.0.1',
     port: 3306,
-    username: 'development',
-    password: 'development',
-  };
-
-  // CORS (DEV)
-  config.cors = {
-    origin: 'http://localhost:3000',
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
-    credentials: true,
+    username: 'production',
+    password: 'production',
   };
 
   // add your user config here
