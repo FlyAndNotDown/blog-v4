@@ -129,6 +129,7 @@ class UserController extends Controller {
   async postRegisterEmail() {
     const { ctx } = this;
 
+    // TODO
     const email = ctx.request.body.email || '';
     const username = ctx.request.body.username || '';
     const password = ctx.request.body.password || '';

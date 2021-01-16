@@ -6,6 +6,7 @@ import { Logger } from "../../common/utils/logger";
 import Style from './login.module.css';
 import { BackendUtils } from "../../common/utils/backend";
 import { Constant } from "../../common/constant";
+import { Router } from "../../common/utils/router";
 
 function UserLoginPage() {
     const [isLoginMode, setLoginMode] = useState(true);
@@ -15,7 +16,25 @@ function UserLoginPage() {
         // TODO
     };
     const onRegister = async (email, username, password, validationCode) => {
-        // TODO
+        let response = null;
+        try {
+            response = await Network.getInstance().post(BackendUtils.getUrl(Constant.backendRoute.userRegisterEmail), {
+                email,
+                username,
+                password,
+                validationCode
+            });
+        } catch (e) {
+            Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+        }
+        response = response || {};
+        const data = response.data || {};
+        if (!data.success) {
+            message.error(data.reason || Constant.text.registerFailed);
+            return;
+        }
+        message.info(Constant.text.registerSuccessfully);
+        Router.jumpToHome();
     }
     const onFetchValidationCode = async (email) => {
         let response = null;
@@ -27,7 +46,7 @@ function UserLoginPage() {
         response = response || {};
         const data = response.data || {};
         if (data.success) {
-            message.info(Constant.text.validationCodeSendSuccessful);
+            message.info(Constant.text.validationCodeSendSuccessfully);
         } else {
             message.error(data.reason || Constant.text.validationCodeSendFailed);
         }
