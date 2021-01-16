@@ -45,19 +45,23 @@ export function LoginForm(props) {
     const onRegisterInternal = () => {
         const passwordHash = sha512().update(password).digest('hex');
         const repeatHash = sha512().update(repeat).digest('hex');
-        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
-        ValidationUtils.validate(username, Constant.regex.username, Constant.text.validationErrInfoUsername);
-        ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword);
-        ValidationUtils.validate(validationCode, Constant.regex.validationCode, Constant.text.validationErrInfoValidationCode);
+        if (!ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail)
+            || !ValidationUtils.validate(username, Constant.regex.username, Constant.text.validationErrInfoUsername)
+            || !ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword)
+            || !ValidationUtils.validate(validationCode, Constant.regex.validationCode, Constant.text.validationErrInfoValidationCode)) {
+            return;
+        }
         if (passwordHash !== repeatHash) {
             Logger.printDebug('bad repeat password');
             message.error(Constant.text.validationErrInfoRepeat);
             return;
         }
-        onRegister(username, email, passwordHash, validationCode);
+        onRegister(email, username, passwordHash, validationCode);
     };
     const onFetchValidationCodeBtnClicked = () => {
-        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
+        if (ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail)) {
+            return;
+        }
         Logger.printDebug('btn', `fetchValidationCodeBtn clicked`);
         onFetchValidationCode(email);
     };
