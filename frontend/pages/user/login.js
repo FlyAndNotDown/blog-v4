@@ -10,10 +10,10 @@ function UserLoginPage() {
     const onLogin = async (email, password) => {
         // TODO
     };
-    const onRegister = (email, username, password, validationCode) => {
+    const onRegister = async (email, username, password, validationCode) => {
         // TODO
     }
-    const onFetchValidationCode = (email) => {
+    const onFetchValidationCode = async (email) => {
         // TODO
     };
 
@@ -27,7 +27,7 @@ function UserLoginPage() {
                         onModeChange={onLoginModeChanged}
                         onLogin={onLogin}
                         onRegister={onRegister}
-                        onFetchValidationCode={() => {}}/>
+                        onFetchValidationCode={onFetchValidationCode}/>
                 </div>
             </Col>
         </Row>

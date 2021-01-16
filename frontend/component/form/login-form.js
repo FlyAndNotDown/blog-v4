@@ -3,7 +3,6 @@ import { Button, Row, Col, Input, message } from 'antd';
 import { Constant } from "../../common/constant";
 import { UserOutlined, KeyOutlined, LoginOutlined, ThunderboltOutlined, QrcodeOutlined, SmileOutlined } from '@ant-design/icons';
 import { sha512 } from 'hash.js';
-import { UIKit } from '../../common/utils/ui';
 import { Logger } from '../../common/utils/logger';
 import { KIcon } from '../common/KIcon';
 import { Router } from '../../common/utils/router';
@@ -22,7 +21,6 @@ export function LoginForm(props) {
     const [password, setPassword] = useState("");
     const [repeat, setRepeat] = useState("");
     const [validationCode, setValidationCode] = useState("");
-    const [validationCodeTime, setValidationCodeTime] = useState(-1);
 
     const setLoginModeAndNotifyOutside = (value) => {
         setLoginMode(value);
@@ -65,11 +63,6 @@ export function LoginForm(props) {
         Logger.printDebug('btn', `fetchValidationCodeBtn clicked`);
         onFetchValidationCode(email);
     };
-    const onFetchValidationCodeTimeRefresh = (value) => {
-        Logger.printDebug('time', `value: ${value}`);
-        setValidationCodeTime(value === 0 ? -1 : value);
-    };
-
 
     return (
         <Row className={Style.main}>
@@ -138,17 +131,8 @@ export function LoginForm(props) {
                             value={validationCode}
                             addonAfter={
                                 <a className={Style.fetchValidationCodeLink}
-                                    onClick={() => {
-                                    UIKit.preventDoubleClick(
-                                        'fetchValidationCodeBtn',
-                                        60,
-                                        () => { onFetchValidationCodeBtnClicked(); },
-                                        (time) => { onFetchValidationCodeTimeRefresh(time); });
-                                }}>
-                                    {validationCodeTime === -1 ?
-                                        Constant.text.loginFormFetchValidationCode :
-                                        validationCodeTime
-                                    }
+                                    onClick={onFetchValidationCodeBtnClicked}>
+                                    {Constant.text.loginFormFetchValidationCode}
                                 </a>
                             }
                             onChange={onValidationCodeChanged}/>
