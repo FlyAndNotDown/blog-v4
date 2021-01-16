@@ -12,7 +12,7 @@ class UserController extends Controller {
     if (!(userPk > 0)) {
       ctx.body = {
         success: false,
-        reason: 'bad user info in session',
+        reason: 'session中保存的用户信息不合法',
       };
       return;
     }
@@ -22,7 +22,7 @@ class UserController extends Controller {
       if (!user) {
         ctx.body = {
           success: false,
-          reason: 'bad user info in session',
+          reason: 'session中保存的用户信息不合法',
         };
         return;
       }
@@ -67,7 +67,7 @@ class UserController extends Controller {
     } else {
       ctx.body = {
         success: false,
-        reason: 'failed to send email',
+        reason: '无法发送验证码至目标邮箱',
       };
     }
   }
@@ -82,7 +82,7 @@ class UserController extends Controller {
     if (!user) {
       ctx.body = {
         success: false,
-        reason: 'email is not exists',
+        reason: '用户不存在',
       };
       return;
     }
@@ -90,7 +90,7 @@ class UserController extends Controller {
     if (password !== user.password) {
       ctx.body = {
         success: false,
-        reason: 'bad password',
+        reason: '邮箱或密码错误',
       };
       return;
     }
@@ -126,7 +126,7 @@ class UserController extends Controller {
     if (user != null) {
       ctx.body = {
         success: false,
-        reason: 'user has already exists',
+        reason: '该邮箱已经注册过账户',
       };
       return;
     }
@@ -135,7 +135,7 @@ class UserController extends Controller {
     if (newUser == null) {
       ctx.body = {
         success: false,
-        reason: 'failed to create user',
+        reason: '无法创建账户',
       };
       return;
     }
