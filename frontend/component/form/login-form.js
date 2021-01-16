@@ -35,9 +35,11 @@ export function LoginForm(props) {
     const onValidationCodeChanged = (e) => { setValidationCode(e.target.value); };
 
     const onLoginInternal = () => {
+        if (!ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail)
+            || !ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword)) {
+            return;
+        }
         const passwordHash = sha512().update(password).digest('hex');
-        ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail);
-        ValidationUtils.validate(password, Constant.regex.password, Constant.text.validationErrInfoPassword);
         onLogin(email, passwordHash);
     };
     const onRegisterInternal = () => {
@@ -57,7 +59,7 @@ export function LoginForm(props) {
         onRegister(email, username, passwordHash, validationCode);
     };
     const onFetchValidationCodeBtnClicked = () => {
-        if (ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail)) {
+        if (!ValidationUtils.validate(email, Constant.regex.email, Constant.text.validationErrInfoEmail)) {
             return;
         }
         Logger.printDebug('btn', `fetchValidationCodeBtn clicked`);

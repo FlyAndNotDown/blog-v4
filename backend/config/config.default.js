@@ -28,6 +28,13 @@ module.exports = appInfo => {
     password: 'development',
   };
 
+  // CORS (DEV)
+  config.cors = {
+    origin: 'http://localhost:3000',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+    credentials: true,
+  };
+
   // add your user config here
   const userConfig = {
     emailServer: {

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Row, Col, message } from 'antd';
 import { LoginForm } from '../../component/form/login-form';
+import { Network } from "../../common/utils/network";
+import { Logger } from "../../common/utils/logger";
 import Style from './login.module.css';
+import { BackendUtils } from "../../common/utils/backend";
+import { Constant } from "../../common/constant";
 
 function UserLoginPage() {
     const [isLoginMode, setLoginMode] = useState(true);
@@ -14,7 +18,20 @@ function UserLoginPage() {
         // TODO
     }
     const onFetchValidationCode = async (email) => {
-        // TODO
+        // TODO fix bug
+        let response = null;
+        try {
+            response = await Network.getInstance().post(BackendUtils.getUrl(Constant.backendRoute.userValidationEmail), { email });
+        } catch (e) {
+            Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+        }
+        response = response || {};
+        const data = response.data || {};
+        if (data.success) {
+            message.info(Constant.text.validationCodeSendSuccessful);
+        } else {
+            message.error(Constant.text.validationCodeSendFailed);
+        }
     };
 
     return (
