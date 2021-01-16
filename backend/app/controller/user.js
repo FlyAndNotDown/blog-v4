@@ -55,11 +55,22 @@ class UserController extends Controller {
 
     const email = ctx.request.body.email || '';
 
+    const sessionInfo = ctx.session.validationCode || {};
+    const createAt = sessionInfo.createAt || Date.now();
+
+    if (Date.now() - createAt < 60 * 1000) {
+      ctx.body = {
+        success: false,
+        reason: '发送过于频繁，请一分钟后重试',
+      };
+      return;
+    }
+
     const result = await ctx.service.validationCode.sendValidationCode(email);
     if (result.success) {
       ctx.session.validationCode = {
         value: result.validationCode,
-        createAt: new Date(),
+        createAt: Date.now(),
       };
       ctx.body = {
         success: true,

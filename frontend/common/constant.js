@@ -99,7 +99,7 @@ const text = {
     serverError: '服务器错误',
     failedToLogin: '用户名或密码错误',
     loginSuccessfully: '登录成功，将为您跳转',
-    validationCodeSendSuccessful: '验证码发送成功',
+    validationCodeSendSuccessful: '验证码发送成功，请登录邮箱查收',
     validationCodeSendFailed: '验证码发送失败'
 };
 

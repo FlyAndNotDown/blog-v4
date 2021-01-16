@@ -18,7 +18,6 @@ function UserLoginPage() {
         // TODO
     }
     const onFetchValidationCode = async (email) => {
-        // TODO fix bug
         let response = null;
         try {
             response = await Network.getInstance().post(BackendUtils.getUrl(Constant.backendRoute.userValidationEmail), { email });
@@ -30,7 +29,7 @@ function UserLoginPage() {
         if (data.success) {
             message.info(Constant.text.validationCodeSendSuccessful);
         } else {
-            message.error(Constant.text.validationCodeSendFailed);
+            message.error(data.reason || Constant.text.validationCodeSendFailed);
         }
     };
 
