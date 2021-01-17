@@ -7,16 +7,18 @@ module.exports = app => {
     type: STRING(10),
     login: STRING(100),
     username: STRING(100),
-    password: STRING(64),
+    salt: STRING(12),
+    password: STRING(128),
     avatar: STRING(100),
     last_sign_in: DATE,
   });
 
-  User.createEmailUser = async function(login, username, password) {
+  User.createEmailUser = async function(login, username, salt, password) {
     return await this.create({
       type: 'email',
       login,
       username,
+      salt,
       password,
     });
   };
