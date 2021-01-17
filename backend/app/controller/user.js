@@ -168,6 +168,7 @@ class UserController extends Controller {
       };
       return;
     }
+    await newUser.logSignIn();
     ctx.body = {
       success: true,
     };
