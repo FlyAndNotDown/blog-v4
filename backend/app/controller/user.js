@@ -51,6 +51,27 @@ class UserController extends Controller {
     }
   }
 
+  async getSalt() {
+    const { ctx } = this;
+
+    const email = ctx.params.email || '';
+
+    const user = await ctx.model.User.getEmailUser(email);
+    if (!user) {
+      ctx.body = {
+        success: false,
+        reason: '用户不存在',
+      };
+      return;
+    }
+    ctx.body = {
+      success: true,
+      content: {
+        salt: user.salt,
+      },
+    };
+  }
+
   async postValidationEmail() {
     const { ctx } = this;
 

@@ -7,13 +7,43 @@ import Style from './login.module.css';
 import { BackendUtils } from "../../common/utils/backend";
 import { Constant } from "../../common/constant";
 import { Router } from "../../common/utils/router";
+import { sha512 } from 'hash.js';
 
 function UserLoginPage() {
     const [isLoginMode, setLoginMode] = useState(true);
 
     const onLoginModeChanged = (loginModeValue) => { setLoginMode(loginModeValue); };
     const onLogin = async (email, password) => {
-        // TODO
+        let response = null;
+        let data = null;
+        try {
+            response = await Network.getInstance().get(BackendUtils.getUrl(`${Constant.backendRoute.userSalt}/${email}`));
+        } catch (e) {
+            Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+        }
+        response = response || {};
+        data = response.data || {};
+        if (!data.success) {
+            message.error(data.reason || Constant.text.loginFailed);
+            return;
+        }
+
+        try {
+            response = await Network.getInstance().post(BackendUtils.getUrl(Constant.backendRoute.userLoginEmail), {
+                email,
+                password: sha512().update(`${password}${data.content.salt}`).digest('hex')
+            });
+        } catch (e) {
+            Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+        }
+        response = response || {};
+        data = response.data || {};
+        if (!data.success) {
+            message.error(data.reason || Constant.text.loginFailed);
+            return;
+        }
+        message.info(Constant.text.loginSuccessfully);
+        Router.jumpToHome();
     };
     const onRegister = async (email, username, password, validationCode) => {
         let response = null;
