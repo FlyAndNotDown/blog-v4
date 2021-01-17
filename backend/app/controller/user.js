@@ -1,6 +1,7 @@
 'use strict';
 
-const Controller = require('egg').Controller;
+const { Controller } = require('egg');
+const { sha512 } = require('hash.js');
 
 class UserController extends Controller {
   async getLogin() {
@@ -50,15 +51,35 @@ class UserController extends Controller {
     }
   }
 
+  async getSalt() {
+    const { ctx } = this;
+
+    const email = ctx.params.email || '';
+
+    const user = await ctx.model.User.getEmailUser(email);
+    if (!user) {
+      ctx.body = {
+        success: false,
+        reason: '用户不存在',
+      };
+      return;
+    }
+    ctx.body = {
+      success: true,
+      content: {
+        salt: user.salt,
+      },
+    };
+  }
+
   async postValidationEmail() {
     const { ctx } = this;
 
     const email = ctx.request.body.email || '';
 
-    const sessionInfo = ctx.session.validationCode || {};
-    const createAt = sessionInfo.createAt || Date.now();
+    const lastCreatedTime = ctx.session.validationCodeCreatedTime || 0;
 
-    if (Date.now() - createAt < 60 * 1000) {
+    if (Date.now() - lastCreatedTime < 60 * 1000) {
       ctx.body = {
         success: false,
         reason: '发送过于频繁，请一分钟后重试',
@@ -68,10 +89,8 @@ class UserController extends Controller {
 
     const result = await ctx.service.validationCode.sendValidationCode(email);
     if (result.success) {
-      ctx.session.validationCode = {
-        value: result.validationCode,
-        createAt: Date.now(),
-      };
+      ctx.session.validationCode = result.validationCode;
+      ctx.session.validationCodeCreatedTime = Date.now();
       ctx.body = {
         success: true,
       };
@@ -129,10 +148,22 @@ class UserController extends Controller {
   async postRegisterEmail() {
     const { ctx } = this;
 
-    // TODO
     const email = ctx.request.body.email || '';
     const username = ctx.request.body.username || '';
     const password = ctx.request.body.password || '';
+    const validationCode = ctx.request.body.validationCode || '';
+
+    const codeInSession = ctx.session.validationCode || '';
+    const createdTimeOfCodeInSession = ctx.session.validationCodeCreatedTime || 0;
+
+    if (validationCode !== codeInSession
+      || Date.now() - createdTimeOfCodeInSession > 60 * 5 * 1000) {
+      ctx.body = {
+        success: false,
+        reason: '验证码错误或已失效',
+      };
+      return;
+    }
 
     const user = await ctx.model.User.getEmailUser(email);
     if (user != null) {
@@ -143,7 +174,10 @@ class UserController extends Controller {
       return;
     }
 
-    const newUser = await ctx.model.User.createEmailUser(email, username, password);
+    const salt = await ctx.service.salt.generateSalt();
+    const passwordWithSalt = sha512().update(`${password}${salt}`).digest('hex');
+
+    const newUser = await ctx.model.User.createEmailUser(email, username, salt, passwordWithSalt);
     if (newUser == null) {
       ctx.body = {
         success: false,
@@ -151,6 +185,7 @@ class UserController extends Controller {
       };
       return;
     }
+    await newUser.logSignIn();
     ctx.body = {
       success: true,
     };

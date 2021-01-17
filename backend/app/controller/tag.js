@@ -1,6 +1,6 @@
 'use strict';
 
-const Controller = require('egg').Controller;
+const { Controller } = require('egg');
 
 class TagController extends Controller {
   async getSummaries() {
