@@ -1,7 +1,7 @@
 'use strict';
 
-const Controller = require('egg').Controller;
-const sha512 = require('hash.js').sha512;
+const { Controller } = require('egg');
+const { sha512 } = require('hash.js');
 
 class UserController extends Controller {
   async getLogin() {
@@ -77,10 +77,9 @@ class UserController extends Controller {
 
     const email = ctx.request.body.email || '';
 
-    const sessionInfo = ctx.session.validationCode || {};
-    const createAt = sessionInfo.createAt || 0;
+    const lastCreatedTime = ctx.session.validationCodeCreatedTime || 0;
 
-    if (Date.now - createAt < 60 * 1000) {
+    if (Date.now() - lastCreatedTime < 60 * 1000) {
       ctx.body = {
         success: false,
         reason: '发送过于频繁，请一分钟后重试',
@@ -90,10 +89,8 @@ class UserController extends Controller {
 
     const result = await ctx.service.validationCode.sendValidationCode(email);
     if (result.success) {
-      ctx.session.validationCode = {
-        value: result.validationCode,
-        createAt: Date.now(),
-      };
+      ctx.session.validationCode = result.validationCode;
+      ctx.session.validationCodeCreatedTime = Date.now();
       ctx.body = {
         success: true,
       };
@@ -156,12 +153,11 @@ class UserController extends Controller {
     const password = ctx.request.body.password || '';
     const validationCode = ctx.request.body.validationCode || '';
 
-    const validationCodeSessionInfo = ctx.session.validationCode || {};
-    const value = validationCodeSessionInfo.value || '';
-    const createAt = validationCodeSessionInfo.createAt || 0;
+    const codeInSession = ctx.session.validationCode || '';
+    const createdTimeOfCodeInSession = ctx.session.validationCodeCreatedTime || 0;
 
-    if (validationCode !== value
-      || Date.now() - createAt > 60 * 5 * 1000) {
+    if (validationCode !== codeInSession
+      || Date.now() - createdTimeOfCodeInSession > 60 * 5 * 1000) {
       ctx.body = {
         success: false,
         reason: '验证码错误或已失效',
