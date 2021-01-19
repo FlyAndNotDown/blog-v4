@@ -19,3 +19,7 @@ yarn dev
 cd ../backend
 yarn dev
 ```
+
+# 🥇 赞助
+
+<a href="https://www.jetbrains.com/?from=blog-v4"><img src="./docs/img/JetBrains.png"/></a>
