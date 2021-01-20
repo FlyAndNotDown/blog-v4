@@ -8,9 +8,9 @@ class UserController extends Controller {
     const { ctx } = this;
 
     const userLogin = !!ctx.session.userLogin;
-    const userPk = ctx.session.userPk || -1;
+    const userId = ctx.session.userId || -1;
 
-    if (!(userPk > 0)) {
+    if (!(userId > 0)) {
       ctx.body = {
         success: false,
         reason: 'session中保存的用户信息不合法',
@@ -19,7 +19,7 @@ class UserController extends Controller {
     }
 
     if (userLogin) {
-      const user = await ctx.model.User.findByPk(userPk);
+      const user = await ctx.model.User.findByPk(userId);
       if (!user) {
         ctx.body = {
           success: false,
@@ -32,7 +32,7 @@ class UserController extends Controller {
         success: true,
         content: {
           login: true,
-          info: await ctx.model.User.findByPk(userPk, {
+          info: await ctx.model.User.findByPk(userId, {
             attributes: [
               'username',
               'avatar',
@@ -127,7 +127,7 @@ class UserController extends Controller {
 
     await user.logSignIn();
     ctx.session.userLogin = true;
-    ctx.session.userPk = user.pk;
+    ctx.session.userId = user.id;
     ctx.body = {
       success: true,
     };
@@ -195,7 +195,7 @@ class UserController extends Controller {
     const { ctx } = this;
 
     ctx.session.userLogin = false;
-    ctx.session.userPk = null;
+    ctx.session.userId = -1;
     ctx.body = {
       result: true,
     };

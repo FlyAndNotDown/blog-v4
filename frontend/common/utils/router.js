@@ -39,4 +39,8 @@ export class Router {
     static jumpToTag(id) {
         Router.jumpTo(`${Constant.route.tag}/${id}`);
     }
+
+    static refresh() {
+        window.location.reload();
+    }
 }

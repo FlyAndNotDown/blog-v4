@@ -1,8 +1,6 @@
 import React from 'react';
 import { NavBar } from '../component/nav/nav-bar';
 import { Body } from '../component/container/body';
-import { BlogConfig } from '../blog.config';
-import { MockData } from '../common/mock/mock';
 import { Content } from '../component/container/content';
 import { Footer } from '../component/display/footer';
 import { MessageList } from '../component/display/message-list';
@@ -14,7 +12,6 @@ import { Logger } from '../common/utils/logger';
 function MessagePage(props) {
     const messages = props.messages || [];
     const friends = props.common.friends || [];
-    const user = props.common.user || {};
 
     const onSendMessage = (message) => {
         Logger.printDebug('callback', `onSendMessage: ${message}`);
@@ -22,15 +19,11 @@ function MessagePage(props) {
 
     return (
         <div>
-            <NavBar
-                user={user}
-                alwaysAffixed={true}/>
+            <NavBar alwaysAffixed={true}/>
             <Body>
                 <Content>
-                    {user.login ?
-                        <MessageForm onSendMessage={onSendMessage}/> :
-                        <LoginButton>{Constant.text.messagePageLoginButton}</LoginButton>
-                    }
+                    <MessageForm onSendMessage={onSendMessage}/>
+                    <LoginButton>{Constant.text.messagePageLoginButton}</LoginButton>
                     <MessageList messages={messages}/>
                 </Content>
                 <Footer friends={friends}/>
@@ -40,7 +33,7 @@ function MessagePage(props) {
 }
 
 MessagePage.getInitialProps = async () => {
-    return BlogConfig.useMockData ? MockData.message : {};
+    return {};
 };
 
 export default MessagePage;

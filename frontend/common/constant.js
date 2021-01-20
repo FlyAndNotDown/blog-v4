@@ -36,6 +36,7 @@ const backendRoute = {
     userValidationEmail: '/backend/user/validation/email',
     userRegisterEmail: '/backend/user/register/email',
     userLoginEmail: '/backend/user/login/email',
+    userLogin: '/backend/user/login',
 
     // TODO update prefix to /backend
     aboutMarkdown: '/public/about.md',
