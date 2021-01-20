@@ -10,13 +10,10 @@ import { Constant } from "../common/constant";
 function ArchivePage(props) {
     const archive = props.archive || [];
     const friends = props.common.friends || [];
-    const user = props.common.user || {};
 
     return (
         <div>
-            <NavBar
-                user={user}
-                alwaysAffixed={true}/>
+            <NavBar alwaysAffixed={true}/>
             <Body>
                 <Content>
                     <ArchiveList items={archive}/>

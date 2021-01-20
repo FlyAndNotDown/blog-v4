@@ -11,13 +11,10 @@ function TagPage(props) {
     const id = props.id || 0;
     const summaries = props.summaries || [];
     const friends = props.common.friends || [];
-    const user = props.common.user || {};
 
     return (
         <div>
-            <NavBar
-                user={user}
-                alwaysAffixed={true}/>
+            <NavBar alwaysAffixed={true}/>
             <Body>
                 <Content>
                     <TagList

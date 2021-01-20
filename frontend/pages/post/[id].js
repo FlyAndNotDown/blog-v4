@@ -10,13 +10,10 @@ import { Constant } from "../../common/constant";
 function PostPage(props) {
     const post = props.post || {};
     const friends = props.common.friends || [];
-    const user = props.common.user || {};
 
     return (
         <div>
-            <NavBar
-                user={user}
-                alwaysAffixed={true}/>
+            <NavBar alwaysAffixed={true}/>
             <Body>
                 <Content>
                     <PostDetail

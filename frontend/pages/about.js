@@ -10,13 +10,10 @@ import { Constant } from "../common/constant";
 function AboutPage(props) {
     const source = props.source || '';
     const friends = props.common.friends || [];
-    const user = props.common.user || {};
 
     return (
         <div>
-            <NavBar
-                user={user}
-                alwaysAffixed={true}/>
+            <NavBar alwaysAffixed={true}/>
             <Body>
                 <Content>
                     <AboutPostDetail source={source}/>

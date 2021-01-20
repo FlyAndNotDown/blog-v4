@@ -37,4 +37,15 @@ export class Request {
         response = response || {};
         return response.data || null;
     }
+
+    static async delete(backendUrl, body) {
+        let response = null;
+        try {
+            response = await axiosInstance.delete(Request.__getUrlFromBackend(backendUrl), body);
+        } catch (e) {
+            Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
+        }
+        response = response || {};
+        return response.data || null;
+    }
 }
