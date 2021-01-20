@@ -4,10 +4,8 @@ import { Body } from '../../component/container/body';
 import { Footer } from '../../component/display/footer';
 import { Content } from '../../component/container/content';
 import { TagList } from '../../component/display/tag-list';
-import { Network } from "../../common/utils/network";
-import { BackendUtils } from "../../common/utils/backend";
+import { Request } from "../../common/utils/request";
 import { Constant } from "../../common/constant";
-import { Logger } from "../../common/utils/logger";
 
 function TagPage(props) {
     const id = props.id || 0;
@@ -33,14 +31,7 @@ function TagPage(props) {
 }
 
 export async function getServerSideProps(context) {
-    let response = null;
-    try {
-        response = await Network.getInstance().get(BackendUtils.getUrl(Constant.backendRoute.tagSummaries));;
-    } catch (e) {
-        Logger.printProduct(Constant.text.loggerTagServer, Constant.text.serverError);
-    }
-    response = response || {};
-    const data = response.data || {};
+    const data = await Request.get(Constant.backendRoute.tagSummaries);
 
     return {
         props: {

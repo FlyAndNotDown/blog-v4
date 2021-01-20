@@ -6,10 +6,10 @@ export const BlogConfig = {
     // server
     backend: {
         development: {
-            backendUrl: 'http://localhost:7001'
+            backendHost: 'http://localhost:7001'
         },
         production: {
-            backendUrl: 'https://www.kindem.xyz'
+            backendHost: 'https://www.kindem.xyz'
         }
     }
 };

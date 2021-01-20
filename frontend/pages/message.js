@@ -1,8 +1,6 @@
 import React from 'react';
 import { NavBar } from '../component/nav/nav-bar';
 import { Body } from '../component/container/body';
-import { BlogConfig } from '../blog.config';
-import { MockData } from '../common/mock/mock';
 import { Content } from '../component/container/content';
 import { Footer } from '../component/display/footer';
 import { MessageList } from '../component/display/message-list';
@@ -40,7 +38,7 @@ function MessagePage(props) {
 }
 
 MessagePage.getInitialProps = async () => {
-    return BlogConfig.useMockData ? MockData.message : {};
+    return {};
 };
 
 export default MessagePage;
