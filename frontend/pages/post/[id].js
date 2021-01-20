@@ -33,7 +33,7 @@ function PostPage(props) {
 }
 
 export async function getServerSideProps(context) {
-    const data = await Request.get(`${Constant.backendRoute.postId}/${context.params.id}`)
+    const data = await Request.get(`${Constant.backendRoute.postId}/${context.params.id}`);
 
     return {
         props: {
