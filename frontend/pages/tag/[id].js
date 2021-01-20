@@ -38,8 +38,7 @@ export async function getServerSideProps(context) {
             id: parseInt(context.params.id),
             summaries: data.success ? data.content.summaries : [],
             common: {
-                friends: [],
-                user: {},
+                friends: []
             }
         }
     }

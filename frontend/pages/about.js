@@ -34,8 +34,7 @@ export async function getServerSideProps() {
         props: {
             source: data.toString(),
             common: {
-                friends: [],
-                user: {}
+                friends: []
             }
         }
     }

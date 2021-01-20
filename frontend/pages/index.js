@@ -35,7 +35,13 @@ export async function getServerSideProps() {
     const data = await Request.get(Constant.backendRoute.postSummariesAll);
 
     return {
-        props: data.success ? data.content : {}
+        props: {
+            summaries: data.success ? data.content.summaries : null,
+            common: {
+                friends: []
+            }
+        }
+
     }
 }
 

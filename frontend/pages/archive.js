@@ -34,8 +34,7 @@ export async function getServerSideProps() {
         props: {
             archive: data.success ? data.content.archive : [],
             common: {
-                friends: [],
-                user: {},
+                friends: []
             }
         }
     }

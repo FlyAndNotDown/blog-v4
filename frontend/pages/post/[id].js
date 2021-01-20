@@ -39,8 +39,7 @@ export async function getServerSideProps(context) {
         props: {
             post: data.success ? data.content.post : {},
             common: {
-                friends: [],
-                user: {},
+                friends: []
             }
         }
     }
