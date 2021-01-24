@@ -8,6 +8,7 @@ import { MessageForm } from '../component/form/message-form';
 import { Constant } from '../common/constant';
 import { LoginButton } from '../component/action/login-button';
 import { Logger } from '../common/utils/logger';
+import { Request } from "../common/utils/request";
 
 function MessagePage(props) {
     const messages = props.messages || [];
@@ -32,8 +33,18 @@ function MessagePage(props) {
     );
 }
 
-MessagePage.getInitialProps = async () => {
-    return {};
-};
+export async function getServerSideProps() {
+    const data = await Request.get(Constant.backendRoute.commentList);
+
+    return {
+        props: {
+            message: data.success ? data.content.comments : [],
+            common: {
+                friends: []
+            }
+        }
+
+    }
+}
 
 export default MessagePage;

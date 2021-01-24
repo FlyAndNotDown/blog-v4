@@ -22,6 +22,7 @@ module.exports = app => {
     return await this.findAll({
       include: [{
         model: app.model.User,
+        as: 'author',
         attributes: [
           'username',
           'avatar',
