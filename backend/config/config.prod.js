@@ -28,22 +28,15 @@ module.exports = appInfo => {
     password: 'production',
   };
 
-  // add your user config here
-  const userConfig = {
-    emailServer: {
-      client: {
-        user: 'noreply@kindem.xyz',
-        password: 'tjS6WAu35zJGn8Dy',
-        host: 'smtp.exmail.qq.com',
-        port: 465,
-        ssl: true,
-      },
-      sender: {
-        name: 'Kindem的小秘书',
-        email: 'noreply@kindem.xyz',
-      },
-    },
+  // CORS (DEV)
+  config.cors = {
+    origin: 'https://www.kindem.xyz',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+    credentials: true,
   };
+
+  // add your user config here
+  const userConfig = {};
 
   return {
     ...config,
