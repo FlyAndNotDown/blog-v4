@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavBar } from '../../component/nav/nav-bar';
-import { Body } from '../../component/container/body';
-import { Content } from '../../component/container/content';
-import { Footer } from '../../component/display/footer';
-import { PostDetail } from '../../component/display/post-detail';
-import { Request } from "../../common/utils/request";
-import { Constant } from "../../common/constant";
+import { NavBar } from '../../../component/nav/nav-bar';
+import { Body } from '../../../component/container/body';
+import { Content } from '../../../component/container/content';
+import { Footer } from '../../../component/display/footer';
+import { PostDetail } from '../../../component/display/post-detail';
+import { Request } from "../../../common/utils/request";
+import { Constant } from "../../../common/constant";
 
 function PostPage(props) {
     const post = props.post || {};

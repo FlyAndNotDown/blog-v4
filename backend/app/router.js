@@ -13,16 +13,4 @@ module.exports = app => {
   router.get('/backend/post/archive/all', controller.post.getArchive);
 
   router.get('/backend/tag/summaries', controller.tag.getSummaries);
-
-  router.get('/backend/comment/list', controller.comment.getList);
-  router.post('/backend/comment', controller.comment.post);
-
-  router.get('/backend/user/login', controller.user.getLogin);
-  router.get('/backend/user/salt/:email', controller.user.getSalt);
-  router.post('/backend/user/validation/email', controller.user.postValidationEmail);
-  router.post('/backend/user/login/email', controller.user.postLoginEmail);
-  router.post('/backend/user/login/github', controller.user.postLoginGithub);
-  router.post('/backend/user/login/qq', controller.user.postLoginQQ);
-  router.post('/backend/user/register/email', controller.user.postRegisterEmail);
-  router.delete('/backend/user/login', controller.user.deleteLogin);
 };

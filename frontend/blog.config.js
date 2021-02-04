@@ -2,7 +2,7 @@ export const BlogConfig = {
     // Debug Mode
     debugMode: true,
     // env
-    env: 'development',
+    env: 'production',
     // server
     backend: {
         development: {
