@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Style from './nav-bar.module.css';
-import { Button, Row, Col, Dropdown, Menu, Affix, Avatar } from 'antd';
+import { Row, Col, Dropdown, Menu, Affix } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { Constant } from '../../common/constant';
 import { Logger } from '../../common/utils/logger';
@@ -10,36 +10,8 @@ import { Request } from "../../common/utils/request";
 export function NavBar(props) {
     const alwaysAffixed = !!props.alwaysAffixed;
 
-    const [mounted, setMounted] = useState(false);
-    const [fetched, setFetched] = useState(false);
-    const [userLogin, setUserLogin] = useState(false);
-    const [userInfo, setUserInfo] = useState({});
     const [goneAnimationWorking, setGoneAnimationWorking] = useState(false);
     const [navBarAffixed, setNavBarAffixed] = useState(false);
-
-    const username = userInfo.username || 'Null';
-    const avatar = userInfo.avatar || '';
-
-    useEffect(() => {
-        if (mounted) {
-            return;
-        }
-        setMounted(true);
-        Request.get(Constant.backendRoute.userLogin)
-            .then(data => {
-                setFetched(true);
-                if (!data.success) {
-                    return;
-                }
-                setUserLogin(!!data.content.login);
-                setUserInfo(data.content.info || {});
-            });
-    });
-
-    const onLogoutBtnClick = async () => {
-        await Request.delete(Constant.backendRoute.userLogin);
-        Router.refresh();
-    };
 
     const onAffixedChange = (affixed) => {
         Logger.printDebug('callback', `affixed: ${affixed}`);
@@ -47,32 +19,8 @@ export function NavBar(props) {
         setGoneAnimationWorking(true);
     };
 
-    const onLoginBtnClick = e => {
-        Logger.printDebug('btn', `btn ${Constant.text.login} clicked`);
-        Router.jumpTo(Constant.route.login);
-    };
-
     const navBarDropdownMenu = (
         <Menu>
-            {userLogin ? (
-                <Menu.Item
-                    disabled={true}
-                    className={Style.dropdownItem}>
-                    {username}
-                </Menu.Item>
-            ) : (
-                <Menu.Item
-                    className={Style.dropdownItem}>
-                    <a href={Constant.route.login}>{Constant.text.login}</a>
-                </Menu.Item>
-            )}
-            {userLogin && (
-                <Menu.Item
-                    onClick={onLogoutBtnClick}
-                    className={Style.dropdownItem}>
-                    {Constant.text.logout}
-                </Menu.Item>
-            )}
             <Menu.Item
                 className={Style.dropdownItem}>
                 <a href={Constant.route.archive}>{Constant.text.archive}</a>
@@ -92,7 +40,7 @@ export function NavBar(props) {
         </Menu>
     );
 
-    return fetched && (
+    return (
         <Affix offsetTop={0} onChange={onAffixedChange}>
             <Row className={alwaysAffixed ? Style.affixedConstant :
                     (navBarAffixed ? Style.affixed : (goneAnimationWorking ? Style.normal : ''))}>
@@ -120,32 +68,6 @@ export function NavBar(props) {
                                 <a href={Constant.route.tagSummary} className={Style.navLink}>{Constant.text.tag}</a>
                                 <a href={Constant.route.message} className={Style.navLink}>{Constant.text.message}</a>
                                 <a href={Constant.route.about} className={Style.navLink}>{Constant.text.about}</a>
-                                <span className={Style.btnSpan}>
-                                    {userLogin ? (
-                                        <Dropdown
-                                            overlay={
-                                                <Menu>
-                                                    <Menu.Item
-                                                        onClick={onLogoutBtnClick}>
-                                                        {Constant.text.logout}
-                                                    </Menu.Item>
-                                                </Menu>
-                                            }>
-                                            {userLogin.avatar ? (
-                                                <Avatar src={avatar} alt={'avatar'}/>
-                                                ) : (
-                                                <Avatar>{username[0].toUpperCase()}</Avatar>
-                                            )}
-                                        </Dropdown>
-                                    ) : (
-                                        <Button
-                                        type={'primary'}
-                                        shape={'round'}
-                                        onClick={onLoginBtnClick}>
-                                        {Constant.text.login}
-                                        </Button>
-                                    )}
-                                </span>
                             </Row>
                         </Col>
                         <Col

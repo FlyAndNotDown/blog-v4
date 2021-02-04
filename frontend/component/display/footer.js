@@ -51,15 +51,7 @@ export function Footer(props) {
                             {Constant.text.footerContact}
                         </a>
                         &nbsp;/&nbsp;
-                        <a href={Constant.route.pay} className={Style.secondLinkSecond}>
-                            {Constant.text.footerPay}
-                        </a>
-                        &nbsp;/&nbsp;
-                        <a href={Constant.route.ad} className={Style.secondLinkSecond}>
-                            {Constant.text.footerAdvertisement}
-                        </a>
-                        &nbsp;/&nbsp;
-                        <a href={Constant.route.friend} className={Style.secondLinkSecond}>
+                        <a href={`mailto:${Constant.text.footerContactMail}`} className={Style.secondLinkSecond}>
                             {Constant.text.footerGetFriend}
                         </a>
                     </div>
