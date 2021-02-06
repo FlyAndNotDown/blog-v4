@@ -37,6 +37,9 @@ module.exports = app => {
           [Sequelize.Op.between]: [ idBegin, idEnd ],
         },
       },
+      order: [[
+        'id', 'DESC',
+      ]],
     });
 
     return summaryList.map(summary => ({
@@ -58,9 +61,9 @@ module.exports = app => {
         'title',
         'date',
       ],
-      order: [
-        [ 'id', 'DESC' ],
-      ],
+      order: [[
+        'id', 'DESC',
+      ]],
     });
     const tmp = {};
     archiveList.forEach(post => {
@@ -79,7 +82,7 @@ module.exports = app => {
         });
       }
     }
-    return result;
+    return result.reverse();
   };
 
   Post.getPostById = async function(id) {
