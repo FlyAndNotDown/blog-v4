@@ -1,23 +1,27 @@
 import { Constant } from '../constant';
 
 export class Router {
-  static jumpTo(url) {
+  static __jumpTo(url) {
     window.location.href = url;
   }
 
-  static jumpToHome() {
-    window.location.href = Constant.route.index;
+  static __newWindowTo(url) {
+    window.open(url);
   }
 
   static jumpToPost(id) {
-    Router.jumpTo(`${Constant.route.post}/${id}`);
+    Router.__jumpTo(`${Constant.route.post}/${id}`);
   }
 
-  static jumpToLogin() {
-    Router.jumpTo(Constant.route.login);
+  static newWindowToPost(id) {
+    Router.__newWindowTo(`${Constant.route.post}/${id}`);
   }
 
   static jumpToTag(id) {
-    Router.jumpTo(`${Constant.route.tag}/${id}`);
+    Router.__jumpTo(`${Constant.route.tag}/${id}`);
+  }
+
+  static newWindowToTag(id) {
+    Router.__newWindowTo(`${Constant.route.tag}/${id}`);
   }
 }

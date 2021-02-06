@@ -9,7 +9,6 @@ import { Constant } from "../common/constant";
 
 function ArchivePage(props) {
   const archive = props.archive || [];
-  const friends = props.common.friends || [];
 
   return (
     <div>
@@ -18,7 +17,7 @@ function ArchivePage(props) {
         <Content>
           <ArchiveList items={archive}/>
         </Content>
-        <Footer friends={friends}/>
+        <Footer/>
       </Body>
     </div>
   );
@@ -30,11 +29,8 @@ export async function getServerSideProps() {
   return {
     props: {
       archive: data.success ? data.content.archive : [],
-      common: {
-        friends: []
-      }
     }
-  }
+  };
 }
 
 export default ArchivePage;

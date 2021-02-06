@@ -19,14 +19,14 @@ export function PostDetail(props) {
       <span
         key={index}
         className={Style.titleDivTagSpanFirst}>
-                <a className={Style.normalColorLink} onClick={onClick}>{`#${tag.name}`}</a>
-            </span>
+        <a className={Style.normalColorLink} onClick={onClick}>{`#${tag.name}`}</a>
+      </span>
     ) : (
       <span
         key={index}
         className={Style.titleDivTagSpan}>
-                <a className={Style.normalColorLink} onClick={onClick}>{`#${tag.name}`}</a>
-            </span>
+        <a className={Style.normalColorLink} onClick={onClick}>{`#${tag.name}`}</a>
+      </span>
     );
   };
 
@@ -43,8 +43,8 @@ export function PostDetail(props) {
           <ClockCircleOutlined/>
           <span
             className={Style.titleDivDateText}>
-                        {date}
-                    </span>
+            {date}
+          </span>
         </div>
       </div>
       <div className={Style.contentDiv}>

@@ -11,7 +11,6 @@ import { Request } from "../common/utils/request";
 function IndexPage(props) {
   const summaries = props.summaries || [];
   const common = props.common || {};
-  const friends = common.friends || [];
 
   return (
     <div>
@@ -24,7 +23,7 @@ function IndexPage(props) {
         <Content>
           <PostList summaries={summaries}/>
         </Content>
-        <Footer friends={friends}/>
+        <Footer/>
       </BodyAfterBanner>
     </div>
   );
@@ -36,12 +35,8 @@ export async function getServerSideProps() {
   return {
     props: {
       summaries: data.success ? data.content.summaries : null,
-      common: {
-        friends: []
-      }
     }
-
-  }
+  };
 }
 
 export default IndexPage;

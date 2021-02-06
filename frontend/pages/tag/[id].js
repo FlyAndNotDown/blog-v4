@@ -10,7 +10,6 @@ import { Constant } from "../../common/constant";
 function TagPage(props) {
   const id = props.id || 0;
   const summaries = props.summaries || [];
-  const friends = props.common.friends || [];
 
   return (
     <div>
@@ -21,7 +20,7 @@ function TagPage(props) {
             initialId={id}
             summaries={summaries}/>
         </Content>
-        <Footer friends={friends}/>
+        <Footer/>
       </Body>
     </div>
   );
@@ -34,11 +33,8 @@ export async function getServerSideProps(context) {
     props: {
       id: parseInt(context.params.id),
       summaries: data.success ? data.content.summaries : [],
-      common: {
-        friends: []
-      }
     }
-  }
+  };
 }
 
 export default TagPage;

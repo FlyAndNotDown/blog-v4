@@ -21,19 +21,15 @@ export function NavBar(props) {
     <Menu>
       <Menu.Item
         className={Style.dropdownItem}>
-        <a href={Constant.route.archive}>{Constant.text.archive}</a>
+        <a href={Constant.route.archive} target={'_blank'}>{Constant.text.archive}</a>
       </Menu.Item>
       <Menu.Item
         className={Style.dropdownItem}>
-        <a href={Constant.route.tagSummary}>{Constant.text.tag}</a>
+        <a href={Constant.route.tagSummary} target={'_blank'}>{Constant.text.tag}</a>
       </Menu.Item>
       <Menu.Item
         className={Style.dropdownItem}>
-        <a href={Constant.route.message}>{Constant.text.message}</a>
-      </Menu.Item>
-      <Menu.Item
-        className={Style.dropdownItem}>
-        <a href={Constant.route.about}>{Constant.text.about}</a>
+        <a href={Constant.route.about} target={'_blank'}>{Constant.text.about}</a>
       </Menu.Item>
     </Menu>
   );
@@ -62,10 +58,9 @@ export function NavBar(props) {
               xs={{ span: 0, offset: 0 }} sm={{ span: 0, offset: 0 }} md={{ span: 20, offset: 0 }}
               lg={{ span: 20, offset: 0 }} xl={{ span: 20, offset: 0 }} xxl={{ span: 20, offset: 0 }}>
               <Row className={Style.nav}>
-                <a href={Constant.route.archive} className={Style.navLink}>{Constant.text.archive}</a>
-                <a href={Constant.route.tagSummary} className={Style.navLink}>{Constant.text.tag}</a>
-                <a href={Constant.route.message} className={Style.navLink}>{Constant.text.message}</a>
-                <a href={Constant.route.about} className={Style.navLink}>{Constant.text.about}</a>
+                <a href={Constant.route.archive} target={'_blank'} className={Style.navLink}>{Constant.text.archive}</a>
+                <a href={Constant.route.tagSummary} target={'_blank'} className={Style.navLink}>{Constant.text.tag}</a>
+                <a href={Constant.route.about} target={'_blank'} className={Style.navLink}>{Constant.text.about}</a>
               </Row>
             </Col>
             <Col
