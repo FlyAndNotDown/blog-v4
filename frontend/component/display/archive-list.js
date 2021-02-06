@@ -3,17 +3,17 @@ import Style from './archive-list.module.css';
 import { ArchiveItem } from './archive-item';
 
 export function ArchiveList(props) {
-    const items = props.items || [];
+  const items = props.items || [];
 
-    return (
-        <div className={Style.main}>
-            {items.map((item, key) => (
-                <div className={Style.item} key={key}>
-                    <ArchiveItem
-                        year={item.year}
-                        posts={item.posts}/>
-                </div>
-            ))}
+  return (
+    <div className={Style.main}>
+      {items.map((item, key) => (
+        <div className={Style.item} key={key}>
+          <ArchiveItem
+            year={item.year}
+            posts={item.posts}/>
         </div>
-    );
+      ))}
+    </div>
+  );
 }

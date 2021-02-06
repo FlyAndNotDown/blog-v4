@@ -8,38 +8,38 @@ import { Request } from "../../../common/utils/request";
 import { Constant } from "../../../common/constant";
 
 function PostPage(props) {
-    const post = props.post || {};
-    const friends = props.common.friends || [];
+  const post = props.post || {};
+  const friends = props.common.friends || [];
 
-    return (
-        <div>
-            <NavBar alwaysAffixed={true}/>
-            <Body>
-                <Content>
-                    <PostDetail
-                        id={post.id}
-                        title={post.title}
-                        date={post.date}
-                        tags={post.tags}
-                        content={post.content}/>
-                </Content>
-                <Footer friends={friends}/>
-            </Body>
-        </div>
-    );
+  return (
+    <div>
+      <NavBar alwaysAffixed={true}/>
+      <Body>
+        <Content>
+          <PostDetail
+            id={post.id}
+            title={post.title}
+            date={post.date}
+            tags={post.tags}
+            content={post.content}/>
+        </Content>
+        <Footer friends={friends}/>
+      </Body>
+    </div>
+  );
 }
 
 export async function getServerSideProps(context) {
-    const data = await Request.get(`${Constant.backendRoute.postId}/${context.params.id}`);
+  const data = await Request.get(`${Constant.backendRoute.postId}/${context.params.id}`);
 
-    return {
-        props: {
-            post: data.success ? data.content.post : {},
-            common: {
-                friends: []
-            }
-        }
+  return {
+    props: {
+      post: data.success ? data.content.post : {},
+      common: {
+        friends: []
+      }
     }
+  }
 }
 
 export default PostPage;

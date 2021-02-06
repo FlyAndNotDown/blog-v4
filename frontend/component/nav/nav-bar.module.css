@@ -1,64 +1,64 @@
 @keyframes show-animation {
-    from { background-color: rgba(0, 0, 0, 0) }
-    to { background-color: #171f26 }
+  from { background-color: rgba(0, 0, 0, 0) }
+  to { background-color: #171f26 }
 }
 
 @keyframes gone-animation {
-    from { background-color: #171f26 }
-    to { background-color: rgba(0, 0, 0, 0) }
+  from { background-color: #171f26 }
+  to { background-color: rgba(0, 0, 0, 0) }
 }
 
 .main {
-    height: 64px
+  height: 64px
 }
 
 .normal {
-    composes: main;
-    animation: gone-animation 1.5s;
-    background-color: rgba(0, 0, 0, 0);
+  composes: main;
+  animation: gone-animation 1.5s;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .affixedConstant {
-    composes: main;
-    background-color: #171f26;
+  composes: main;
+  background-color: #171f26;
 }
 
 .affixed {
-    composes: affixedConstant;
-    animation: show-animation 1.5s;
+  composes: affixedConstant;
+  animation: show-animation 1.5s;
 }
 
 .container {
-    height: 100%;
+  height: 100%;
 }
 
 .logo {
-    line-height: 64px;
-    font-size: 25px;
-    color: #ffffff;
-    float: left;
+  line-height: 64px;
+  font-size: 25px;
+  color: #ffffff;
+  float: left;
 }
 
 .nav {
-    line-height: 64px;
-    float: right;
+  line-height: 64px;
+  float: right;
 }
 
 .logoLink {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .logoImg {
-    width: 64px;
+  width: 64px;
 }
 
 .navLink {
-    font-size: 15px;
-    color: #ffffff;
-    margin-left: 4px;
+  font-size: 15px;
+  color: #ffffff;
+  margin-left: 4px;
 }
 
 .dropdownItem {
-    margin: 3px 5px;
+  margin: 3px 5px;
 }
 

@@ -1,26 +1,26 @@
 .main {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60%;
-    z-index: -1;
-    background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  z-index: -1;
+  background-size: cover;
 }
 
 .sloganContainer {
-    position: relative;
-    top: 50%;
-    left: 0;
-    margin: 0 auto;
-    text-align: center;
-    color: #ffffff;
+  position: relative;
+  top: 50%;
+  left: 0;
+  margin: 0 auto;
+  text-align: center;
+  color: #ffffff;
 }
 
 .slogan {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .subSlogan {
-    font-size: 20px;
+  font-size: 20px;
 }

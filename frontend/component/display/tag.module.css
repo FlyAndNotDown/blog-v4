@@ -1,22 +1,22 @@
 @keyframes mouse-enter-animation {
-    from { background-color: white }
-    to { background-color: #dddddd }
+  from { background-color: white }
+  to { background-color: #dddddd }
 }
 
 .main {
-    display: inline-block;
-    background-color: white;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 20px;
+  display: inline-block;
+  background-color: white;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
 }
 
 .main:hover {
-    cursor: pointer;
-    display: inline-block;
-    background-color: #dddddd;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 20px;
-    animation: mouse-enter-animation 1.5s;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #dddddd;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
+  animation: mouse-enter-animation 1.5s;
 }

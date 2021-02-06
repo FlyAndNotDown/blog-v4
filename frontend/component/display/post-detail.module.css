@@ -2,47 +2,47 @@
 }
 
 .titleDiv {
-    background-color: white;
-    padding: 20px 30px;
-    border-radius: 10px;
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
 }
 
 .titleDivTitleRow {
-    font-size: 35px;
+  font-size: 35px;
 }
 
 .titleDivTagsRow {
-    margin-top: 5px;
-    font-size: 17px;
+  margin-top: 5px;
+  font-size: 17px;
 }
 
 .titleDivTagSpanFirst {}
 
 .titleDivTagSpan {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .normalColorLink {
-    color: rgba(0, 0, 0, 0.65);
+  color: rgba(0, 0, 0, 0.65);
 }
 
 .titleDivTimeRow {
-    margin-top: 5px;
-    font-size: 17px;
+  margin-top: 5px;
+  font-size: 17px;
 }
 
 .titleDivDateText {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .divider {
-    padding: 0;
+  padding: 0;
 }
 
 .contentDiv {
-    background-color: white;
-    padding: 20px 30px;
-    border-radius: 10px;
-    margin-top: 20px;
-    font-size: 16px;
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 16px;
 }

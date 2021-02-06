@@ -8,33 +8,33 @@ import { Request } from "../common/utils/request";
 import { Constant } from "../common/constant";
 
 function ArchivePage(props) {
-    const archive = props.archive || [];
-    const friends = props.common.friends || [];
+  const archive = props.archive || [];
+  const friends = props.common.friends || [];
 
-    return (
-        <div>
-            <NavBar alwaysAffixed={true}/>
-            <Body>
-                <Content>
-                    <ArchiveList items={archive}/>
-                </Content>
-                <Footer friends={friends}/>
-            </Body>
-        </div>
-    );
+  return (
+    <div>
+      <NavBar alwaysAffixed={true}/>
+      <Body>
+        <Content>
+          <ArchiveList items={archive}/>
+        </Content>
+        <Footer friends={friends}/>
+      </Body>
+    </div>
+  );
 }
 
 export async function getServerSideProps() {
-    const data = await Request.get(Constant.backendRoute.postArchiveAll);
+  const data = await Request.get(Constant.backendRoute.postArchiveAll);
 
-    return {
-        props: {
-            archive: data.success ? data.content.archive : [],
-            common: {
-                friends: []
-            }
-        }
+  return {
+    props: {
+      archive: data.success ? data.content.archive : [],
+      common: {
+        friends: []
+      }
     }
+  }
 }
 
 export default ArchivePage;
