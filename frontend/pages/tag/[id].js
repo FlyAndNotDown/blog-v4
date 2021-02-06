@@ -8,37 +8,37 @@ import { Request } from "../../common/utils/request";
 import { Constant } from "../../common/constant";
 
 function TagPage(props) {
-    const id = props.id || 0;
-    const summaries = props.summaries || [];
-    const friends = props.common.friends || [];
+  const id = props.id || 0;
+  const summaries = props.summaries || [];
+  const friends = props.common.friends || [];
 
-    return (
-        <div>
-            <NavBar alwaysAffixed={true}/>
-            <Body>
-                <Content>
-                    <TagList
-                        initialId={id}
-                        summaries={summaries}/>
-                </Content>
-                <Footer friends={friends}/>
-            </Body>
-        </div>
-    );
+  return (
+    <div>
+      <NavBar alwaysAffixed={true}/>
+      <Body>
+        <Content>
+          <TagList
+            initialId={id}
+            summaries={summaries}/>
+        </Content>
+        <Footer friends={friends}/>
+      </Body>
+    </div>
+  );
 }
 
 export async function getServerSideProps(context) {
-    const data = await Request.get(Constant.backendRoute.tagSummaries);
+  const data = await Request.get(Constant.backendRoute.tagSummaries);
 
-    return {
-        props: {
-            id: parseInt(context.params.id),
-            summaries: data.success ? data.content.summaries : [],
-            common: {
-                friends: []
-            }
-        }
+  return {
+    props: {
+      id: parseInt(context.params.id),
+      summaries: data.success ? data.content.summaries : [],
+      common: {
+        friends: []
+      }
     }
+  }
 }
 
 export default TagPage;

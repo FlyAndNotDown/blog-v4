@@ -9,71 +9,69 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-// Where your antd-custom.less file lives
 const themeVariables = lessToJS(
-    fs.readFileSync(path.resolve(__dirname, './css/antd.less'), 'utf8')
+  fs.readFileSync(path.resolve(__dirname, './css/antd.less'), 'utf8')
 )
 
 const plugins = [
-    [withLess({
-        lessLoaderOptions: {
-            javascriptEnabled: true,
-            // make your antd custom effective
-            modifyVars: themeVariables,
-        },
-        webpack: (config, { isServer }) => {
-            if (isServer) {
-                const antStyles = /antd\/.*?\/style.*?/
-                const origExternals = [...config.externals]
-                config.externals = [
-                    (context, request, callback) => {
-                        if (request.match(antStyles)) return callback()
-                        if (typeof origExternals[0] === 'function') {
-                            origExternals[0](context, request, callback)
-                        } else {
-                            callback()
-                        }
-                    },
-                    ...(typeof origExternals[0] === 'function' ? [] : origExternals),
-                ]
-
-                config.module.rules.unshift({
-                    test: antStyles,
-                    use: 'null-loader',
-                })
+  [withLess({
+    lessLoaderOptions: {
+      javascriptEnabled: true,
+      modifyVars: themeVariables,
+    },
+    webpack: (config, { isServer }) => {
+      if (isServer) {
+        const antStyles = /antd\/.*?\/style.*?/
+        const origExternals = [...config.externals]
+        config.externals = [
+          (context, request, callback) => {
+            if (request.match(antStyles)) return callback()
+            if (typeof origExternals[0] === 'function') {
+              origExternals[0](context, request, callback)
+            } else {
+              callback()
             }
+          },
+          ...(typeof origExternals[0] === 'function' ? [] : origExternals),
+        ]
 
-            const builtInLoader = config.module.rules.find((rule) => {
-                if (rule.oneOf) {
-                    return (
-                        rule.oneOf.find((deepRule) => {
-                            return deepRule.test && deepRule.test.toString().includes('/a^/');
+        config.module.rules.unshift({
+          test: antStyles,
+          use: 'null-loader',
+        })
+      }
 
-                        }) !== undefined
-                    );
-                }
-                return false;
-            });
+      const builtInLoader = config.module.rules.find((rule) => {
+        if (rule.oneOf) {
+          return (
+            rule.oneOf.find((deepRule) => {
+              return deepRule.test && deepRule.test.toString().includes('/a^/');
 
-            if (typeof builtInLoader !== 'undefined') {
-                config.module.rules.push({
-                    oneOf: [
-                        ...builtInLoader.oneOf.filter((rule) => {
-                            return (rule.test && rule.test.toString().includes('/a^/')) !== true;
-                        }),
-                    ],
-                });
-            }
-
-            config.resolve.alias['@'] = path.resolve(__dirname);
-            return config;
+            }) !== undefined
+          );
         }
-    })]
+        return false;
+      });
+
+      if (typeof builtInLoader !== 'undefined') {
+        config.module.rules.push({
+          oneOf: [
+            ...builtInLoader.oneOf.filter((rule) => {
+              return (rule.test && rule.test.toString().includes('/a^/')) !== true;
+            }),
+          ],
+        });
+      }
+
+      config.resolve.alias['@'] = path.resolve(__dirname);
+      return config;
+    }
+  })]
 ]
 
 const nextConfig = {
-    env: {
-    }
+  env: {
+  }
 }
 
 module.exports = withPlugins(plugins, nextConfig)

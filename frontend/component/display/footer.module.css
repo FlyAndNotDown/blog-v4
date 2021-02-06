@@ -1,58 +1,58 @@
 .main {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .content {
-    background-color: #353b48;
+  background-color: #353b48;
 }
 
 .linkRow {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .friendsRow {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .friendsLink {
-    color: white;
-    margin-right: 5px;
-    font-size: 15px;
+  color: white;
+  margin-right: 5px;
+  font-size: 15px;
 }
 
 .linkIcon {
-    font-size: 40px;
-    margin-right: 15px;
+  font-size: 40px;
+  margin-right: 15px;
 }
 
 .second {
-    background-color: #2f3640;
+  background-color: #2f3640;
 }
 
 .contactRow {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #aaaaaa;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #aaaaaa;
 }
 
 .thanksRow {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #aaaaaa
+  margin-top: 10px;
+  font-size: 14px;
+  color: #aaaaaa
 }
 
 .copyrightRow {
-    margin-top: 5px;
-    margin-bottom: 16px;
-    font-size: 15px;
-    color: #dddddd
+  margin-top: 5px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: #dddddd
 }
 
 .secondLinkSecond {
-    color: #aaaaaa;
+  color: #aaaaaa;
 }
 
 .secondLinkPrimary {
-    color: #dddddd;
+  color: #dddddd;
 }

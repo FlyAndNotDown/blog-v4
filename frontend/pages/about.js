@@ -8,33 +8,33 @@ import { AboutPostDetail } from "../component/display/about-post-detail";
 import { Constant } from "../common/constant";
 
 function AboutPage(props) {
-    const source = props.source || '';
-    const friends = props.common.friends || [];
+  const source = props.source || '';
+  const friends = props.common.friends || [];
 
-    return (
-        <div>
-            <NavBar alwaysAffixed={true}/>
-            <Body>
-                <Content>
-                    <AboutPostDetail source={source}/>
-                </Content>
-                <Footer friends={friends}/>
-            </Body>
-        </div>
-    );
+  return (
+    <div>
+      <NavBar alwaysAffixed={true}/>
+      <Body>
+        <Content>
+          <AboutPostDetail source={source}/>
+        </Content>
+        <Footer friends={friends}/>
+      </Body>
+    </div>
+  );
 }
 
 export async function getServerSideProps() {
-    const data = await Request.get(Constant.backendRoute.aboutMarkdown);
+  const data = await Request.get(Constant.backendRoute.aboutMarkdown);
 
-    return {
-        props: {
-            source: data.toString(),
-            common: {
-                friends: []
-            }
-        }
+  return {
+    props: {
+      source: data.toString(),
+      common: {
+        friends: []
+      }
     }
+  }
 }
 
 export default AboutPage;
