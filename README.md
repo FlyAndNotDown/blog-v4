@@ -41,4 +41,6 @@ yarn start
 
 # 赞助
 
-<a href="https://www.jetbrains.com/?from=blog-v4"><img src="./docs/img/JetBrains.png"/></a>
+<a href="https://www.jetbrains.com/?from=blog-v4">
+    <img src="./docs/img/JetBrains.png" alt="JetBrains" width="500px"/>
+</a>
