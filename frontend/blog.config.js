@@ -1,15 +1,6 @@
 export const BlogConfig = {
     // Debug Mode
-    debugMode: true,
-    // env
-    env: 'production',
+    debugMode: process.env.DEBUG_MODE,
     // server
-    backend: {
-        development: {
-            backendHost: 'http://localhost:7001'
-        },
-        production: {
-            backendHost: 'https://www.kindem.xyz'
-        }
-    }
+    backendHost: process.env.BACKEND_HOST
 };

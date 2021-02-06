@@ -1,9 +1,7 @@
 import Axios from "axios";
-import {BlogConfig} from "../../blog.config";
-import {Logger} from "./logger";
-import {Constant} from "../constant";
-
-const config = BlogConfig.backend[BlogConfig.env];
+import { BlogConfig } from "../../blog.config";
+import { Logger } from "./logger";
+import { Constant } from "../constant";
 
 const axiosInstance = Axios.create({
     withCredentials: true,
@@ -13,7 +11,7 @@ const axiosInstance = Axios.create({
 
 export class Request {
     static __getUrlFromBackend(backendUrl) {
-        return `${config.backendHost}${backendUrl}`;
+        return `${BlogConfig.backendHost}${backendUrl}`;
     }
 
     static async get(backendUrl, query) {
