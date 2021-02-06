@@ -9,7 +9,7 @@ export function ArchiveItem(props) {
 
   const linkClickedCallbackGenerator = (id) => {
     return () => {
-      Router.jumpToPost(id);
+      Router.newWindowToPost(id);
     };
   };
 

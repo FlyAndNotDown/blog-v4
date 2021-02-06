@@ -9,7 +9,6 @@ import { Constant } from "../common/constant";
 
 function AboutPage(props) {
   const source = props.source || '';
-  const friends = props.common.friends || [];
 
   return (
     <div>
@@ -18,7 +17,7 @@ function AboutPage(props) {
         <Content>
           <AboutPostDetail source={source}/>
         </Content>
-        <Footer friends={friends}/>
+        <Footer/>
       </Body>
     </div>
   );
@@ -30,11 +29,8 @@ export async function getServerSideProps() {
   return {
     props: {
       source: data.toString(),
-      common: {
-        friends: []
-      }
     }
-  }
+  };
 }
 
 export default AboutPage;

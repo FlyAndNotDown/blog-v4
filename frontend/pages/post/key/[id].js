@@ -9,7 +9,6 @@ import { Constant } from "../../../common/constant";
 
 function PostPage(props) {
   const post = props.post || {};
-  const friends = props.common.friends || [];
 
   return (
     <div>
@@ -23,7 +22,7 @@ function PostPage(props) {
             tags={post.tags}
             content={post.content}/>
         </Content>
-        <Footer friends={friends}/>
+        <Footer/>
       </Body>
     </div>
   );
@@ -35,11 +34,8 @@ export async function getServerSideProps(context) {
   return {
     props: {
       post: data.success ? data.content.post : {},
-      common: {
-        friends: []
-      }
     }
-  }
+  };
 }
 
 export default PostPage;

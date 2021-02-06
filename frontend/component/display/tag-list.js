@@ -14,7 +14,6 @@ export function TagList(props) {
   };
   for (let i = 0; i < summaries.length; i++) {
     if (initialId === summaries[i].id) {
-      console.log('found');
       initialState = summaries[i];
       break;
     }
@@ -43,7 +42,7 @@ export function TagList(props) {
   const postsRenderer = (post, key) => {
     const postTitleClickListenerGenerator = id => {
       return () => {
-        Router.jumpToPost(id);
+        Router.newWindowToPost(id);
       };
     }
 

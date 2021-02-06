@@ -3,7 +3,6 @@ const route = {
   archive: '/archive',
   tagSummary: '/tag/0',
   tag: '/tag',
-  message: '/message',
   about: '/about',
   post: '/post/key',
 

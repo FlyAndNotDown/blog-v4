@@ -13,7 +13,7 @@ export function PostItem(props) {
 
   const tagRenderer = (tag, key) => {
     const onTagClicked = () => {
-      Router.jumpToTag(tag.id);
+      Router.newWindowToTag(tag.id);
     };
 
     return (
@@ -31,7 +31,8 @@ export function PostItem(props) {
       <div className={Style.titleRow}>
         <a
           href={`${Constant.route.post}/${id}`}
-          className={Style.titleLink}>
+          className={Style.titleLink}
+          target={'_blank'}>
           {title}
         </a>
       </div>
@@ -40,13 +41,13 @@ export function PostItem(props) {
       </div>
       <div className={Style.otherRow}>
         <div className={Style.timeSpan}>
-                    <span>
-                        <ClockCircleOutlined/>
-                    </span>
+          <span>
+            <ClockCircleOutlined/>
+          </span>
           &nbsp;
           <span>
-                        {date}
-                    </span>
+            {date}
+          </span>
         </div>
         <div className={Style.tagSpan}>
           {tags.map(tagRenderer)}
