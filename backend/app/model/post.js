@@ -108,7 +108,7 @@ module.exports = app => {
         'description',
         'date',
         'content',
-        'visits'
+        'visits',
       ],
       where: {
         id: {
