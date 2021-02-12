@@ -6,12 +6,14 @@ import { Footer } from "../component/display/footer";
 import { Request } from "../common/utils/request";
 import { AboutPostDetail } from "../component/display/about-post-detail";
 import { Constant } from "../common/constant";
+import { Header } from "../component/common/header";
 
 function AboutPage(props) {
   const source = props.source || '';
 
   return (
     <div>
+      <Header title={`${Constant.text.about} - ${Constant.text.siteName}`}/>
       <NavBar alwaysAffixed={true}/>
       <Body>
         <Content>

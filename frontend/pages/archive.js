@@ -6,12 +6,14 @@ import { Footer } from '../component/display/footer';
 import { Content } from '../component/container/content';
 import { Request } from "../common/utils/request";
 import { Constant } from "../common/constant";
+import { Header } from "../component/common/header";
 
 function ArchivePage(props) {
   const archive = props.archive || [];
 
   return (
     <div>
+      <Header title={`${Constant.text.archive} - ${Constant.text.siteName}`}/>
       <NavBar alwaysAffixed={true}/>
       <Body>
         <Content>
