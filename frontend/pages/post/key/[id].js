@@ -6,12 +6,14 @@ import { Footer } from '../../../component/display/footer';
 import { PostDetail } from '../../../component/display/post-detail';
 import { Request } from "../../../common/utils/request";
 import { Constant } from "../../../common/constant";
+import { Header } from "../../../component/common/header";
 
 function PostPage(props) {
   const post = props.post || {};
 
   return (
     <div>
+      <Header title={`${post.title} - ${Constant.text.siteName}`}/>
       <NavBar alwaysAffixed={true}/>
       <Body>
         <Content>

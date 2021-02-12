@@ -6,6 +6,7 @@ import { Content } from '../../component/container/content';
 import { TagList } from '../../component/display/tag-list';
 import { Request } from "../../common/utils/request";
 import { Constant } from "../../common/constant";
+import { Header } from "../../component/common/header";
 
 function TagPage(props) {
   const id = props.id || 0;
@@ -13,6 +14,7 @@ function TagPage(props) {
 
   return (
     <div>
+      <Header title={`${Constant.text.tag} - ${Constant.text.siteName}`}/>
       <NavBar alwaysAffixed={true}/>
       <Body>
         <Content>

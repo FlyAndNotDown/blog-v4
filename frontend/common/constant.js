@@ -29,13 +29,12 @@ const backendRoute = {
 };
 
 const text = {
+  siteName: 'Kindem的博客',
+
   logo: 'Kindem',
   archive: '归档',
   tag: '标签',
-  work: '作品',
   about: '关于',
-  login: '登录',
-  logout: '注销',
   menu: 'Menu',
 
   indexSlogan: '眼界决定格局',

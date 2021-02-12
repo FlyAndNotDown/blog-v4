@@ -7,13 +7,14 @@ import { PostList } from '../component/display/post-list';
 import { Footer } from '../component/display/footer';
 import { Content} from '../component/container/content';
 import { Request } from "../common/utils/request";
+import { Header } from "../component/common/header";
 
 function IndexPage(props) {
   const summaries = props.summaries || [];
-  const common = props.common || {};
 
   return (
     <div>
+      <Header title={Constant.text.siteName}/>
       <NavBar/>
       <Banner
         background={Constant.resource.indexBannerImg}
