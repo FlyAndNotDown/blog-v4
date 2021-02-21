@@ -3,21 +3,14 @@
 const Sequelize = require('sequelize');
 
 module.exports = app => {
-  const { TEXT, STRING, INTEGER } = app.Sequelize;
+  const { TEXT, STRING } = app.Sequelize;
 
   const Post = app.model.define('post', {
     title: STRING(100),
     description: STRING(500),
     content: TEXT,
     date: TEXT,
-    visits: INTEGER,
   });
-
-  Post.prototype.logVisits = async function() {
-    return await this.update({
-      visits: this.visits + 1,
-    });
-  };
 
   Post.getPostSummaryList = async function() {
     return await this.getPostSummaryListByRange(1, await this.count());
@@ -108,7 +101,6 @@ module.exports = app => {
         'description',
         'date',
         'content',
-        'visits',
       ],
       where: {
         id: {
@@ -116,8 +108,6 @@ module.exports = app => {
         },
       },
     });
-
-    post.logVisits();
 
     return {
       id: post.id,

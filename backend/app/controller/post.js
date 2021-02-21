@@ -5,6 +5,10 @@ const { Controller } = require('egg');
 class PostController extends Controller {
   async getById() {
     const { ctx } = this;
+
+    // for analysis
+    await ctx.service.analysis.logVisits();
+
     const id = ctx.params.id || -1;
     const post = await ctx.model.Post.getPostById(id);
     if (post === null) {
@@ -20,18 +24,12 @@ class PostController extends Controller {
     };
   }
 
-  async getCount() {
-    const { ctx } = this;
-    ctx.body = {
-      success: true,
-      content: {
-        count: await ctx.model.Post.count(),
-      },
-    };
-  }
-
   async getSummaries() {
     const { ctx } = this;
+
+    // for analysis
+    await ctx.service.analysis.logVisits();
+
     ctx.body = {
       success: true,
       content: {
@@ -42,29 +40,14 @@ class PostController extends Controller {
 
   async getArchive() {
     const { ctx } = this;
+
+    // for analysis
+    await ctx.service.analysis.logVisits();
+
     ctx.body = {
       success: true,
       content: {
         archive: await ctx.model.Post.getArchive(),
-      },
-    };
-  }
-
-  async getSummariesWithRange() {
-    const { ctx } = this;
-    const pkBegin = ctx.params.pkBegin || -1;
-    const pkEnd = ctx.params.pkEnd || -1;
-    if (pkBegin < 0 || pkEnd < 0 || pkBegin > pkEnd) {
-      ctx.body = {
-        success: false,
-        reason: '不合法的参数',
-      };
-      return;
-    }
-    ctx.body = {
-      success: true,
-      content: {
-        summaries: await ctx.model.Post.getPostSummaryListByRange(pkBegin, pkEnd),
       },
     };
   }
