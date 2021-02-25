@@ -51,6 +51,17 @@ class PostController extends Controller {
       },
     };
   }
+
+  async getCount() {
+    const { ctx } = this;
+
+    ctx.body = {
+      success: true,
+      content: {
+        count: await ctx.model.Post.count(),
+      },
+    };
+  }
 }
 
 module.exports = PostController;

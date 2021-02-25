@@ -24,6 +24,7 @@ const backendRoute = {
   postArchiveAll: '/backend/post/archive/all',
   postSummariesAll: '/backend/post/summaries/all',
   postId: '/backend/post/id',
+  postCount: '/backend/post/count',
   tagSummaries: '/backend/tag/summaries',
   aboutMarkdown: '/public/about.md',
 };
