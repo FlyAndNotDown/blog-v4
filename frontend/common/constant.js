@@ -5,6 +5,7 @@ const route = {
   tag: '/tag',
   about: '/about',
   post: '/post/key',
+  sitemap: '/sitemap.xml',
 
   site: 'https://www.kindem.xyz/',
   recordation: 'http://beian.miit.gov.cn/',
