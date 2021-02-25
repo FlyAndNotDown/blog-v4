@@ -8,7 +8,8 @@ function RobotsTxtPage() {
 
 async function RobotsTxtGenerator() {
   let result = 'User-agent: *\r\n';
-  result += `Sitemap: ${BlogConfig.host}${Constant.route.sitemap}`;
+  result += 'Allow: /\r\n';
+  result += `Sitemap: ${Constant.route.sitemap}\r\n`;
   return result;
 }
 
