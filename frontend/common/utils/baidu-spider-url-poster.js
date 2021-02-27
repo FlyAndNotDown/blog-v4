@@ -1,9 +1,14 @@
 import { OuterSiteRequest } from './outer-site-request';
 import { Logger } from './logger';
 import { Constant } from '../constant';
+import { BlogConfig } from "../../blog.config";
 
 export class BaiduSpiderUrlPoster {
   static async postUrl(url) {
+    if (BlogConfig.debugMode) {
+      return;
+    }
+
     let response = null;
     try {
       response = await OuterSiteRequest.post(Constant.route.baiduSpiderService, url)

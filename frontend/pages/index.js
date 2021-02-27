@@ -16,7 +16,10 @@ function IndexPage(props) {
 
   return (
     <div>
-      <Header title={Constant.text.siteName}/>
+      <Header
+        title={Constant.text.siteName}
+        description={Constant.text.indexPageDescription}
+        keywords={Constant.text.indexPageKeywords}/>
       <NavBar/>
       <Banner
         background={Constant.resource.indexBannerImg}

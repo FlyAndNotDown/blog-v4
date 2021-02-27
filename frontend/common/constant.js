@@ -34,6 +34,20 @@ const backendRoute = {
 
 const text = {
   siteName: 'Kindem的博客',
+  siteAuthor: 'Kindem',
+  siteAuthorContact: 'johnkindem@qq.com',
+  siteRobotsIndexRule: 'index,follow',
+
+  indexPageDescription: 'Kindem的博客 - 记录技术，感悟生活。',
+  archivePageDescription: 'Kindem的博客 - 归档',
+  tagPageDescription: 'Kindem的博客 - 标签',
+  aboutPageDescription: 'Kindem的博客 - 关于',
+
+  baseKeywords: ['kindem', 'blog', '博客'],
+  indexPageKeywords: ['首页', 'index'],
+  archivePageKeywords: ['归档', 'archive'],
+  tagPageKeywords: ['标签', 'tag'],
+  aboutPageKeywords: ['关于', 'about'],
 
   logo: 'Kindem',
   archive: '归档',
@@ -52,7 +66,7 @@ const text = {
   footerFrameworkTip: 'Framework by',
   footerThanksFrontendFramework: 'And-Design',
   footerThanksApplicationFramework: 'Next.js',
-  footerCopyRight: '©2017-2020 Copyright',
+  footerCopyRight: '©2017-2021 Copyright',
   footerSite: 'kindem.xyz',
   footerRecordation: '湘ICP备17018771号-1',
   footerContact: '联系站长',

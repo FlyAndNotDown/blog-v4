@@ -15,7 +15,10 @@ function AboutPage(props) {
 
   return (
     <div>
-      <Header title={`${Constant.text.about} - ${Constant.text.siteName}`}/>
+      <Header
+        title={`${Constant.text.about} - ${Constant.text.siteName}`}
+        description={Constant.text.aboutPageDescription}
+        keywords={Constant.text.aboutPageKeywords}/>
       <NavBar alwaysAffixed={true}/>
       <Body>
         <Content>

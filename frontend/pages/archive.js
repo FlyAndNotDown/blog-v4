@@ -15,7 +15,10 @@ function ArchivePage(props) {
 
   return (
     <div>
-      <Header title={`${Constant.text.archive} - ${Constant.text.siteName}`}/>
+      <Header
+        title={`${Constant.text.archive} - ${Constant.text.siteName}`}
+        description={Constant.text.archivePageDescription}
+        keywords={Constant.text.archivePageKeywords}/>
       <NavBar alwaysAffixed={true}/>
       <Body>
         <Content>
