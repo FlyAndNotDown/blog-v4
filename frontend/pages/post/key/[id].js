@@ -15,7 +15,10 @@ function PostPage(props) {
 
   return (
     <div>
-      <Header title={`${post.title} - ${Constant.text.siteName}`}/>
+      <Header
+        title={`${post.title} - ${Constant.text.siteName}`}
+        description={post.description}
+        keywords={post.keywords}/>
       <NavBar alwaysAffixed={true}/>
       <Body>
         <Content>

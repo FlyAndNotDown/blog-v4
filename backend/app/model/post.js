@@ -8,6 +8,7 @@ module.exports = app => {
   const Post = app.model.define('post', {
     title: STRING(100),
     description: STRING(500),
+    keywords: STRING(100),
     content: TEXT,
     date: TEXT,
   });
@@ -99,6 +100,7 @@ module.exports = app => {
         'id',
         'title',
         'description',
+        'keywords',
         'date',
         'content',
       ],
@@ -114,6 +116,7 @@ module.exports = app => {
       content: post.content,
       title: post.title,
       description: post.description,
+      keywords: post.keywords.split(','),
       date: post.date,
       tags: post.tags.map(tag => ({
         id: tag.id,

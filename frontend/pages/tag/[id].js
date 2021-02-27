@@ -16,7 +16,10 @@ function TagPage(props) {
 
   return (
     <div>
-      <Header title={`${Constant.text.tag} - ${Constant.text.siteName}`}/>
+      <Header
+        title={`${Constant.text.tag} - ${Constant.text.siteName}`}
+        description={Constant.text.tagPageDescription}
+        keywords={Constant.text.tagPageKeywords}/>
       <NavBar alwaysAffixed={true}/>
       <Body>
         <Content>
