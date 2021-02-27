@@ -19,6 +19,8 @@ const route = {
   blogTheme: 'https://github.com/FlyAndNotDown/blog-v4',
   blogFramework: 'https://nextjs.org/',
   blogFrontendFramework: 'https://ant.design/index-cn',
+
+  baiduSpiderService: 'http://data.zz.baidu.com/urls?site=https://www.kindem.xyz&token=lDsJO81mKXxekZI6',
 };
 
 const backendRoute = {
@@ -58,6 +60,7 @@ const text = {
   footerGetFriend: '交换友链',
 
   loggerTagServer: 'server',
+  loggerTagCommon: 'common',
 
   serverError: '服务器错误',
 };

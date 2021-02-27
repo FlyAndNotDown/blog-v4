@@ -7,6 +7,8 @@ import { PostDetail } from '../../../component/display/post-detail';
 import { Request } from "../../../common/utils/request";
 import { Constant } from "../../../common/constant";
 import { Header } from "../../../component/common/header";
+import { BaiduSpiderUrlPoster } from "../../../common/utils/baidu-spider-url-poster";
+import { BlogConfig } from "../../../blog.config";
 
 function PostPage(props) {
   const post = props.post || {};
@@ -30,8 +32,9 @@ function PostPage(props) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const data = await Request.get(`${Constant.backendRoute.postId}/${context.params.id}`);
+export async function getServerSideProps(ctx) {
+  await BaiduSpiderUrlPoster.postUrl(`${BlogConfig.host}${ctx.req.url}`);
+  const data = await Request.get(`${Constant.backendRoute.postId}/${ctx.params.id}`);
 
   return {
     props: {

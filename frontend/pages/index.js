@@ -6,8 +6,10 @@ import { BodyAfterBanner } from '../component/container/body-after-banner';
 import { PostList } from '../component/display/post-list';
 import { Footer } from '../component/display/footer';
 import { Content} from '../component/container/content';
-import { Request } from "../common/utils/request";
-import { Header } from "../component/common/header";
+import { Request } from '../common/utils/request';
+import { Header } from '../component/common/header';
+import { BaiduSpiderUrlPoster } from "../common/utils/baidu-spider-url-poster";
+import { BlogConfig } from "../blog.config";
 
 function IndexPage(props) {
   const summaries = props.summaries || [];
@@ -30,7 +32,8 @@ function IndexPage(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(ctx) {
+  await BaiduSpiderUrlPoster.postUrl(`${BlogConfig.host}${ctx.req.url}`);
   const data = await Request.get(Constant.backendRoute.postSummariesAll);
 
   return {

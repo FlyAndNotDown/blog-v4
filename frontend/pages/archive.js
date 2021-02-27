@@ -7,6 +7,8 @@ import { Content } from '../component/container/content';
 import { Request } from "../common/utils/request";
 import { Constant } from "../common/constant";
 import { Header } from "../component/common/header";
+import { BaiduSpiderUrlPoster } from "../common/utils/baidu-spider-url-poster";
+import { BlogConfig } from "../blog.config";
 
 function ArchivePage(props) {
   const archive = props.archive || [];
@@ -25,7 +27,8 @@ function ArchivePage(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(ctx) {
+  await BaiduSpiderUrlPoster.postUrl(`${BlogConfig.host}${ctx.req.url}`);
   const data = await Request.get(Constant.backendRoute.postArchiveAll);
 
   return {

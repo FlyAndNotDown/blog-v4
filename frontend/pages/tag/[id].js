@@ -7,6 +7,8 @@ import { TagList } from '../../component/display/tag-list';
 import { Request } from "../../common/utils/request";
 import { Constant } from "../../common/constant";
 import { Header } from "../../component/common/header";
+import { BaiduSpiderUrlPoster } from "../../common/utils/baidu-spider-url-poster";
+import { BlogConfig } from "../../blog.config";
 
 function TagPage(props) {
   const id = props.id || 0;
@@ -28,12 +30,13 @@ function TagPage(props) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(ctx) {
+  await BaiduSpiderUrlPoster.postUrl(`${BlogConfig.host}${ctx.req.url}`);
   const data = await Request.get(Constant.backendRoute.tagSummaries);
 
   return {
     props: {
-      id: parseInt(context.params.id),
+      id: parseInt(ctx.params.id),
       summaries: data.success ? data.content.summaries : [],
     }
   };
