@@ -21,6 +21,8 @@ const route = {
   blogFrontendFramework: 'https://ant.design/index-cn',
 
   baiduSpiderService: 'http://data.zz.baidu.com/urls?site=https://www.kindem.xyz&token=lDsJO81mKXxekZI6',
+
+  tiStudio: 'https://tis.ac.cn/',
 };
 
 const backendRoute = {
@@ -72,6 +74,7 @@ const text = {
   footerContact: '联系站长',
   footerContactMail: 'johnkindem@qq.com',
   footerGetFriend: '交换友链',
+  footerTiStudio: 'TiStudio',
 
   loggerTagServer: 'server',
   loggerTagCommon: 'common',
