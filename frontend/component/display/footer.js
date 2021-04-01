@@ -31,6 +31,11 @@ export function Footer() {
               <KIcon className={Style.linkIcon} type={Constant.icon.key.juejin}/>
             </a>
           </div>
+          <div className={Style.friendsRow}>
+            <a href={Constant.route.tiStudio} className={Style.friendLink} target={'_blank'}>
+              {Constant.text.footerTiStudio}
+            </a>
+          </div>
         </Col>
       </Row>
       <Row className={Style.second}>
