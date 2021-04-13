@@ -45,11 +45,11 @@ const text = {
   tagPageDescription: 'Kindem的博客 - 标签',
   aboutPageDescription: 'Kindem的博客 - 关于',
 
-  baseKeywords: ['kindem', 'blog', '博客'],
-  indexPageKeywords: ['首页', 'index'],
-  archivePageKeywords: ['归档', 'archive'],
-  tagPageKeywords: ['标签', 'tag'],
-  aboutPageKeywords: ['关于', 'about'],
+  baseKeywords: [],
+  indexPageKeywords: ['kindem'],
+  archivePageKeywords: ['kindem', '归档'],
+  tagPageKeywords: ['kindem', '标签'],
+  aboutPageKeywords: ['kindem', '关于'],
 
   logo: 'Kindem',
   archive: '归档',
