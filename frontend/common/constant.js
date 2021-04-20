@@ -80,6 +80,8 @@ const text = {
   loggerTagCommon: 'common',
 
   serverError: '服务器错误',
+
+  sougouSiteValidationCode: 'CVSpMfKQ5y'
 };
 
 const icon = {

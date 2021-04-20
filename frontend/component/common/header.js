@@ -21,6 +21,7 @@ export function Header(props) {
       <title>{title}</title>
       <meta name={'robots'} content={Constant.text.siteRobotsIndexRule}/>
       <meta name={'author'} content={`${Constant.text.siteAuthor},${Constant.text.siteAuthorContact}`}/>
+      <meta name={'sogou_site_verification'} content={Constant.text.sougouSiteValidationCode}/>
       {description && (<meta name={'description'} content={description}/>)}
       {keywords.length > 0 && (<meta name={'keywords'} content={keywordsGenerator(keywords)}/>)}
     </Head>
